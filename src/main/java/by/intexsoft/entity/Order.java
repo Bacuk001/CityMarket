@@ -1,4 +1,4 @@
-package by.intexoft.entity;
+package by.intexsoft.entity;
 
 import java.util.List;
 
@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * The object of this class stores information about the order left on the
@@ -56,6 +58,7 @@ public class Order extends AbstractPersistable<Integer> {
 	/**
 	 * The shop in which the order was made.
 	 */
+	@JsonIgnore
 	@Column
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	public Market market;
@@ -63,6 +66,7 @@ public class Order extends AbstractPersistable<Integer> {
 	/**
 	 * Products that have been ordered in the store.
 	 */
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = TABLE_NAME, joinColumns = {
 			@JoinColumn(name = Product.ORDER_PROPERTY_NAME) }, inverseJoinColumns = {

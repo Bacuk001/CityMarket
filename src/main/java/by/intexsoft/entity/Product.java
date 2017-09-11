@@ -1,4 +1,4 @@
-package by.intexoft.entity;
+package by.intexsoft.entity;
 
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * The object of this class contains information about the product, as well as
@@ -53,6 +55,7 @@ public class Product extends AbstractPersistable<Integer> {
 	 * 
 	 * @see {@link Category}
 	 */
+	@JsonIgnore
 	@ManyToOne(fetch = LAZY, cascade = ALL)
 	@JoinColumn
 	public Category category;
@@ -62,6 +65,7 @@ public class Product extends AbstractPersistable<Integer> {
 	 * 
 	 * @see {@link Stock}
 	 */
+	@JsonIgnore
 	@ManyToMany(mappedBy = Stock.PRODUCT_PROPERTY_NAME)
 	public List<Stock> stocks;
 
@@ -70,18 +74,21 @@ public class Product extends AbstractPersistable<Integer> {
 	 * 
 	 * @see {@link Description}
 	 */
+	@JsonIgnore
 	@OneToMany(fetch = LAZY, mappedBy = Description.PRODUCT_PROPERTY_NAME, cascade = ALL)
 	public Description description;
 
 	/**
 	 * Field storing information in which orders this product.
 	 */
+	@JsonIgnore
 	@ManyToMany(mappedBy = Order.PRODUCT_PROPERTY_NAME)
 	public List<Order> order;
 
 	/**
 	 * Stores in which this product is sold.
 	 */
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = TABLE_NAME, joinColumns = {
 			@JoinColumn(name = Market.PRODUCT_PROPERTY_NAME) }, inverseJoinColumns = {

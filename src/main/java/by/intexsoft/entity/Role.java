@@ -1,4 +1,4 @@
-package by.intexoft.entity;
+package by.intexsoft.entity;
 
 import java.util.List;
 import javax.persistence.Column;
@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * The object of this class contains information about the role of the user of
@@ -28,6 +30,7 @@ public class Role extends AbstractPersistable<Integer> {
 	/**
 	 * The field that stores the user to whom this role belongs.
 	 */
+	@JsonIgnore
 	@ManyToMany(mappedBy = User.ROLE_PROPERTY_NAME)
 	public List<User> user;
 

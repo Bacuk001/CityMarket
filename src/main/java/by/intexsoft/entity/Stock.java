@@ -1,4 +1,4 @@
-package by.intexoft.entity;
+package by.intexsoft.entity;
 
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A class is an instance of a repository. which contains information about the
@@ -70,6 +72,7 @@ public class Stock extends AbstractPersistable<Integer> {
 	/**
 	 * List of products that are stored in the warehouse.
 	 */
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = TABLE_NAME_PRODUCT, joinColumns = {
 			@JoinColumn(name = Product.STOCK_PROPERTY_NAME) }, inverseJoinColumns = {

@@ -1,6 +1,6 @@
-package by.intexoft.entity;
+package by.intexsoft.entity;
 
-import static by.intexoft.entity.Role.USER_PROPERTY_NAME;
+import static by.intexsoft.entity.Role.USER_PROPERTY_NAME;
 
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * The object of this class will be the user of our application, which will be
@@ -47,8 +49,15 @@ public class User extends AbstractPersistable<Integer> {
 	public String name;
 
 	/**
+	 * User password.
+	 */
+	@Column
+	public String password;
+
+	/**
 	 * The field stores information to which store it is attached and serves.
 	 */
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn
 	public Market market;
@@ -58,6 +67,7 @@ public class User extends AbstractPersistable<Integer> {
 	 * 
 	 * @see {@link Stock}
 	 */
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn
 	public Stock stock;
@@ -67,7 +77,7 @@ public class User extends AbstractPersistable<Integer> {
 	 * 
 	 * @see {@link Role}
 	 */
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = TABLE_NAME, joinColumns = { @JoinColumn(name = USER_PROPERTY_NAME) }, inverseJoinColumns = {
 			@JoinColumn(name = ROLE_PROPERTY_NAME) })
 	public List<Role> role;
