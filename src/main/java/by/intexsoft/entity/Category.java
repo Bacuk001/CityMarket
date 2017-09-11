@@ -1,4 +1,4 @@
-package by.intexoft.entity;
+package by.intexsoft.entity;
 
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
@@ -12,8 +12,11 @@ import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * With the help of the class all goods are grouped into a certain group.
+ * 
  * @see {@link Category}
  */
 @Entity
@@ -29,6 +32,7 @@ public class Category extends AbstractPersistable<Integer> {
 	/**
 	 * List of products in the group.
 	 */
+	@JsonIgnore
 	@OneToMany(fetch = LAZY, mappedBy = Product.CATEGORY_PROPERTY_NAME, cascade = ALL)
 	public List<Product> products;
 }

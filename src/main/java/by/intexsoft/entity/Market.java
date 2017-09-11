@@ -1,4 +1,4 @@
-package by.intexoft.entity;
+package by.intexsoft.entity;
 
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * This class is the essence of the table with information about the stores that
@@ -54,23 +56,27 @@ public class Market extends AbstractPersistable<Integer> {
 	 * The name of the field on which the bundle is carried out with the warehouse
 	 * objects. We organize communication in tables many to many.
 	 */
+	@JsonIgnore
 	@ManyToMany(mappedBy = Stock.MARKET_PROPERTY_NAME)
 	public List<Stock> stocks;
 	/**
 	 * List of users that support this market.
 	 */
+	@JsonIgnore
 	@OneToMany(fetch = LAZY, mappedBy = User.MERKET_PROPERTY_NAME, cascade = ALL)
 	public List<User> user;
 
 	/**
 	 * The list of orders sent to the store for processing.
 	 */
+	@JsonIgnore
 	@OneToMany(fetch = LAZY, mappedBy = Order.MARCET_PROPERTY_NAME, cascade = ALL)
 	public List<Order> orders;
 
 	/**
 	 * Products that are available in the store.
 	 */
+	@JsonIgnore
 	@ManyToMany(mappedBy = Product.MARKET_PROPERTY_NAME)
 	public List<Product> pruducts;
 

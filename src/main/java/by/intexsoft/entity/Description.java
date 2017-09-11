@@ -1,4 +1,4 @@
-package by.intexoft.entity;
+package by.intexsoft.entity;
 
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * The object of this class retains the characteristic of the goods.
@@ -34,6 +36,7 @@ public class Description extends AbstractPersistable<Integer> {
 	/**
 	 * The product belongs to the characteristic.
 	 */
+	@JsonIgnore
 	@ManyToOne(fetch = LAZY, cascade = ALL)
 	public Product product;
 }
