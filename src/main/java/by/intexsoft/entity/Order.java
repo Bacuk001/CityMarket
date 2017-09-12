@@ -59,8 +59,8 @@ public class Order extends AbstractPersistable<Integer> {
 	 * The shop in which the order was made.
 	 */
 	@JsonIgnore
-	@Column
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn
 	public Market market;
 
 	/**

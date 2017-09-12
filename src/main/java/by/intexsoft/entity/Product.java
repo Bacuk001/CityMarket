@@ -76,14 +76,14 @@ public class Product extends AbstractPersistable<Integer> {
 	 */
 	@JsonIgnore
 	@OneToMany(fetch = LAZY, mappedBy = Description.PRODUCT_PROPERTY_NAME, cascade = ALL)
-	public Description description;
+	public List<Description> description;
 
 	/**
 	 * Field storing information in which orders this product.
 	 */
 	@JsonIgnore
 	@ManyToMany(mappedBy = Order.PRODUCT_PROPERTY_NAME)
-	public List<Order> order;
+	public List<Order> orders;
 
 	/**
 	 * Stores in which this product is sold.

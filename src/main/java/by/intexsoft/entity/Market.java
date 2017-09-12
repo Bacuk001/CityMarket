@@ -35,6 +35,7 @@ public class Market extends AbstractPersistable<Integer> {
 	 * The name of the field that stores products on the market.
 	 */
 	public static final String PRODUCT_PROPERTY_NAME = "products";
+
 	/**
 	 * The field contains the name of the store.
 	 */

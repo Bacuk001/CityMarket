@@ -2,9 +2,11 @@ package by.intexsoft.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import by.intexsoft.entity.Category;
+import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Product;
 import by.intexsoft.entity.Stock;
 
@@ -32,9 +34,44 @@ public interface ProductRepository extends AbstractEntityRepository<Product> {
 	List<Product> findByCategory(Category nameCategory);
 
 	/**
-	 * Get all the products in stock.
+	 * Get all the products in the stock.
 	 * 
 	 * @see {@link Stock}
 	 */
-	List<Product> findByStock(Stock stock);
+	List<Product> findByStocks(Stock stock);
+
+	/**
+	 * Get all the products in the market.
+	 * 
+	 * @see {@link Market}
+	 */
+	List<Product> findByMarkets(Market market);
+
+	/**
+	 * Get all the products in the market and category.
+	 * 
+	 * @see {@link Market}, {@link Category}
+	 */
+	List<Product> findByMarketsAndCategory(Market market, Category category);
+
+	/**
+	 * Get all the products in the stock and category.
+	 * 
+	 * @see {@link Market}, {@link Category}
+	 */
+	List<Product> findByStocksAndCategory(Stock stock, Category category);
+
+	/**
+	 * Counts the number of products in the stock in the category.
+	 * 
+	 * @see {@link Stock}, {@link Category}
+	 */
+	Integer countByStocksAndCategory(Stock stock, Category category);
+
+	/**
+	 * Counts the number of products in the market in the category.
+	 * 
+	 * @see {@link Stock}, {@link Category}
+	 */
+	Integer countByMarketsAndCategory(Market market, Category category);
 }

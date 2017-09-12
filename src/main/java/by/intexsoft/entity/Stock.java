@@ -35,7 +35,7 @@ public class Stock extends AbstractPersistable<Integer> {
 	/**
 	 * Field containing the name of the field that associates the store with market.
 	 */
-	public static final String MARKET_PROPERTY_NAME = "market";
+	public static final String MARKET_PROPERTY_NAME = "markets";
 	/**
 	 * Name of product store.
 	 */
