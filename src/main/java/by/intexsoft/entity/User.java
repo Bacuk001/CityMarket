@@ -41,7 +41,7 @@ public class User extends AbstractPersistable<Integer> {
 	/**
 	 * 
 	 */
-	public static final String MERKET_PROPERTY_NAME = "marcet";
+	public static final String MERKET_PROPERTY_NAME = "market";
 	/**
 	 * User name.
 	 */
