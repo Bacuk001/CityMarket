@@ -26,8 +26,8 @@ public interface MarketRepository extends AbstractEntityRepository<Market> {
 	/**
 	 * The method signs the store for goods that are in stock.
 	 */
-	@Modifying(clearAutomatically = true)
-	@Query("INSERT INTO market_product(products, markets) SELECT sp.product, m.id FROM market m, product_stock sp INNER JOIN product pr ON pr.id = sp.product INNER JOIN stock st ON st.id = sp.stocks WHERE st.id =:idStock AND m.id =:idMarket")
-	void signMarketinStock(@Param("idMarket") int idMarket, @Param("idStock") int idStock);
+	//@Modifying(clearAutomatically = true)
+	///@Query("INSERT INTO market_product(products, markets) SELECT sp.product, m.id FROM market m, product_stock sp INNER JOIN product pr ON pr.id = sp.product INNER JOIN stock st ON st.id = sp.stocks WHERE st.id =:idStock AND m.id =:idMarket")
+	//void signMarketinStock(@Param("idMarket") int idMarket, @Param("idStock") int idStock);
 
 }

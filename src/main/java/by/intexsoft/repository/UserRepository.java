@@ -48,7 +48,7 @@ public interface UserRepository extends AbstractEntityRepository<User> {
 	 *            the name of the role.
 	 * @return {@link List} <{@link User}>
 	 */
-	List<User> findByRole(Role role);
+	List<User> findByRoles(Role role);
 
 	/**
 	 * The repository retrieves from the user database whose name and password match

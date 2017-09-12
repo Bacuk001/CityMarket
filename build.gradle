@@ -1,0 +1,52 @@
+apply plugin: 'war'
+apply plugin: 'com.bmuschko.tomcat'
+//version = '1.0.0'
+
+def tomcatVersion = '7.0.76'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.3'
+    }
+}
+
+
+repositories {
+	 mavenCentral()
+}
+
+//compileJava{dependsOn 'frontend:buildCline'}
+
+dependencies {
+	compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.10.RELEASE'
+	compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.11.6.RELEASE' 
+	compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.2.10.Final' 
+	compile group: 'mysql', name: 'mysql-connector-java', version: '5.0.8'  
+	compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.0'    
+	compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.2.3.RELEASE'
+	compile group: 'org.springframework.security', name: 'spring-security-web', version: '4.2.3.RELEASE'
+	compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.3.RELEASE'    
+	compile group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.0.8.RELEASE'    
+    compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.7.0'
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.0'
+	tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+}
+//war {
+	//from 'frontend/dist','rootResources'
+//}
+
+task unDeploy(type: Delete, dependsOn: 'build') {
+  delete 'C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps/DocumentView'
+  delete 'C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps/DocumentView.war' 
+}
+
+task deployTomCat(type: Copy,dependsOn: 'unDeploy' ) {
+    from './build/libs'
+    into 'C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps'
+}

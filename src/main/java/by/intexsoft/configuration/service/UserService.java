@@ -67,7 +67,7 @@ public class UserService {
 	 * @return {@link List}<{@link Role}>
 	 */
 	public List<User> findByRole(Role role) {
-		return userRepository.findByRole(role);
+		return userRepository.findByRoles(role);
 	}
 
 	/**
