@@ -30,12 +30,14 @@ public class Market extends AbstractPersistable<Integer> {
 	 * the essence of warehouses.
 	 */
 	public static final String USER_PROPERTY_VALUE = "users";
-
 	/**
 	 * The name of the field that stores products on the market.
 	 */
 	public static final String PRODUCT_PROPERTY_NAME = "products";
-
+	/**
+	 * The name of the field that stock.
+	 */
+	public static final String STOCK_PROPERTY_NAME = "stocks";
 	/**
 	 * The field contains the name of the store.
 	 */
@@ -66,14 +68,12 @@ public class Market extends AbstractPersistable<Integer> {
 	@JsonIgnore
 	@OneToMany(fetch = LAZY, mappedBy = User.MERKET_PROPERTY_NAME, cascade = ALL)
 	public List<User> user;
-
 	/**
 	 * The list of orders sent to the store for processing.
 	 */
 	@JsonIgnore
 	@OneToMany(fetch = LAZY, mappedBy = Order.MARCET_PROPERTY_NAME, cascade = ALL)
 	public List<Order> orders;
-
 	/**
 	 * Products that are available in the store.
 	 */

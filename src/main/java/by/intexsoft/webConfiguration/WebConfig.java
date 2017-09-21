@@ -8,5 +8,4 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @ComponentScan("by.intexsoft.configuration")
 public class WebConfig {
-
 }

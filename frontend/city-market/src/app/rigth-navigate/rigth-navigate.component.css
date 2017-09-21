@@ -1,0 +1,14 @@
+.divmain{
+  height: 20px;
+  width: 130px;
+}
+.button-group{
+  float: right;
+  padding-left: 70px;
+}
+.buttonLog{
+  width: 150px;
+  margin: 5px;
+}
+
+

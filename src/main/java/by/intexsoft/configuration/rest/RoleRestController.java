@@ -11,7 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import by.intexsoft.configuration.service.RoleService;
 import by.intexsoft.entity.Role;
+import by.intexsoft.repository.RoleRepository;
 
+/**
+ * The controller receives processing requests, retrieves role information in
+ * the application, and roles are responsible for accessing the application's
+ * application. By copying all the information for the response, the controller
+ * creates a response and sends it to the user.
+ * 
+ * @see {@link RestController}, {@link RoleService}, {@link Role},
+ *      {@link RoleRepository}
+ */
 @RestController
 public class RoleRestController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(RoleRestController.class);
@@ -24,6 +34,9 @@ public class RoleRestController {
 		this.roleService = roleService;
 	}
 
+	/**
+	 * Controller processing requests for all roles.
+	 */
 	@RequestMapping(value = "/roles")
 	public ResponseEntity<List<Role>> getRoles() {
 		LOGGER.info("Find all roles from database.");

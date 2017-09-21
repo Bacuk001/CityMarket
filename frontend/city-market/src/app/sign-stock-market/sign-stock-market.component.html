@@ -1,0 +1,8 @@
+
+<row *ngFor="let stock of stocks; let index=index">
+ <input type="checkbox"  [(ngModel)]="check[index]">{{stock.name}}
+</row>
+<row>
+  <button (click)="sendSign()">обновить</button>
+</row>
+{{message}}

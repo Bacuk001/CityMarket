@@ -57,7 +57,7 @@ public class SpringConfig {
 	}
 
 	/**
-	 * Configuring database connection settings
+	 * Configuring database connection settings.
 	 * 
 	 * @see {@link DataSource}
 	 */

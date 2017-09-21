@@ -1,0 +1,15 @@
+<row>
+  <label>Добавлить продукт</label>
+</row>
+<row>
+  <column sm="5"><label>Название продукта</label></column>
+  <column sm="7">
+    <input type="text" [(ngModel)]="product.name" class="input-group"/>
+  </column>
+</row>
+<row>
+  <button class="btn-group buttonLog" (click)="saveProduct()">
+    {{'save'|translate}}
+  </button>
+</row>
+

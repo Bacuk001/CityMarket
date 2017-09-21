@@ -1,0 +1,66 @@
+<row style="padding-left: 150px">
+  <column sm="9">
+    <row>
+      <column sm="12">
+        <ul class="nav nav-pills nav-fill">
+          <li class="nav-item">
+            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('category')">Каталог
+              товаров
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('installment')">Рассрочка
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('delivery')">Доставка
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('about')">О магазине
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('addCategory')">Добавить
+              категорию
+            </button>
+          </li>
+        </ul>
+      </column>
+    </row>
+    <row>
+      <column sm="12">
+        <ul class="nav nav-pills nav-fill">
+          <li class="nav-item">
+            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('createStock')">
+              создать склад
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('addUser')">
+              создать пользователя
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('createMarket')">
+              создать магазин
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('signStock')">
+              подпись
+            </button>
+          </li>
+        </ul>
+      </column>
+    </row>
+
+    <column *ngIf="access.selectMarket" sm="3">
+      <label>Выберите магазин</label>
+      <select [(ngModel)]="market" (ngModelChange)="selectMarket()">
+        <option *ngFor="let mark of markets" [ngValue]="mark">{{mark.name}}</option>
+      </select>
+    </column>
+  </column>
+</row>
+

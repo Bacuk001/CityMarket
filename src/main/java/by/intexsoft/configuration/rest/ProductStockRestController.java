@@ -17,7 +17,18 @@ import by.intexsoft.configuration.service.StockService;
 import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Product;
 import by.intexsoft.entity.Stock;
+import by.intexsoft.repository.PriceRepository;
 
+/**
+ * /** A controller that processes requests for information about products with
+ * which the stock is running. The controller receives requests, processes the
+ * information, and returns the responses to the user. The controller can
+ * receive the object and send it to the {@link ProductService} repository, it
+ * can handle get content of the {@link ProductService}.
+ * 
+ * @see {@link ProductService}, {@link RestController}, {@link Product},
+ *      {@link PriceRepository}, {@link Stock}, {@link StockService}
+ */
 @RestController
 public class ProductStockRestController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductRestController.class);
@@ -28,13 +39,16 @@ public class ProductStockRestController {
 	private CategoryService categoryService;
 
 	@Autowired
-	public ProductStockRestController(StockService stockService, ProductService productService,
+	ProductStockRestController(StockService stockService, ProductService productService,
 			CategoryService categoryService) {
 		this.productService = productService;
 		this.stockService = stockService;
 		this.categoryService = categoryService;
 	}
 
+	/**
+	 * The controller method that processes requests for products in the stock.
+	 */
 	@RequestMapping(value = "/products/stock/{id}", method = RequestMethod.GET)
 	public ResponseEntity<List<Product>> getProductsByStock(@PathVariable("id") int id) {
 		LOGGER.info("Find product by stock id.");
@@ -49,6 +63,12 @@ public class ProductStockRestController {
 		return new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
 	}
 
+	/**
+	 * The controller method that processes requests for products in the warehouse
+	 * of the corresponding category.
+	 * 
+	 * @see {@link Category}
+	 */
 	@RequestMapping(value = "/products/stock/{idStock}/category/{idCategory}", method = RequestMethod.GET)
 	public ResponseEntity<List<Product>> getByStockAndCategory(@PathVariable("idStock") int idStock,
 			@PathVariable("idCategory") int idCategory) {
@@ -65,6 +85,10 @@ public class ProductStockRestController {
 		return new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
 	}
 
+	/**
+	 * The controller method that processes requests for the number of products in a
+	 * warehouse of the corresponding category.
+	 */
 	@RequestMapping(value = "/products/stock/{idStock}/category/{idCategory}/count", method = RequestMethod.GET)
 	public ResponseEntity<Integer> conuByStockAndCategory(@PathVariable("idStock") int idStock,
 			@PathVariable("idCategory") int idCategory) {

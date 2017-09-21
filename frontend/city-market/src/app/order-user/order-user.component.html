@@ -1,0 +1,49 @@
+<row>
+  <column sm="2"></column>
+  <column sm="10">
+    <label>Заявка на Приобретение товара</label>
+  </column>
+</row>
+<row>
+  <column sm="2"></column>
+  <column sm="10">
+    <row>
+      <column sm="12">
+        <label>товар в заявке:</label>
+      </column>
+    </row>
+    <row>
+      <column sm="4">
+        {{product.name}}
+      </column>
+      <column sm="4">
+        {{product.priceView}}
+      </column>
+    </row>
+    <row>
+      <column sm="4">
+        <label>Введите ваше имя:</label>
+      </column>
+      <column sm="4">
+        <input type="text" [(ngModel)]="order.nameUser" placeholder="Введите Ваше имя">
+      </column>
+    </row>
+    <row>
+      <column sm="4">
+        <label>Контактный номер телефона:</label>
+      </column>
+      <column sm="4">
+        <input type="text" [(ngModel)]="order.contacts" placeholder="Введите Ваше имя">
+      </column>
+    </row>
+    <row>
+      <column sm="4">
+        <button (click)="sendOrder()">Отрпавить</button>
+      </column>
+      <column sm="4">
+        <button (click)="chancelOrder()">Отмена</button>
+      </column>
+    </row>
+  </column>
+</row>
+

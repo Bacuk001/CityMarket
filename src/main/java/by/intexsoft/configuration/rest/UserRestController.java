@@ -16,7 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import by.intexsoft.configuration.service.UserService;
 import by.intexsoft.entity.User;
+import by.intexsoft.repository.UserRepository;
 
+/**
+ * The controller processes requests for receiving, adding and editing users of
+ * the application.
+ * 
+ * @see {@link User} , {@link UserService}, {@link RestController},
+ *      {@link UserRepository}
+ */
 @RestController
 public class UserRestController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserRestController.class);
@@ -29,6 +37,9 @@ public class UserRestController {
 		this.userService = userService;
 	}
 
+	/**
+	 * Controller processing requests for the user on his id.
+	 */
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> getUserById(@PathVariable("id") int id) {
 		LOGGER.info("Find user by id in database.");
@@ -42,6 +53,9 @@ public class UserRestController {
 		return new ResponseEntity<User>(user, headers, HttpStatus.OK);
 	}
 
+	/**
+	 * The controller processes requests for all users in the system.
+	 */
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getUsers() {
 		LOGGER.info("Find all users.");
@@ -55,6 +69,9 @@ public class UserRestController {
 		return new ResponseEntity<List<User>>(users, headers, HttpStatus.OK);
 	}
 
+	/**
+	 * The controller processes requests for user retention.
+	 */
 	@RequestMapping(value = "/user/save", method = RequestMethod.POST)
 	public ResponseEntity<User> name(@RequestBody User user) {
 		user = userService.save(user);

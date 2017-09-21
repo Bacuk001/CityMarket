@@ -1,10 +1,7 @@
 package by.intexsoft.repository;
 
 import java.util.List;
-
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Product;
@@ -24,7 +21,7 @@ public interface ProductRepository extends AbstractEntityRepository<Product> {
 	 * 
 	 * @see {@link Product}
 	 */
-	List<Product> findByName(String nameProduct);
+	Product findByName(String nameProduct);
 
 	/**
 	 * Search all products in category.
@@ -74,4 +71,14 @@ public interface ProductRepository extends AbstractEntityRepository<Product> {
 	 * @see {@link Stock}, {@link Category}
 	 */
 	Integer countByMarketsAndCategory(Market market, Category category);
+
+	/**
+	 * The repository method generates a query in the database to obtain information
+	 * about the products contained in the repository in a specific category. The
+	 * method takes two parameters. The first is the category in which the product
+	 * is located, the second storage from which you need to take the products.
+	 * 
+	 * @see {@link Category}, {@link Stock}
+	 */
+	List<Product> findProductDistinctByCategoryAndStocksIn(Category category, List<Stock> stocks);
 }

@@ -17,6 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 import by.intexsoft.configuration.service.MarketService;
 import by.intexsoft.entity.Market;
 
+/**
+ * A controller that processes requests for information about the market. The
+ * controller receives requests, processes the information, and returns the
+ * responses to the user. The controller can receive the object and send it to
+ * the {@link MarketService} repository, it can process the transfer control of
+ * the {@link MarketService} to remove the market.
+ *
+ * @see {@link RestController}, {@link Market}, {@link MarketService}
+ */
 @RestController
 public class MarketRestController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MarketRestController.class);
@@ -24,10 +33,14 @@ public class MarketRestController {
 	private MarketService marketService;
 
 	@Autowired
-	public MarketRestController(MarketService marketService) {
+	MarketRestController(MarketService marketService) {
 		this.marketService = marketService;
 	}
 
+	/**
+	 * The method of the controller accepting requests for the deletion of the
+	 * store.
+	 */
 	@RequestMapping(value = "/market/save", method = RequestMethod.POST)
 	public ResponseEntity<Market> save(@RequestBody Market market) {
 		LOGGER.info("Save market to database");
@@ -41,6 +54,9 @@ public class MarketRestController {
 		return new ResponseEntity<Market>(market, headers, HttpStatus.OK);
 	}
 
+	/**
+	 * A controller method that receives requests for a list of all stores.
+	 */
 	@RequestMapping(value = "/markets", method = RequestMethod.GET)
 	public ResponseEntity<List<Market>> getAllMarket() {
 		LOGGER.info("Get all markets.");
@@ -54,6 +70,9 @@ public class MarketRestController {
 		return new ResponseEntity<List<Market>>(markets, headers, HttpStatus.OK);
 	}
 
+	/**
+	 * A controller method that accepts store deletion requests.
+	 */
 	@RequestMapping(value = "/market/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Market> delete(@PathVariable("id") int id) {
 		LOGGER.info("Delete market.");
@@ -63,6 +82,10 @@ public class MarketRestController {
 		return new ResponseEntity<Market>(headers, HttpStatus.OK);
 	}
 
+	/**
+	 * The method of the controller accepting requests for receipt of the store on
+	 * his id.
+	 */
 	@RequestMapping(value = "/market/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Market> getById(@PathVariable("id") int id) {
 		Market market = marketService.findOne(id);
@@ -74,12 +97,4 @@ public class MarketRestController {
 		}
 		return new ResponseEntity<Market>(market, headers, HttpStatus.OK);
 	}
-
-	@RequestMapping(value = "/market/sign/{idMarket}/{idStock}")
-	public ResponseEntity<Market> signStock(@PathVariable("idMarket") int inMarket,
-			@PathVariable("idStock") int idStock) {
-		marketService.signMarketInStock(inMarket, idStock);
-		return new ResponseEntity<Market>(HttpStatus.OK);
-	}
-
 }

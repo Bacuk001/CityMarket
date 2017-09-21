@@ -17,6 +17,12 @@ import by.intexsoft.configuration.service.ProductService;
 import by.intexsoft.entity.Description;
 import by.intexsoft.entity.Product;
 
+/**
+ * A controller that processes requests for a description, the controller works
+ * with a service that provides information. {@link RestController},
+ * 
+ * @see {@link DescriptionService}, {@link Description} {@link ResponseEntity}.
+ */
 @RestController
 public class DescriprionRestController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(DescriprionRestController.class);
@@ -25,11 +31,16 @@ public class DescriprionRestController {
 	private ProductService productService;
 
 	@Autowired
-	public DescriprionRestController(DescriptionService descriptionService, ProductService productService) {
+	DescriprionRestController(DescriptionService descriptionService, ProductService productService) {
 		this.descriptionService = descriptionService;
 		this.productService = productService;
 	}
 
+	/**
+	 * A controller that processes requests for a description of the product.
+	 * 
+	 * @see {@link Product}
+	 */
 	@RequestMapping(value = "/descriprion/product/{id}", method = RequestMethod.GET)
 	public ResponseEntity<List<Description>> getByProduct(@PathVariable("id") int id) {
 		LOGGER.info("Find Descriprion by product in database.");
@@ -45,6 +56,12 @@ public class DescriprionRestController {
 		return new ResponseEntity<List<Description>>(descriptions, headers, HttpStatus.OK);
 	}
 
+	/**
+	 * A controller that processes requests to save a list of descriptions. the
+	 * controller receives a list and sends it to the service for saving. After
+	 * successful execution, the controller sends a response that the save was
+	 * successful.
+	 */
 	@RequestMapping(value = "/descriprion/save", method = RequestMethod.POST)
 	public ResponseEntity<List<Description>> save(@RequestBody List<Description> descriptions) {
 		LOGGER.info("Save list descriptions for product.");
@@ -57,5 +74,4 @@ public class DescriprionRestController {
 		}
 		return new ResponseEntity<List<Description>>(headers, HttpStatus.OK);
 	}
-
 }

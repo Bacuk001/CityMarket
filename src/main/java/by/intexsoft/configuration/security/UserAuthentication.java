@@ -3,21 +3,24 @@ package by.intexsoft.configuration.security;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
-
+import org.springframework.security.core.context.SecurityContextHolder;
 import by.intexsoft.entity.Role;
 import by.intexsoft.entity.User;
 
+/**
+ * Class object will be registered in {@link SecurityContextHolder}. The user on
+ * the basis of this class will be granted access to the components of the
+ * application.
+ */
 public class UserAuthentication implements Authentication {
 	private static final long serialVersionUID = -6220452839777795632L;
 	private User user;
 	private boolean authenticated = true;
 
-	public UserAuthentication(User user) {
-		super();
+	UserAuthentication(User user) {
 		this.user = user;
 	}
 
@@ -61,6 +64,9 @@ public class UserAuthentication implements Authentication {
 
 	}
 
+	/**
+	 * The method {@link List} the sheet with array values.
+	 */
 	public List<GrantedAuthority> getRolesArray(List<Role> roles) {
 		String[] rolesArray = new String[roles.size()];
 		for (int index = 0; index < roles.size(); index++) {
@@ -68,5 +74,4 @@ public class UserAuthentication implements Authentication {
 		}
 		return AuthorityUtils.createAuthorityList(rolesArray);
 	}
-
 }

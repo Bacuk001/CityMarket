@@ -1,5 +1,8 @@
 package by.intexsoft.entity;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.LAZY;
+
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -56,21 +59,23 @@ public class Stock extends AbstractPersistable<Integer> {
 	 * 
 	 * @see {@link Market}
 	 */
+    @JsonIgnore
 	@ManyToMany
 	@JoinTable(name = TABLE_NAME_MARKET, joinColumns = {
-			@JoinColumn(name = Market.USER_PROPERTY_VALUE) }, inverseJoinColumns = {
+			@JoinColumn(name = Market.STOCK_PROPERTY_NAME) }, inverseJoinColumns = {
 					@JoinColumn(name = MARKET_PROPERTY_NAME) })
 	public List<Market> markets;
 	/**
-	 * List of users that support this store.
+	 * List of users that support this store. {@link User}
 	 * 
 	 * @see {@link User}
 	 */
+     @JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = User.STOCK_PROPERTY_NAME, cascade = CascadeType.ALL)
 	public List<User> user;
 
 	/**
-	 * List of products that are stored in the warehouse.
+	 * List of products that are stored in the warehouse. {@link Product}
 	 */
 	@JsonIgnore
 	@ManyToMany
@@ -78,5 +83,12 @@ public class Stock extends AbstractPersistable<Integer> {
 			@JoinColumn(name = Product.STOCK_PROPERTY_NAME) }, inverseJoinColumns = {
 					@JoinColumn(name = PRODUCT_PROPERTY_NAME) })
 	public List<Product> product;
+
+	/**
+	 * The prices of which are formed in this store. {@link Price}
+	 */
+	@JsonIgnore
+	@OneToMany(fetch = LAZY, mappedBy = Price.STOCK_PROPERTY_NAME, cascade = ALL)
+	public List<Price> prises;
 
 }
