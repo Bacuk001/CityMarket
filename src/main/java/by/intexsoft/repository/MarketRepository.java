@@ -1,10 +1,6 @@
 package by.intexsoft.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-
 import by.intexsoft.entity.Market;
 
 /**
@@ -22,12 +18,4 @@ public interface MarketRepository extends AbstractEntityRepository<Market> {
 	 * @see {@link Market}
 	 */
 	Market findByName(String nameMarket);
-
-	/**
-	 * The method signs the store for goods that are in stock.
-	 */
-	@Modifying(clearAutomatically = true)
-	@Query("INSERT INTO market_product(products, markets) SELECT sp.product, m.id FROM market m, product_stock sp INNER JOIN product pr ON pr.id = sp.product INNER JOIN stock st ON st.id = sp.stocks WHERE st.id =:idStock AND m.id =:idMarket")
-	void signMarketinStock(@Param("idMarket") int idMarket, @Param("idStock") int idStock);
-
 }

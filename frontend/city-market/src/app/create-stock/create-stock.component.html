@@ -1,0 +1,24 @@
+<row>
+  <column sm="2"></column>
+  <column sm="10">
+    <row>
+      {{message}}
+    </row>
+    <row>
+      <column sm="3">название склада</column>
+      <column sm="3"><input type="text" [(ngModel)]="stock.name" placeholder="название Склада"></column>
+    </row>
+    <row>
+      <column sm="3">Адрес</column>
+      <column sm="9"><input type="text" [(ngModel)]="stock.address" placeholder="адресс склада"></column>
+    </row>
+    <row>
+      <column sm="3">О сладе</column>
+      <column><input type="text" [(ngModel)]="stock.about"></column>
+    </row>
+    <row>
+      <button (click)="createStock()">создать</button>
+    </row>
+  </column>
+
+</row>

@@ -2,6 +2,8 @@ package by.intexsoft.configuration.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import by.intexsoft.entity.Market;
@@ -67,7 +69,7 @@ public class UserService {
 	 * @return {@link List}<{@link Role}>
 	 */
 	public List<User> findByRole(Role role) {
-		return userRepository.findByRole(role);
+		return userRepository.findByRoles(role);
 	}
 
 	/**
@@ -77,7 +79,9 @@ public class UserService {
 	 *            instance {@link User}
 	 * @return {@link User}
 	 */
+
 	public User save(User user) {
+		
 		return userRepository.save(user);
 	}
 

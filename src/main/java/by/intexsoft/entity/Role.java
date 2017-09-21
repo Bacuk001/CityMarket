@@ -21,7 +21,7 @@ public class Role extends AbstractPersistable<Integer> {
 	/**
 	 * The name of the field that binds this role to the user.
 	 */
-	public static final String USER_PROPERTY_NAME = "user";
+	public static final String USER_PROPERTY_NAME = "users";
 	/**
 	 * Whose role name will be granted access.
 	 */
@@ -32,6 +32,6 @@ public class Role extends AbstractPersistable<Integer> {
 	 */
 	@JsonIgnore
 	@ManyToMany(mappedBy = User.ROLE_PROPERTY_NAME)
-	public List<User> user;
+	public List<User> users;
 
 }

@@ -43,7 +43,7 @@ public class Product extends AbstractPersistable<Integer> {
 	/**
 	 * The field contains the name of the field in the orders.
 	 */
-	public static final String ORDER_PROPERTY_NAME = "order";
+	public static final String ORDER_PROPERTY_NAME = "orders";
 	/**
 	 * The product's name.
 	 */
@@ -94,4 +94,9 @@ public class Product extends AbstractPersistable<Integer> {
 			@JoinColumn(name = Market.PRODUCT_PROPERTY_NAME) }, inverseJoinColumns = {
 					@JoinColumn(name = MARKET_PROPERTY_NAME) })
 	public List<Market> markets;
+
+	@JsonIgnore
+	@OneToMany(fetch = LAZY, mappedBy = Price.PRODUCT_PROPERTY_NAME, cascade = ALL)
+	public List<Price> prices;
+
 }

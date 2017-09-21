@@ -1,5 +1,8 @@
 package by.intexsoft.repository;
 
+import java.util.List;
+
+import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Stock;
 
 /**
@@ -14,4 +17,12 @@ public interface StockRepository extends AbstractEntityRepository<Stock> {
 	 * @see {@link Stock}
 	 */
 	Stock findByName(String name);
+
+	/**
+	 * A method that forms a query in a database to retrieve all the warehouses from
+	 * which the market receives the products.
+	 * 
+	 * @see {@link Market}
+	 */
+	List<Stock> findByMarkets(Market market);
 }

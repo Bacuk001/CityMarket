@@ -1,8 +1,7 @@
 package by.intexsoft.entity;
 
-import static by.intexsoft.entity.Role.USER_PROPERTY_NAME;
-
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,9 +11,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
  * The object of this class will be the user of our application, which will be
@@ -26,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table
 public class User extends AbstractPersistable<Integer> {
 	private static final long serialVersionUID = -8490985203125626735L;
-	private static final String TABLE_NAME = "user_role";
+	private static final String TABLE_NAME = "roles_users";
 	/***
 	 * The name of the field in which information is stored to which warehouse this
 	 * user has access.
@@ -36,10 +34,11 @@ public class User extends AbstractPersistable<Integer> {
 	 * The field contains the name of the field in which the user information about
 	 * the roles is stored.
 	 */
-	public static final String ROLE_PROPERTY_NAME = "role";
+	public static final String ROLE_PROPERTY_NAME = "roles";
 
 	/**
-	 * 
+	 * The field contains the name of the field in which the user information about
+	 * the market.
 	 */
 	public static final String MERKET_PROPERTY_NAME = "market";
 	/**
@@ -57,8 +56,7 @@ public class User extends AbstractPersistable<Integer> {
 	/**
 	 * The field stores information to which store it is attached and serves.
 	 */
-	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@JoinColumn
 	public Market market;
 
@@ -67,8 +65,7 @@ public class User extends AbstractPersistable<Integer> {
 	 * 
 	 * @see {@link Stock}
 	 */
-	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn
 	public Stock stock;
 
@@ -78,7 +75,7 @@ public class User extends AbstractPersistable<Integer> {
 	 * @see {@link Role}
 	 */
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = TABLE_NAME, joinColumns = { @JoinColumn(name = USER_PROPERTY_NAME) }, inverseJoinColumns = {
+	@JoinTable(name = TABLE_NAME, joinColumns = { @JoinColumn(name = Role.USER_PROPERTY_NAME) }, inverseJoinColumns = {
 			@JoinColumn(name = ROLE_PROPERTY_NAME) })
-	public List<Role> role;
+	public List<Role> roles;
 }
