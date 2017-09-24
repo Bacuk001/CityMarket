@@ -3,7 +3,6 @@ package by.intexsoft.configuration.rest;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import by.intexsoft.configuration.service.MarketService;
 import by.intexsoft.configuration.service.PriceServicse;
@@ -42,7 +40,6 @@ public class PriceRestController {
 	private StockService stockService;
 	private MarketService marketService;
 
-	@Autowired
 	PriceRestController(MarketService marketService, StockService stockService, ProductService productService,
 			PriceServicse priceServicse) {
 		this.priceServicse = priceServicse;
@@ -89,14 +86,15 @@ public class PriceRestController {
 		}
 		return new ResponseEntity<Price>(price, headers, HttpStatus.OK);
 	}
-    /**
-    */
-    @RequestMapping(value = "/prices/product/{idProduct}/stock/{idStock}", method = RequestMethod.GET)
+
+	/**
+	*/
+	@RequestMapping(value = "/prices/product/{idProduct}/stock/{idStock}", method = RequestMethod.GET)
 	public ResponseEntity<Price> getPriseByProductAndStock(@PathVariable("idProduct") int idProduct,
 			@PathVariable("idStock") int idStock) {
 		LOGGER.info("Find prices by product and market.");
 		Product product = productService.findOne(idProduct);
-		Stock stock= stockService.findOne(idStock);
+		Stock stock = stockService.findOne(idStock);
 		Price prices = priceServicse.findByProductAndStock(product, stock);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=UTF-8");

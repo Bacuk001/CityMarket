@@ -1,12 +1,12 @@
 <row>
-  <column sm="2"></column>
-  <column sm="10">
+  <column class="borderStyle" sm="4"></column>
+  <column class="borderStyle" sm="8">
     <label>Заявка на Приобретение товара</label>
   </column>
 </row>
 <row>
-  <column sm="2"></column>
-  <column sm="10">
+  <column class="borderStyle" sm="2"></column>
+  <column class="borderStyle" sm="10">
     <row>
       <column sm="12">
         <label>товар в заявке:</label>
@@ -19,6 +19,10 @@
       <column sm="4">
         {{product.priceView}}
       </column>
+    </row>
+    <row *ngFor="let price of prices">
+      <column sm="2"><label>ценa:</label></column>
+      <column sm="2"><label>{{price.price}}</label></column>
     </row>
     <row>
       <column sm="4">
@@ -33,7 +37,15 @@
         <label>Контактный номер телефона:</label>
       </column>
       <column sm="4">
-        <input type="text" [(ngModel)]="order.contacts" placeholder="Введите Ваше имя">
+        <input type="text" [(ngModel)]="order.contacts" placeholder="Введите Ваш контактный телефон!">
+      </column>
+    </row>
+    <row>
+      <column sm="4">
+        <label>Адрес доставки товара:</label>
+      </column>
+      <column sm="4">
+        <input type="text" [(ngModel)]="order.address" placeholder="Адрес доставки товара">
       </column>
     </row>
     <row>
@@ -46,4 +58,5 @@
     </row>
   </column>
 </row>
+{{message}}
 

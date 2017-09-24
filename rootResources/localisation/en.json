@@ -1,0 +1,12 @@
+{
+	"HELLO": "Hello",
+	"ListBanks": "ListBanks",
+	"AddBanks": "Add new Bank",
+	"nameBanks": "Name of banks",
+	"nameBank": "Name bank",
+	"idBank": "Key bank",
+	"adresBank": "Address bank",
+	"save": "Save",
+	"open": "Open",
+	"CreateUser": "CreateUser"
+}

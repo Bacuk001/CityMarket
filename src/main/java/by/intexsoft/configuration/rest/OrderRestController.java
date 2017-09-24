@@ -1,10 +1,8 @@
 package by.intexsoft.configuration.rest;
 
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import by.intexsoft.configuration.service.MarketService;
 import by.intexsoft.configuration.service.OrderService;
 import by.intexsoft.entity.Market;
@@ -38,7 +35,6 @@ public class OrderRestController {
 	private OrderService orderService;
 	private MarketService marketService;
 
-	@Autowired
 	OrderRestController(OrderService orderService, MarketService marketService) {
 		this.orderService = orderService;
 		this.marketService = marketService;
@@ -95,10 +91,42 @@ public class OrderRestController {
 		return new ResponseEntity<List<Order>>(orders, headers, HttpStatus.OK);
 	}
 
-    @RequestMapping(value = "/order/save", method = RequestMethod.POST)
+	/**
+	 * The controller receives an order in the request and passes it to the service
+	 * for saving in the database. If the save was successful, the controller method
+	 * sends the saved object, with the status successfully. If the object is not
+	 * saved in the database, then the response will be with the server error
+	 * status.
+	 * 
+	 * @see {@link Order}, {@link OrderService}, {@link Order}
+	 */
+	@RequestMapping(value = "/order/save", method = RequestMethod.POST)
 	public ResponseEntity<Order> saveOrder(@RequestBody Order order) {
 		LOGGER.info("Save order to database.");
 		order = orderService.save(order);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "application/json; charset=UTF-8");
+		if (order == null) {
+			headers.add(MESSAGE, "Order do not save.");
+			return new ResponseEntity<Order>(order, headers, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<Order>(order, headers, HttpStatus.OK);
+	}
+
+	/**
+	 * The controller receives an order in the request and passes it to the service
+	 * for storage in a database linked to the market. If the save was successful,
+	 * the controller method sends the saved object, with the status successfully.
+	 * If the object is not saved in the database, then the response will be with
+	 * the server error status.
+	 * 
+	 * @see {@link Order}, {@link OrderService}, {@link Order}
+	 */
+	@RequestMapping(value = "/order/save/product/{idProduct}/market/{idMarket}", method = RequestMethod.POST)
+	public ResponseEntity<Order> saveOrdeInMarket(@RequestBody Order order, @PathVariable("idProduct") int idProduct,
+			@PathVariable("idMarket") int idMarket) {
+		LOGGER.info("Save order to database.");
+		order = orderService.saveByMarket(order, idMarket, idProduct);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=UTF-8");
 		if (order == null) {

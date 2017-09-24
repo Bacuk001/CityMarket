@@ -1,8 +1,0 @@
-<row *ngFor="let product of productService.getProducts()">
-  <column>
-    <div (click)="selectProduct(product)">{{product.name}}</div>
-  </column>
-  <column>
-    <button (click)="checkout(product)">заказать</button>
-  </column>
-</row>

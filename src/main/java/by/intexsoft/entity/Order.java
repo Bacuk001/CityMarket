@@ -2,7 +2,6 @@ package by.intexsoft.entity;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -66,8 +65,7 @@ public class Order extends AbstractPersistable<Integer> {
 	/**
 	 * Products that have been ordered in the store.
 	 */
-	@JsonIgnore
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = TABLE_NAME, joinColumns = {
 			@JoinColumn(name = Product.ORDER_PROPERTY_NAME) }, inverseJoinColumns = {
 					@JoinColumn(name = PRODUCT_PROPERTY_NAME) })

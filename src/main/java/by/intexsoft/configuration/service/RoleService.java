@@ -1,10 +1,11 @@
 package by.intexsoft.configuration.service;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import by.intexsoft.entity.Role;
+import by.intexsoft.entity.User;
 import by.intexsoft.repository.RoleRepository;
 
 /**
@@ -18,7 +19,6 @@ import by.intexsoft.repository.RoleRepository;
 public class RoleService {
 	private RoleRepository roleRepository;
 
-	@Autowired
 	RoleService(RoleRepository roleRepository) {
 		this.roleRepository = roleRepository;
 	}

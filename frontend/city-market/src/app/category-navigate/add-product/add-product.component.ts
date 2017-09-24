@@ -24,6 +24,6 @@ export class AddProductComponent implements OnInit {
   saveProduct() {
     this.product.stock = this.authenticationService.getUser().stock;
     this.product.category = this.categoryService.getSelectedCategory();
-    this.productService.seveProduct(this.product);
+    this.productService.saveProduct(this.product);
   }
 }

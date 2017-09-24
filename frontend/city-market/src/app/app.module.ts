@@ -18,7 +18,7 @@ import {BootstrapGridModule} from 'ng2-bootstrap-grid';
 import {AboutComponent} from './about/about.component';
 import {DeliveryComponent} from './delivery/delivery.component';
 import {InstallmentplanComponent} from './installmentplan/installmentplan.component';
-import {ViewProductListComponent} from './view-product-list/view-product-list.component';
+import {ViewProductListComponent} from './category-navigate/view-product-list/view-product-list.component';
 import {ProductService} from './services/product/product.service';
 import {AddProductComponent} from './category-navigate/add-product/add-product.component';
 import {AddCategoryComponent} from './add-category/add-category.component';
@@ -31,8 +31,12 @@ import {AccessService} from './services/access/access.service';
 import {CreateStockComponent} from './create-stock/create-stock.component';
 import {StockService} from './services/stock/stock.service';
 import {PriceService} from './services/price/price.service';
-import {OrderUserComponent} from './order-user/order-user.component';
+import {OrderUserComponent} from './category-navigate/order-user/order-user.component';
 import {OrderService} from './services/order/order.service';
+import {ListOrderMarketComponent} from './list-order-market/list-order-market.component';
+import {DescriptionProductComponent} from './category-navigate/description-product/description-product.component';
+import {DescriptionProductCreateComponent} from './category-navigate/description-product-create/description-product-create.component';
+import {DescriptionService} from "./services/description/description.service";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '/CityMarket/localisation/', '.json');
@@ -65,7 +69,10 @@ const translModel = {
     CreateMarketComponent,
     CreateUserComponent,
     CreateStockComponent,
-    OrderUserComponent
+    OrderUserComponent,
+    ListOrderMarketComponent,
+    DescriptionProductComponent,
+    DescriptionProductCreateComponent
   ],
   imports: [
     FormsModule,
@@ -84,6 +91,7 @@ const translModel = {
     {provide: 'authenticationService', useClass: AuthenticationService},
     {provide: 'priceService', useClass: PriceService},
     {provide: 'orderService', useClass: OrderService},
+    {provide: 'descriptionService', useClass: DescriptionService},
     AccessService
   ],
   bootstrap: [AppComponent]

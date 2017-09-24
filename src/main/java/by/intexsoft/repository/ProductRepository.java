@@ -1,6 +1,7 @@
 package by.intexsoft.repository;
 
 import java.util.List;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Market;
@@ -81,4 +82,23 @@ public interface ProductRepository extends AbstractEntityRepository<Product> {
 	 * @see {@link Category}, {@link Stock}
 	 */
 	List<Product> findProductDistinctByCategoryAndStocksIn(Category category, List<Stock> stocks);
+
+	/**
+	 * A repository that manages the essence of products in a data buffer. Forms a
+	 * query into the database to retrieve products that correspond to the category
+	 * and are stock in warehouses. Only the number of records that is configured in
+	 * the page is {@link Pageable}.
+	 * 
+	 * @see {@link Product}, {@link Pageable}, {@link Category}
+	 */
+	List<Product> findProductDistinctByCategoryAndStocksIn(Category category, List<Stock> stocks, Pageable pageable);
+
+	/**
+	 * A repository that manages the essence of products in a data buffer. Forms a
+	 * query into the database to retrieve the number of products that correspond to
+	 * the category and are stored in warehouses.
+	 * 
+	 * @see {@link Product}, {@link Category}.
+	 */
+	int countProductDistinctByCategoryAndStocksIn(Category category, List<Stock> stocks);
 }

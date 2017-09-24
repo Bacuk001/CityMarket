@@ -1,10 +1,7 @@
 package by.intexsoft.configuration.rest;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,14 +91,11 @@ public class ProductRestController {
 	public ResponseEntity<Product> save(@RequestBody Product product, @PathVariable("idCategory") int idCategory,
 			@PathVariable("idStock") int idStock) {
 		LOGGER.info("Save product.");
-		System.out.println("enter");
 		Stock stock = stockService.findOne(idStock);
 		Category category = categoryService.findOne(idCategory);
 		product.category = category;
 		product = productService.save(product);
-		//stock.product= new ArrayList<>();
 		stock.product.add(product);
-		//stockService.save(stock);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=UTF-8");
 		if (product == null) {

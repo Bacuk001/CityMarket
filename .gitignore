@@ -1,1 +1,7 @@
 /build/
+.gradle/
+.settings/
+bin/
+.classpath
+.project
+start.bat
