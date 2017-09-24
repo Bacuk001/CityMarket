@@ -9,7 +9,6 @@ import {IAuthenticationService} from '../authentication/iauthentication.service'
 @Injectable()
 export class PriceService implements IPriceService {
   private url = '/CityMarket/api/price';
-  private price: Price[];
 
   constructor(private http: Http,
               @Inject('marketService') private marketService: IMarketService,
@@ -17,34 +16,31 @@ export class PriceService implements IPriceService {
   }
 
   getPriceByProductMarket(product: Product) {
-    return new Promise((res, rej) => {
-      this.http.get(this.url + 's/product/'
-        + product.id + '/market/'
-        + this.marketService.getSelectMarket().id)
-        .subscribe(resp => res(resp.json), error => rej('Ошибка получения цен.'));
+    let idMarket = this.marketService.getSelectMarket().id;
+    const urlPrices = this.url + 's/product/' + product.id + '/market/' + idMarket;
+    return new Promise((response, reject) => {
+      this.http.get(urlPrices)
+        .subscribe(resp => response(resp.json()),
+          error => reject('Ошибка получения цен.'));
     });
   }
 
   savePrice(price: Price) {
-    return new Promise((res, rej) => {
+    return new Promise((response, error) => {
       const body = JSON.stringify(price);
-      alert(body);
       const headers = new Headers({'Content-Type': 'application/json;charset=utf-8'});
       this.http.post(this.url + '/save', body, {headers: headers})
-        .subscribe((resp) => {
-          this.price = resp.json();
-          if (this.price != null) return res(this.price);
-          return rej('error');
-        });
+        .subscribe((resp) => response(resp.json()),
+          () => error('Ошибка получения цен!'));
     });
   }
 
   getPriceByProductStock(product: Product) {
+    const url = this.url + 's/product/' + product.id + '/stock/' + this.authService.getUser().stock.id;
     return new Promise((res, rej) => {
-      this.http.get(this.url + 's/product/'
-        + product.id + '/stock/'
-        + this.authService.getUser().stock.id)
-        .subscribe(resp => res(resp.json()), error => rej('Ошибка получения цен.'));
+      this.http.get(url)
+        .subscribe(resp => res(resp.json()),
+          error => rej('Ошибка получения цен.'));
     });
   }
 

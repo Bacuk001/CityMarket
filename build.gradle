@@ -37,9 +37,9 @@ dependencies {
            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
            "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
 }
-//war {
-	//from 'frontend/dist','rootResources'
-//}
+war {
+	from 'rootResources'//,'frontend/dist'
+}
 
 task unDeploy(type: Delete, dependsOn: 'build') {
   delete 'C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps/DocumentView'

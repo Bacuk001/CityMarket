@@ -1,0 +1,40 @@
+<row>
+  {{message}}
+</row>
+<row>
+  <column sm="3"></column>
+  <column sm="9">{{product.name}}</column>
+</row>
+<row>
+  <column sm="3">
+    {{'nameDescription'|translate}}
+  </column>
+  <column sm="9">
+    {{'value'|translate}}
+  </column>
+</row>
+<row *ngFor="let description of descriptions">
+  <column sm="3">
+    <label>{{description.name}}</label>
+  </column>
+  <column sm="9">
+    <label>{{description.value}}</label>
+  </column>
+</row>
+<row>
+  <column sm="3">
+    <input [(ngModel)]="descriptionCreate.name" placeholder="'enterNameDescription'|translate">
+  </column>
+  <column sm="3">
+    <input [(ngModel)]="descriptionCreate.value" placeholder="'enterValueDescription'|translate">
+  </column>
+</row>
+<row>
+  <column>
+    <button><label class="btn-primary" (click)='addDescription()'>{{'addDescription'|translate}}</label></button>
+  </column>
+  <column>
+    <button><label class="btn-primary" (click)='saveDescriptions()'>{{'save'|translate}}</label></button>
+  </column>
+</row>
+

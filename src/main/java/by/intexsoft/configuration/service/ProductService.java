@@ -1,9 +1,9 @@
 package by.intexsoft.configuration.service;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Service;
 import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Market;
@@ -21,7 +21,6 @@ import by.intexsoft.repository.ProductRepository;
 public class ProductService {
 	private ProductRepository productRepository;
 
-	@Autowired
 	ProductService(ProductRepository productRepository) {
 		this.productRepository = productRepository;
 	}
@@ -99,7 +98,7 @@ public class ProductService {
 	 * @see {@link Market} , {@link Category}
 	 */
 	public List<Product> findByMarketAndCategory(Market market, Category category) {
-		
+
 		return productRepository.findByMarketsAndCategory(market, category);
 	}
 
@@ -144,5 +143,26 @@ public class ProductService {
 	 */
 	public List<Product> findByCategoryAndStocks(Category category, List<Stock> stocks) {
 		return productRepository.findProductDistinctByCategoryAndStocksIn(category, stocks);
+	}
+
+	/**
+	 * The service method asks the repository for all products in the category in
+	 * the warehouse, the number of records configured in the {@link Pageable}.
+	 * 
+	 * @see {@link ProductRepository}, {@link Pageable}, {@link Stock},
+	 *      {@link Product}.
+	 */
+	public List<Product> findByCategoryAndStocksPage(Category category, List<Stock> stocks, Pageable pageable) {
+		return productRepository.findProductDistinctByCategoryAndStocksIn(category, stocks, pageable);
+	}
+
+	/**
+	 * The service method asks the repository for the number of products in the
+	 * category in the stock.
+	 * 
+	 * @see {@link ProductRepository}, {@link Category}, {@link Stock}
+	 */
+	public Integer countProductByCategoryAndStocks(Category category, List<Stock> stocks) {
+		return productRepository.countProductDistinctByCategoryAndStocksIn(category, stocks);
 	}
 }

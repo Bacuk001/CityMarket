@@ -3,7 +3,6 @@ package by.intexsoft.configuration.rest;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +19,7 @@ import by.intexsoft.entity.Stock;
 import by.intexsoft.repository.PriceRepository;
 
 /**
- * /** A controller that processes requests for information about products with
+ * A controller that processes requests for information about products with
  * which the stock is running. The controller receives requests, processes the
  * information, and returns the responses to the user. The controller can
  * receive the object and send it to the {@link ProductService} repository, it
@@ -38,7 +37,6 @@ public class ProductStockRestController {
 	private ProductService productService;
 	private CategoryService categoryService;
 
-	@Autowired
 	ProductStockRestController(StockService stockService, ProductService productService,
 			CategoryService categoryService) {
 		this.productService = productService;
@@ -74,7 +72,7 @@ public class ProductStockRestController {
 			@PathVariable("idCategory") int idCategory) {
 		LOGGER.info("Find product by stock and category.");
 		Stock stock = stockService.findOne(idStock);
-		Category category = categoryService.findOne(idStock);
+		Category category = categoryService.findOne(idCategory);
 		List<Product> products = productService.findByStockAndCategory(stock, category);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=UTF-8");
@@ -104,5 +102,4 @@ public class ProductStockRestController {
 		}
 		return new ResponseEntity<Integer>(countProducts, headers, HttpStatus.OK);
 	}
-
 }

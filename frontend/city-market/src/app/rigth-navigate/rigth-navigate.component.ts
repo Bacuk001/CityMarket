@@ -11,8 +11,9 @@ import {User} from '../entity/user';
 export class RigthNavigateComponent implements OnInit {
   user: User;
 
+
   constructor(@Inject('authenticationService') public authService: IAuthenticationService) {
-  }
+     }
 
   ngOnInit() {
   }

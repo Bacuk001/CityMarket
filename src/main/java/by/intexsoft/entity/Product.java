@@ -75,7 +75,7 @@ public class Product extends AbstractPersistable<Integer> {
 	 * @see {@link Description}
 	 */
 	@JsonIgnore
-	@OneToMany(fetch = LAZY, mappedBy = Description.PRODUCT_PROPERTY_NAME, cascade = ALL)
+	@OneToMany(fetch = LAZY, mappedBy = Description.PRODUCT_PROPERTY_NAME)
 	public List<Description> description;
 
 	/**

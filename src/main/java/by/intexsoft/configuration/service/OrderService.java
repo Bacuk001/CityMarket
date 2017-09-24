@@ -1,13 +1,17 @@
 package by.intexsoft.configuration.service;
 
+import java.util.ArrayList;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Order;
+import by.intexsoft.entity.Product;
 import by.intexsoft.entity.User;
+import by.intexsoft.repository.MarketRepository;
 import by.intexsoft.repository.OrderRepository;
+import by.intexsoft.repository.ProductRepository;
 
 /**
  * Service processing information about orders from the store. With the help of
@@ -19,9 +23,13 @@ import by.intexsoft.repository.OrderRepository;
 @Service
 public class OrderService {
 	private OrderRepository orderRepository;
+	private MarketRepository marketRepository;
+	private ProductRepository productRepository;
 
-	@Autowired
-	OrderService(OrderRepository orderRepository) {
+	OrderService(MarketRepository marketRepository, ProductRepository productRepository,
+			OrderRepository orderRepository) {
+		this.marketRepository = marketRepository;
+		this.productRepository = productRepository;
 		this.orderRepository = orderRepository;
 	}
 
@@ -38,9 +46,8 @@ public class OrderService {
 	/**
 	 * A service method that sends an order to the repository for storage.
 	 */
- 
+
 	public Order save(Order order) {
-        System.out.println("-------------------------"+order.market.name+"------------------------------");
 		return orderRepository.save(order);
 	}
 
@@ -79,6 +86,16 @@ public class OrderService {
 	 */
 	public List<Order> findByMarket(Market market) {
 		return orderRepository.findByMarket(market);
+	}
+
+	@Transactional
+	public Order saveByMarket(Order order, int idMarket, int idProduct) {
+		Market market = marketRepository.findOne(idMarket);
+		Product product = productRepository.findOne(idProduct);
+		order.market = market;
+		order.product = new ArrayList<>();
+		order.product.add(product);
+		return orderRepository.save(order);
 	}
 
 }

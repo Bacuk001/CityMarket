@@ -1,8 +1,9 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {IStockService} from './istock.service';
 import {Stock} from '../../entity/stock';
 import {Http, Headers} from '@angular/http';
 import {Market} from '../../entity/merket';
+import {IAuthenticationService} from "../authentication/iauthentication.service";
 
 @Injectable()
 export class StockService implements IStockService {
@@ -10,12 +11,15 @@ export class StockService implements IStockService {
   private stock: Stock[];
   private selectedStock: Stock;
 
-  constructor(private http: Http) {
+  constructor(private http: Http,
+              @Inject('authenticationService')private authService:IAuthenticationService) {
   }
 
   saveStock(stock: Stock) {
     const body = JSON.stringify(stock);
     const headers = new Headers({'Content-Type': 'application/json;charset=utf-8'});
+    const token: string = this.authService.getToken();
+    headers.append('X-AUTH-TOKEN', token);
     return new Promise((resolve, reject) => {
       this.http.post(this.url + '/save', body, {headers: headers})
         .subscribe(() => resolve('Сохранение прошло успешно!'),
@@ -52,6 +56,8 @@ export class StockService implements IStockService {
   signStockMarket(market: Market, stock: Stock[]) {
     const body = JSON.stringify(stock);
     const headers = new Headers({'Content-Type': 'application/json;charset=utf-8'});
+    const token: string = this.authService.getToken();
+    headers.append('X-AUTH-TOKEN', token);
     return new Promise((resolve, reject) => {
       this.http.post(this.url + '/sign/market/' + market.id, body, {headers: headers})
         .subscribe(() => resolve('Подпись на склады прошло успешно!'),

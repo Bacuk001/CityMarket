@@ -1,7 +1,6 @@
 package by.intexsoft.configuration.rest;
 
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import by.intexsoft.configuration.service.MarketService;
 import by.intexsoft.configuration.service.StockService;
 import by.intexsoft.entity.Market;

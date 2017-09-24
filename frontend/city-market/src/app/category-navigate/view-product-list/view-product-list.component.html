@@ -1,0 +1,22 @@
+<row>
+  {{message}}
+</row>
+<row *ngFor="let product of productService.getProducts()">
+  <column sm="2">
+    <img class="sizeImg" src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png">
+  </column>
+  <column sm="3">
+    <div (click)="selectProduct(product)"><label>{{product.name}}</label></div>
+  </column>
+  <column sm="3">
+      <row *ngFor="let price of product.price">
+        <label>{{price.price}}</label>
+      </row>
+  </column>
+  <column>
+    <button class="btn-group-sm" (click)="checkout(product)">заказать</button>
+  </column>
+  <column>
+    <button class="btn-group-sm" (click)="viewDescription(product)">заказать</button>
+  </column>
+</row>

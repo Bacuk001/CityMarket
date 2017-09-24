@@ -3,7 +3,8 @@ package by.intexsoft.configuration.rest;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ import by.intexsoft.entity.Price;
 import by.intexsoft.entity.Product;
 import by.intexsoft.entity.Stock;
 import by.intexsoft.repository.PriceRepository;
+import by.intexsoft.repository.ProductRepository;
 
 /**
  * A controller that processes requests for information about products with
@@ -44,7 +46,6 @@ public class ProductMarketContoller {
 	private StockService stockService;
 	private PriceServicse priceServicse;
 
-	@Autowired
 	public ProductMarketContoller(MarketService marketService, CategoryService categoryService,
 			ProductService productService, StockService stockService, PriceServicse priceServicse) {
 		this.marketService = marketService;
@@ -60,8 +61,8 @@ public class ProductMarketContoller {
 	 * 
 	 * @see {@link Category}
 	 */
-	@RequestMapping(value = "/products/market/{idMarket}/category/{idCategory}/count", method = RequestMethod.GET)
-	public ResponseEntity<Integer> conuByMarketAndCategory(@PathVariable("idMarket") int idMarket,
+	@RequestMapping(value = "/products/count/market/{idMarket}/category/{idCategory}", method = RequestMethod.GET)
+	public ResponseEntity<Integer> conuntByMarketAndCategory(@PathVariable("idMarket") int idMarket,
 			@PathVariable("idCategory") int idCategory) {
 		LOGGER.info("Cont product by stock and category.");
 		Market market = marketService.findOne(idMarket);
@@ -142,5 +143,58 @@ public class ProductMarketContoller {
 			return new ResponseEntity<List<Product>>(headers, HttpStatus.OK);
 		}
 		return new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
+	}
+
+	/**
+	 * The controller processes requests for products from the category of goods on
+	 * the rank in which to contain. The controller returns the quantity of goods
+	 * corresponding to the quantity indicated in the page size and the goods that
+	 * are contained in the page.
+	 * 
+	 * @see {@link Product}, {@link Pageable}, {@link ProductService},
+	 *      {@link ProductRepository}
+	 */
+	@RequestMapping(value = "/products/market/{idMarket}/category/{idCategory}/sizePage/{sizePage}/page/{page}", method = RequestMethod.GET)
+	public ResponseEntity<List<Product>> getProductByMarketPagable(@PathVariable("idMarket") int idMarket,
+			@PathVariable("idCategory") int idCategory, @PathVariable("sizePage") int sizePage,
+			@PathVariable("page") int page) {
+		LOGGER.info("Find product by stock and category on page.");
+		Category category = categoryService.findOne(idCategory);
+		Market market = marketService.findOne(idMarket);
+		List<Stock> stocks = stockService.finfByMasrket(market);
+		List<Product> products = productService.findByCategoryAndStocksPage(category, stocks,
+				new PageRequest(page, sizePage));
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "application/json; charset=UTF-8");
+		if (products == null) {
+			headers.add(MESSAGE, PRODUCTS_NOT_FOUND);
+			return new ResponseEntity<List<Product>>(headers, HttpStatus.OK);
+		}
+		return new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
+	}
+
+	/**
+	 * The controller will receive a request for information on the number of
+	 * products in the category in the store. Forms objects and requests information
+	 * from the service. if the answer is positive, the answer is that the data is
+	 * received. if data is not received, sends a server error.
+	 * 
+	 * @see {@link Product}, {@link ProductService}, {@link ProductRepository}
+	 */
+	@RequestMapping(value = "/products/market/{idMarket}/category/{idCategory}/count", method = RequestMethod.GET)
+	public ResponseEntity<Integer> countProductByMarket(@PathVariable("idMarket") int idMarket,
+			@PathVariable("idCategory") int idCategory) {
+		LOGGER.info("Find product by stock and category on page.");
+		Category category = categoryService.findOne(idCategory);
+		Market market = marketService.findOne(idMarket);
+		List<Stock> stocks = stockService.finfByMasrket(market);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "application/json; charset=UTF-8");
+		Integer products = productService.countProductByCategoryAndStocks(category, stocks);
+		if (products == null) {
+			headers.add(MESSAGE, PRODUCTS_NOT_FOUND);
+			return new ResponseEntity<Integer>(headers, HttpStatus.OK);
+		}
+		return new ResponseEntity<Integer>(products, headers, HttpStatus.OK);
 	}
 }

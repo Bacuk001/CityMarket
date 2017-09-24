@@ -3,7 +3,7 @@
     <row>
       <column sm="12">
         <ul class="nav nav-pills nav-fill">
-          <li class="nav-item">
+          <li *ngIf="access.categoryCreate" class="nav-item">
             <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('category')">Каталог
               товаров
             </button>
@@ -20,7 +20,7 @@
             <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('about')">О магазине
             </button>
           </li>
-          <li class="nav-item">
+          <li *ngIf="access.categoryCreate" class="nav-item">
             <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('addCategory')">Добавить
               категорию
             </button>
@@ -31,24 +31,29 @@
     <row>
       <column sm="12">
         <ul class="nav nav-pills nav-fill">
-          <li class="nav-item">
+          <li *ngIf="access.createShop" class="nav-item">
             <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('createStock')">
               создать склад
             </button>
           </li>
-          <li class="nav-item">
+          <li *ngIf="access.createUser" class="nav-item">
             <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('addUser')">
               создать пользователя
             </button>
           </li>
-          <li class="nav-item">
+          <li *ngIf="access.createShop" class="nav-item">
             <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('createMarket')">
               создать магазин
             </button>
           </li>
-          <li class="nav-item">
+          <li *ngIf="access.signStock" class="nav-item">
             <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('signStock')">
               подпись
+            </button>
+          </li>
+          <li *ngIf="access.orderList" class="nav-item">
+            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('orderListMarket')">
+              {{'listOrder'|translate}}
             </button>
           </li>
         </ul>
@@ -59,6 +64,13 @@
       <label>Выберите магазин</label>
       <select [(ngModel)]="market" (ngModelChange)="selectMarket()">
         <option *ngFor="let mark of markets" [ngValue]="mark">{{mark.name}}</option>
+      </select>
+    </column>
+    <column *ngIf="access.selectMarket" sm="3">
+      <label>Язык:</label>
+      <select name="select" #t (change)=" selectLangvich(t.value)">
+        <option value="ru">Русский</option>
+        <option value="en">English</option>
       </select>
     </column>
   </column>

@@ -9,23 +9,7 @@
     <label *ngIf="authService.isLoginSystem()">{{user.name}}</label>
   </column>
 </row>
-<row>
-  <column sm="4">
-    <label *ngIf="authService.isLoginSystem()">магазин:</label>
-  </column>
-  <column sm="8">
-    <label *ngIf="authService.isLoginSystem()">{{user.market.name}}</label>
-  </column>
-</row>
 
-<row>
-  <column sm="4">
-    <label *ngIf="authService.isLoginSystem()">склад:</label>
-  </column>
-  <column sm="8">
-    <label *ngIf="authService.isLoginSystem()">{{user.stock.name}}</label>
-  </column>
-</row>
 
 <row>
   <column sm="4">

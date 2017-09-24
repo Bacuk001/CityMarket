@@ -5,9 +5,9 @@ export interface IProductService {
 
   getProducts();
 
-  seveProduct(product: Product);
+  saveProduct(product: Product);
 
-  getSelectProduyct();
+  getSelectProduct();
 
   loadPriseForProducts();
 
@@ -15,4 +15,6 @@ export interface IProductService {
 
   setSelectProduct(product: Product);
 
+
+  loadPrice(products: Product[]);
 }

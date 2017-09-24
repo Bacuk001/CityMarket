@@ -1,13 +1,10 @@
 package by.intexsoft.configuration.service;
 
 import java.util.List;
-
 import javax.transaction.Transactional;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
-
+import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Description;
 import by.intexsoft.entity.Product;
 import by.intexsoft.repository.DescriptionRepository;
@@ -25,7 +22,6 @@ import by.intexsoft.repository.DescriptionRepository;
 public class DescriptionService {
 	private DescriptionRepository descriptionRepository;
 
-	@Autowired
 	DescriptionService(DescriptionRepository descriptionRepository) {
 		this.descriptionRepository = descriptionRepository;
 	}

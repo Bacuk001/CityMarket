@@ -1,12 +1,12 @@
 package by.intexsoft.configuration.service;
 
-import java.util.ArrayList;
 import java.util.List;
+
 import javax.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Stock;
+import by.intexsoft.entity.User;
 import by.intexsoft.repository.MarketRepository;
 import by.intexsoft.repository.StockRepository;
 import by.intexsoft.repository.UserRepository;
@@ -23,7 +23,6 @@ public class StockService {
 	private StockRepository stockRepository;
 	private MarketRepository marketRepository;
 
-	@Autowired
 	StockService(MarketRepository marketRepository, StockRepository stockRepository) {
 		this.stockRepository = stockRepository;
 		this.marketRepository = marketRepository;
@@ -73,10 +72,22 @@ public class StockService {
 		stockRepository.delete(id);
 	}
 
+	/**
+	 * The service method returns the list of warehouses for which the warehouse is
+	 * subscribed.
+	 * 
+	 * @see {@link Stock} , {@link MarketRepository}
+	 */
 	public List<Stock> finfByMasrket(Market market) {
 		return stockRepository.findByMarkets(market);
 	}
 
+	/**
+	 * A service method that removes all links from the database and creates new
+	 * ones that are passed by the list in the input parameters.
+	 * 
+	 * @see {@link Stock}
+	 */
 	@Transactional
 	public List<Stock> signStockforMarket(List<Stock> stocks, int idMarket) {
 		Market market = marketRepository.findOne(idMarket);
@@ -85,7 +96,7 @@ public class StockService {
 			stockDisconnect.get(index).markets.clear();
 		}
 		for (int index = 0; index < stocks.size(); index++) {
-			Stock stockConnect=stockRepository.findOne(stocks.get(index).getId());
+			Stock stockConnect = stockRepository.findOne(stocks.get(index).getId());
 			stockConnect.markets.add(market);
 		}
 		return stocks;

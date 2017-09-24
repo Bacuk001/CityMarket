@@ -1,7 +1,6 @@
 package by.intexsoft.entity;
 
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +10,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import org.springframework.data.jpa.domain.AbstractPersistable;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 /**
  * The object of this class will be the user of our application, which will be
@@ -51,6 +51,7 @@ public class User extends AbstractPersistable<Integer> {
 	 * User password.
 	 */
 	@Column
+	@JsonProperty(access = Access.WRITE_ONLY)
 	public String password;
 
 	/**

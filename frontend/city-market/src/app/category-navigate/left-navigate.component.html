@@ -12,13 +12,18 @@
         <button type="button" class="btn btn-primary btn-sm selectCategory"
                 (click)="navigate('category/addProduct')">
           Создать продукт продукт
-        </button >
-
-      </column >
-      <column sm="9" *ngIf="accessService.editPriceAndStock">
+        </button>
+      </column>
+      <column sm="3" *ngIf="accessService.editPriceAndStock">
         <button type="button" class="btn btn-primary btn-sm  selectCategory"
                 (click)="navigate('category/addPrice')">
-          Остатки и цены
+          {{'price'|translate}}
+        </button>
+      </column>
+      <column sm="3" *ngIf="accessService.editPriceAndStock">
+        <button type="button" class="btn btn-primary btn-sm  selectCategory"
+                (click)="navigate('category/addDescription')">
+          {{'editDescr'|translate}}
         </button>
       </column>
     </row>
