@@ -17,7 +17,7 @@ public class TokenHandler {
 	private UserService userService;
 
 	@Autowired
-	TokenHandler(UserService userService) {
+	public TokenHandler(UserService userService) {
 		this.userService = userService;
 	}
 

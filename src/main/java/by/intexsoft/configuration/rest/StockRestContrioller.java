@@ -15,7 +15,14 @@ import by.intexsoft.configuration.service.MarketService;
 import by.intexsoft.configuration.service.StockService;
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Stock;
+import by.intexsoft.repository.StockRepository;
 
+/**
+ * A controller that processes requests for working with warehouse data. The
+ * controller takes scalps to save and returns existing ones.
+ * 
+ * @see {@link RestController}, {@link StockService}, {@link StockRepository}
+ */
 @RestController
 public class StockRestContrioller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(StockRestContrioller.class);
@@ -23,11 +30,18 @@ public class StockRestContrioller {
 	private StockService stockService;
 	private MarketService marketService;
 
-	public StockRestContrioller(MarketService marketService, StockService stockService) {
+	StockRestContrioller(MarketService marketService, StockService stockService) {
 		this.stockService = stockService;
 		this.marketService = marketService;
 	}
 
+	/**
+	 * The service method accepts a request to store the warehouse and sends the
+	 * warehouse to the segment for storage. After receiving a response from the
+	 * service sends a response.
+	 * 
+	 * @see {@link StockService} {@link Stock}
+	 */
 	@RequestMapping(value = "/stock/save", method = RequestMethod.POST)
 	public ResponseEntity<Stock> saveStock(@RequestBody Stock stock) {
 		LOGGER.info("Save ctock to database.");
@@ -41,6 +55,12 @@ public class StockRestContrioller {
 		return new ResponseEntity<Stock>(stock, headers, HttpStatus.OK);
 	}
 
+	/**
+	 * The controller method accepts requests for all the stores in the system.
+	 * Requests data from the service and sends a response to the request.
+	 * 
+	 * @see {@link StockService} {@link Stock}
+	 */
 	@RequestMapping(value = "/stocks", method = RequestMethod.GET)
 	public ResponseEntity<List<Stock>> getAllStocks() {
 		LOGGER.info("Find all stock.");
@@ -54,6 +74,14 @@ public class StockRestContrioller {
 		return new ResponseEntity<List<Stock>>(stocks, headers, HttpStatus.OK);
 	}
 
+	/**
+	 * The method of the controller which requests to receive warehouses on the
+	 * second signed store. The method sends the request to the service receives the
+	 * data and sends a response.
+	 * 
+	 * @see {@link StockRepository} {@link MarketService}, {@link Market},
+	 *      {@link Stock}
+	 */
 	@RequestMapping(value = "/stocks/market/{id}", method = RequestMethod.GET)
 	public ResponseEntity<List<Stock>> getStockByMarket(@PathVariable("id") int idMarket) {
 		LOGGER.info("Find all stock by market.");
@@ -68,6 +96,12 @@ public class StockRestContrioller {
 		return new ResponseEntity<List<Stock>>(stocks, headers, HttpStatus.OK);
 	}
 
+	/**
+	 * A service method that processes requests for linking a store to a warehouse.
+	 * 
+	 * @see {@link StockRepository} {@link MarketService}, {@link Market},
+	 *      {@link Stock}
+	 */
 	@RequestMapping(value = "/stock/sign/market/{idMarket}", method = RequestMethod.POST)
 	public ResponseEntity<List<Stock>> signStockForMerket(@RequestBody List<Stock> stocks,
 			@PathVariable("idMarket") int idMarket) {

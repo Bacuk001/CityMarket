@@ -71,7 +71,7 @@ public class Stock extends AbstractPersistable<Integer> {
 	 * @see {@link User}
 	 */
      @JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = User.STOCK_PROPERTY_NAME, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = User.STOCK_PROPERTY_NAME)
 	public List<User> user;
 
 	/**
@@ -88,7 +88,7 @@ public class Stock extends AbstractPersistable<Integer> {
 	 * The prices of which are formed in this store. {@link Price}
 	 */
 	@JsonIgnore
-	@OneToMany(fetch = LAZY, mappedBy = Price.STOCK_PROPERTY_NAME, cascade = ALL)
+	@OneToMany(fetch = LAZY, mappedBy = Price.STOCK_PROPERTY_NAME)
 	public List<Price> prises;
 
 }

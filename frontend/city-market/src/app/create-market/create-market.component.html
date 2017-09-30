@@ -5,19 +5,27 @@
       {{message}}
     </row>
     <row>
+      <select [(ngModel)]="market" class="form-control">
+        <option *ngFor="let mark of markets" [ngValue]="mark" class="form-control">{{mark.name}}</option>
+      </select>
+    </row>
+    <row>
       <column sm="3">название магазина</column>
       <column sm="3" ><input type="text" [(ngModel)]="market.name" placeholder="название магазина"></column>
     </row>
     <row>
       <column sm="3">Адрес</column>
-      <column sm="9"><input type="text" [(ngModel)]="market.addres" placeholder="адресс магазин"></column>
+      <column sm="9"><input type="text" [(ngModel)]="market.address" placeholder="адресс магазин"></column>
     </row>
     <row>
       <column sm="3">О сладе</column>
       <column><input type="text" [(ngModel)]="market.about"></column>
     </row>
     <row>
-      <button (click)="createMarket()">создать</button>
+      <button (click)="createMarket()">{{'create'|translate}}</button>
+    </row>
+    <row>
+      <button (click)="claerEditMarket()">{{'chancel'|translate}}</button>
     </row>
   </column>
 </row>

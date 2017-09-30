@@ -66,7 +66,6 @@ public class DescriprionRestController {
 	public ResponseEntity<List<Description>> save(@RequestBody List<Description> descriptions) {
 		LOGGER.info("Save list descriptions for product.");
 		HttpHeaders headers = new HttpHeaders();
-		System.out.println("********"+descriptions.get(0).product.getId()+"========================");
 		headers.add("Content-Type", "application/json; charset=UTF-8");
 		descriptions = descriptionService.seveListDescription(descriptions);
 		if (descriptions == null) {

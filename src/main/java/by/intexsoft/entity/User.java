@@ -57,7 +57,7 @@ public class User extends AbstractPersistable<Integer> {
 	/**
 	 * The field stores information to which store it is attached and serves.
 	 */
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn
 	public Market market;
 

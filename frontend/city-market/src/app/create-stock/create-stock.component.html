@@ -5,6 +5,11 @@
       {{message}}
     </row>
     <row>
+      <select [(ngModel)]="stock" class="form-control">
+        <option *ngFor="let stock of stocks" [ngValue]="stock" class="form-control">{{stock.name}}</option>
+      </select>
+    </row>
+    <row>
       <column sm="3">название склада</column>
       <column sm="3"><input type="text" [(ngModel)]="stock.name" placeholder="название Склада"></column>
     </row>
@@ -17,8 +22,10 @@
       <column><input type="text" [(ngModel)]="stock.about"></column>
     </row>
     <row>
-      <button (click)="createStock()">создать</button>
+      <button (click)="createStock()">{{'create'|translate}}</button>
+    </row>
+    <row>
+      <button (click)="clearStock()">{{'clear'|translate}}</button>
     </row>
   </column>
-
 </row>

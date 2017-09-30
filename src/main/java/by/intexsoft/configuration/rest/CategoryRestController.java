@@ -32,7 +32,7 @@ public class CategoryRestController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CategoryRestController.class);
 	private CategoryService categoryService;
 
-	CategoryRestController(StockService stockService, MarketService marketService, CategoryService categoryService) {
+	CategoryRestController(CategoryService categoryService) {
 		this.categoryService = categoryService;
 	}
 
@@ -67,7 +67,7 @@ public class CategoryRestController {
 			return new ResponseEntity<Category>(null, headers, HttpStatus.FORBIDDEN);
 		}
 		category = categoryService.save(category);
-		return new ResponseEntity<Category>(category, headers, HttpStatus.CREATED);
+		return new ResponseEntity<Category>(category, headers, HttpStatus.OK);
 	}
 
 	/**

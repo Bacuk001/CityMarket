@@ -2,6 +2,8 @@ package by.intexsoft.configuration.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -9,7 +11,9 @@ import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Product;
 import by.intexsoft.entity.Stock;
+import by.intexsoft.repository.CategoryRepository;
 import by.intexsoft.repository.ProductRepository;
+import by.intexsoft.repository.StockRepository;
 
 /**
  * A method that works with the product repository. the method extracts, adds
@@ -20,9 +24,14 @@ import by.intexsoft.repository.ProductRepository;
 @Service
 public class ProductService {
 	private ProductRepository productRepository;
+	private StockRepository stockRepository;
+	private CategoryRepository categoryRepository;
 
-	ProductService(ProductRepository productRepository) {
+	ProductService(CategoryRepository categoryRepository, StockRepository stockRepository,
+			ProductRepository productRepository) {
 		this.productRepository = productRepository;
+		this.stockRepository = stockRepository;
+		this.categoryRepository = categoryRepository;
 	}
 
 	/**
@@ -54,8 +63,14 @@ public class ProductService {
 	/**
 	 * A service method that stores the product into a database.
 	 */
-	public Product save(Product product) {
-		return productRepository.save(product);
+	@Transactional
+	public Product save(Product product, int idCategory, int idStock) {
+		Stock stock = stockRepository.findOne(idStock);
+		Category category = categoryRepository.findOne(idCategory);
+		product.category = category;
+		product = productRepository.save(product);
+		stock.product.add(product);
+		return product;
 	}
 
 	/**
@@ -110,7 +125,7 @@ public class ProductService {
 	 * @see {@link Category}, {@link Stock}
 	 */
 	public List<Product> findByStockAndCategory(Stock stock, Category category) {
-		return productRepository.findByStocksAndCategory(stock, category);
+		return productRepository.findProductDistinctByStocksAndCategory(stock, category);
 	}
 
 	/**
@@ -132,7 +147,7 @@ public class ProductService {
 	 * @see {@link Category}, {@link Stock}
 	 */
 	public Integer countByStockAndCategory(Stock stock, Category category) {
-		return productRepository.countByStocksAndCategory(stock, category);
+		return productRepository.countProductDistinctByStocksAndCategory(stock, category);
 	}
 
 	/**

@@ -1,7 +1,6 @@
 package by.intexsoft.entity;
 
 import static javax.persistence.FetchType.EAGER;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -9,8 +8,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Object for managing data in a database that stores information about the
@@ -21,7 +18,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table
 public class Price extends AbstractPersistable<Integer> {
 	private static final long serialVersionUID = -7214125296547747238L;
+	/**
+	 * The name of the product field.
+	 */
 	public static final String PRODUCT_PROPERTY_NAME = "product";
+	/**
+	 * The name of the product stock.
+	 */
 	public static final String STOCK_PROPERTY_NAME = "stock";
 
 	/**

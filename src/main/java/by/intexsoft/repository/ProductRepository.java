@@ -57,14 +57,14 @@ public interface ProductRepository extends AbstractEntityRepository<Product> {
 	 * 
 	 * @see {@link Market}, {@link Category}
 	 */
-	List<Product> findByStocksAndCategory(Stock stock, Category category);
+	List<Product> findProductDistinctByStocksAndCategory(Stock stock, Category category);
 
 	/**
 	 * Counts the number of products in the stock in the category.
 	 * 
 	 * @see {@link Stock}, {@link Category}
 	 */
-	Integer countByStocksAndCategory(Stock stock, Category category);
+	Integer countProductDistinctByStocksAndCategory(Stock stock, Category category);
 
 	/**
 	 * Counts the number of products in the market in the category.

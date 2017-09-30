@@ -88,21 +88,26 @@ public class PriceRestController {
 	}
 
 	/**
-	*/
+	 * The controller's method accepts a request for receipt of prices for the
+	 * product by the warehouse. Contact the service to get the price. Gets the
+	 * data, generates and sends a response.
+	 * 
+	 * @see {@link PriceServicse}, {@link Product}, {@link Stock},
+	 *      {@link PriceRepository}
+	 */
 	@RequestMapping(value = "/prices/product/{idProduct}/stock/{idStock}", method = RequestMethod.GET)
-	public ResponseEntity<Price> getPriseByProductAndStock(@PathVariable("idProduct") int idProduct,
+	public ResponseEntity<List<Price>> getPriseByProductAndStock(@PathVariable("idProduct") int idProduct,
 			@PathVariable("idStock") int idStock) {
 		LOGGER.info("Find prices by product and market.");
 		Product product = productService.findOne(idProduct);
 		Stock stock = stockService.findOne(idStock);
-		Price prices = priceServicse.findByProductAndStock(product, stock);
+		List<Price> prices = priceServicse.findByProductAndStock(product, stock);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=UTF-8");
 		if (prices == null) {
 			headers.add(MESSAGE, "Prices not fond.");
-			return new ResponseEntity<Price>(headers, HttpStatus.NO_CONTENT);
+			return new ResponseEntity<List<Price>>(headers, HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<Price>(prices, headers, HttpStatus.OK);
+		return new ResponseEntity<List<Price>>(prices, headers, HttpStatus.OK);
 	}
-
 }

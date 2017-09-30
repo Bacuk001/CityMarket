@@ -21,8 +21,7 @@ public class TokenAuthenticationService {
 	private static final String AUTH_HEADER_NAME = "X-AUTH-TOKEN";
 	private TokenHandler tokenHand;
 
-	@Autowired
-	TokenAuthenticationService(TokenHandler tokenHand) {
+	public TokenAuthenticationService(TokenHandler tokenHand) {
 		this.tokenHand = tokenHand;
 	}
 

@@ -1,8 +1,13 @@
-
-<row *ngFor="let stock of stocks; let index=index">
- <input type="checkbox"  [(ngModel)]="check[index]">{{stock.name}}
-</row>
 <row>
-  <button (click)="sendSign()">обновить</button>
+  <column sm="3"></column>
+  <column sm="9">
+    <row *ngFor="let stock of stocks; let index=index">
+      <input type="checkbox" [(ngModel)]="check[index]">{{stock.name}}
+    </row>
+    <row>
+      <button (click)="sendSign()">обновить</button>
+    </row>
+  </column>
 </row>
+
 {{message}}

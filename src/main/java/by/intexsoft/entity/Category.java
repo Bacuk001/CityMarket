@@ -28,6 +28,11 @@ public class Category extends AbstractPersistable<Integer> {
 	 */
 	@Column
 	public String name;
+	/**
+	 * This column save foto caterory.
+	 */
+	@Column
+	public String urlPhoto;
 
 	/**
 	 * List of products in the group.
@@ -35,4 +40,5 @@ public class Category extends AbstractPersistable<Integer> {
 	@JsonIgnore
 	@OneToMany(fetch = LAZY, mappedBy = Product.CATEGORY_PROPERTY_NAME, cascade = ALL)
 	public List<Product> products;
+	
 }
