@@ -1,4 +1,9 @@
 <row>
+  <select [(ngModel)]="category" class="form-control">
+    <option *ngFor="let category of categories" [ngValue]="category" class="form-control">{{category.name}}</option>
+  </select>
+</row>
+<row>
   <column sm="5">
     <label>{{'createCategory'|translate}}</label>
   </column>

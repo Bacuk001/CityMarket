@@ -13,9 +13,9 @@
     {{'value'|translate}}
   </column>
 </row>
-<row *ngFor="let description of descriptions">
+<row *ngFor="let description of descriptions; let indexDes = index">
   <column sm="3">
-    <label>{{description.name}}</label>
+    <label (click)="selectedEditDescription(description,indexDes)">{{description.name}}</label>
   </column>
   <column sm="9">
     <label>{{description.value}}</label>
@@ -33,8 +33,14 @@
   <column>
     <button><label class="btn-primary" (click)='addDescription()'>{{'addDescription'|translate}}</label></button>
   </column>
-  <column>
+  <column *ngIf="!visibleChange">
     <button><label class="btn-primary" (click)='saveDescriptions()'>{{'save'|translate}}</label></button>
+  </column>
+  <column *ngIf="visibleChange">
+    <button><label class="btn-primary" (click)='changeDescription()'>{{'change'|translate}}</label></button>
+  </column>
+  <column *ngIf="visibleChange">
+    <button><label class="btn-primary" (click)='deleteDescription()'>{{'delete'|translate}}</label></button>
   </column>
 </row>
 

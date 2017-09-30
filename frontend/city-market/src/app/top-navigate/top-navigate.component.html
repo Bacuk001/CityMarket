@@ -1,78 +1,45 @@
-<row style="padding-left: 150px">
-  <column sm="9">
-    <row>
-      <column sm="12">
-        <ul class="nav nav-pills nav-fill">
-          <li *ngIf="access.categoryCreate" class="nav-item">
-            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('category')">Каталог
-              товаров
-            </button>
-          </li>
-          <li class="nav-item">
-            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('installment')">Рассрочка
-            </button>
-          </li>
-          <li class="nav-item">
-            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('delivery')">Доставка
-            </button>
-          </li>
-          <li class="nav-item">
-            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('about')">О магазине
-            </button>
-          </li>
-          <li *ngIf="access.categoryCreate" class="nav-item">
-            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('addCategory')">Добавить
-              категорию
-            </button>
-          </li>
-        </ul>
-      </column>
-    </row>
-    <row>
-      <column sm="12">
-        <ul class="nav nav-pills nav-fill">
-          <li *ngIf="access.createShop" class="nav-item">
-            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('createStock')">
-              создать склад
-            </button>
-          </li>
-          <li *ngIf="access.createUser" class="nav-item">
-            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('addUser')">
-              создать пользователя
-            </button>
-          </li>
-          <li *ngIf="access.createShop" class="nav-item">
-            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('createMarket')">
-              создать магазин
-            </button>
-          </li>
-          <li *ngIf="access.signStock" class="nav-item">
-            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('signStock')">
-              подпись
-            </button>
-          </li>
-          <li *ngIf="access.orderList" class="nav-item">
-            <button type="button" class="btn btn-primary btn-sm buttonTop" (click)="navigate('orderListMarket')">
-              {{'listOrder'|translate}}
-            </button>
-          </li>
-        </ul>
-      </column>
-    </row>
-
-    <column *ngIf="access.selectMarket" sm="3">
-      <label>Выберите магазин</label>
-      <select [(ngModel)]="market" (ngModelChange)="selectMarket()">
-        <option *ngFor="let mark of markets" [ngValue]="mark">{{mark.name}}</option>
+<nav class="navbar navbar-inverse bg-inverse">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#">City Market</a>
+  </div>
+  <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+    <ul class="nav navbar-nav">
+      <li *ngIf="access.viewCategorySelect"><a (click)="navigate('category')">{{'category'|translate}}</a></li>
+    </ul>
+    <div class="navbar-form navbar-right" role="search">
+      <select [(ngModel)]="market" (ngModelChange)="selectMarket()" class="form-control">
+        <option *ngFor="let mark of markets" [ngValue]="mark" class="form-control">{{mark.name}}</option>
       </select>
-    </column>
-    <column *ngIf="access.selectMarket" sm="3">
-      <label>Язык:</label>
-      <select name="select" #t (change)=" selectLangvich(t.value)">
+      <select *ngIf="false" name="select" #t (change)=" selectLanguage(t.value)" class="form-control">
         <option value="ru">Русский</option>
         <option value="en">English</option>
       </select>
-    </column>
-  </column>
-</row>
+    </div>
+  </div>
+  <div *ngIf="access.adminBar">
+    <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+      <ul class="nav navbar-nav">
+        <li><a (click)="navigate('createMarket')"> {{'createMarket'|translate}}</a></li>
+        <li><a (click)="navigate('addUser')"> {{'createUser'|translate}}</a></li>
+        <li><a (click)="navigate('createStock')"> {{'crateStock'|translate}}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div *ngIf="access.managerShopBar">
+    <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+      <ul class="nav navbar-nav">
+        <li><a (click)="navigate('signStock')">  {{'signStock'|translate}}</a></li>
+        <li><a (click)="navigate('orderListMarket')">  {{'listOrder'|translate}}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div *ngIf="access.managerStockBar">
+    <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+      <ul class="nav navbar-nav">
+        <li><a (click)="navigate('addCategory')"> {{'addCategory'|translate}}</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 

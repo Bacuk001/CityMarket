@@ -33,7 +33,13 @@ public class PriceServicse {
 		return priceRepository.findPriceDistinctByProductAndStockIn(product, stocks);
 	}
 
-	public Price findByProductAndStock(Product product, Stock stock) {
+	/**
+	 * The service method takes an instance of the product class and an instance of
+	 * the warehouse class, and accesses the store to retrieve the prices.
+	 * 
+	 * @see {@link Product} , {@link PriceRepository}, {@link Stock}
+	 */
+	public List<Price> findByProductAndStock(Product product, Stock stock) {
 		return priceRepository.findByProductAndStock(product, stock);
 	}
 

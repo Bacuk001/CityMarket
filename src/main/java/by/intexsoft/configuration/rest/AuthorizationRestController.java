@@ -40,7 +40,6 @@ public class AuthorizationRestController {
 	@RequestMapping(value = "/Application/login", method = RequestMethod.POST)
 	public ResponseEntity<User> getTokenAutentification(@RequestBody User user) {
 		LOGGER.info("Start  uthorization user.");
-        System.out.println(user.name);
 		user = userService.findByNameAndPassword(user.name, user.password);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=UTF-8");

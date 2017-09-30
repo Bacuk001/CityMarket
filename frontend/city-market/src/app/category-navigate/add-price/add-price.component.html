@@ -1,17 +1,17 @@
 <row>
   <column sm="7"><label>Название продукта</label></column>
-  <column sm="5">{{this.productService.getSelectProduct().name}}</column>
+  <column sm="5">{{product.name}}</column>
 </row>
 <row>
   <column sm="7"> цена</column>
   <column sm="5">
-    <row>{{this.productService.getSelectProduct().priceView}}
+    <row *ngFor="let priceProd of product.price">{{priceProd.price}}
     </row>
   </column>
 </row>
 <row class="lineRow">
   <column sm="7"> количество товара на складе</column>
-  <column sm="5"> {{price.inStock}}</column>
+  <column sm="5">{{price.inStock}} </column>
 </row>
 <row class="lineRow">
   <column sm="7"> цена товара</column>
@@ -27,7 +27,7 @@
 </row>
 <row class="lineRow">
   <column sm="7"> Добавить количество</column>
-  <column sm="5"><input type="text" [(ngModel)]="addProduct" class="input-group" placeholder="добавить товара"/>
+  <column sm="5"><input type="text" [(ngModel)]="addProductInStock" class="input-group" placeholder="добавить товара"/>
   </column>
 </row>
 
@@ -39,3 +39,4 @@
     {{'close'|translate}}
   </button>
 </row>
+{{newPrice}}

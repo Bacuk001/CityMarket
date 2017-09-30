@@ -23,6 +23,12 @@ public interface PriceRepository extends AbstractEntityRepository<Price> {
 	 * @see {@link Product}, {@link Stock}
 	 */
 	List<Price> findPriceDistinctByProductAndStockIn(Product product, List<Stock> stocks);
-    
-    Price findByProductAndStock(Product product,Stock stock);
+
+	/**
+	 * The repository method generates a query into the database to obtain a list of
+	 * product prices in the warehouse.
+	 * 
+	 * @see {@link Product}, {@link Stock}
+	 */
+	List<Price> findByProductAndStock(Product product, Stock stock);
 }

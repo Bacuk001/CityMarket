@@ -66,19 +66,19 @@ public class Market extends AbstractPersistable<Integer> {
 	 * List of users that support this market.
 	 */
 	@JsonIgnore
-	@OneToMany(fetch = LAZY, mappedBy = User.MERKET_PROPERTY_NAME, cascade = ALL)
+	@OneToMany(fetch = LAZY, mappedBy = User.MERKET_PROPERTY_NAME)
 	public List<User> user;
 	/**
 	 * The list of orders sent to the store for processing.
 	 */
 	@JsonIgnore
-	@OneToMany(fetch = LAZY, mappedBy = Order.MARCET_PROPERTY_NAME, cascade = ALL)
+	@OneToMany(fetch = LAZY, mappedBy = Order.MARCET_PROPERTY_NAME)
 	public List<Order> orders;
 	/**
 	 * Products that are available in the store.
 	 */
 	@JsonIgnore
-	@ManyToMany(mappedBy = Product.MARKET_PROPERTY_NAME)
+	@ManyToMany(mappedBy = Product.MARKET_PROPERTY_NAME, cascade = ALL)
 	public List<Product> pruducts;
 
 }

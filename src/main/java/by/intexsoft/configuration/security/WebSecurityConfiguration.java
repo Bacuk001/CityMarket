@@ -26,8 +26,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/api/products/**", "/localisation/*", "/api/category/*","/api/markets","/api/user**","/api/Application**").permitAll()
-				.antMatchers("/api/order").hasRole("ADMIN").antMatchers("/api/orders").access("hasRole('ADMIN')").and().csrf().disable()
+		http.authorizeRequests()
+				.antMatchers("/api/products/**", "/localisation/*", "/api/category/*", "/api/markets", "/api/user**",
+						"/api/Application**")
+				.permitAll().antMatchers("/api/order").hasRole("ADMIN").antMatchers("/api/orders")
+				.access("hasRole('ADMIN')").and().csrf().disable()
 				.addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class).authorizeRequests().and();
 	}
 }

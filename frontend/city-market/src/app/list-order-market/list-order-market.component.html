@@ -9,7 +9,6 @@
       <column sm="3"><label>{{'status'|translate}}</label></column>
     </row>
     <div *ngFor="let order of orders">
-
         <row>
           <column sm="3">
             <label>{{order.nameUser}}</label>
@@ -29,7 +28,6 @@
             </select>
           </column>
         </row>
-
       <row class="bottomBorder" *ngFor="let product of order.product">
         <column sm="5">{{'nameProduct'|translate}}</column>
         <column sm="7"><label>{{product.name}}</label></column>

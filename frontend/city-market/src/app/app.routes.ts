@@ -1,9 +1,8 @@
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
-import {LeftNavigateComponent} from './category-navigate/left-navigate.component';
+import {LeftNavigateComponent} from './category-navigate/category-navigate.component';
 import {AboutComponent} from './about/about.component';
-import {DeliveryComponent} from './delivery/delivery.component';
-import {InstallmentplanComponent} from './installmentplan/installmentplan.component';
+import {StartPageComponent} from './installmentplan/startPageComponent.component';
 import {ViewProductListComponent} from './category-navigate/view-product-list/view-product-list.component';
 import {AddCategoryComponent} from './add-category/add-category.component';
 import {AddProductComponent} from './category-navigate/add-product/add-product.component';
@@ -21,9 +20,8 @@ import {DescriptionProductComponent} from "./category-navigate/description-produ
  * Nested routing in the list of banks.
  */
 const itemRoutes: Routes = [
-  {path: '', component: InstallmentplanComponent},
   {path: 'listProduct', component: ViewProductListComponent},
-  {path: 'addProduct', component: AddProductComponent},
+  {path: 'createProduct', component: AddProductComponent},
   {path: 'addPrice', component: AddPriceComponent},
   {path: 'addDescription', component: DescriptionProductCreateComponent},
   {path: 'viewDescription', component: DescriptionProductComponent}
@@ -34,10 +32,10 @@ const itemRoutes: Routes = [
  * The first "banks" list displays a list of all registered banks.
  */
 export const appRoutes: Routes = [
+  {path: '', component: StartPageComponent},
   {path: 'category', component: LeftNavigateComponent, children: itemRoutes},
   {path: 'about', component: AboutComponent},
-  {path: 'delivery', component: DeliveryComponent},
-  {path: 'installment', component: InstallmentplanComponent},
+  {path: 'installment', component: StartPageComponent},
   {path: 'addCategory', component: AddCategoryComponent},
   {path: 'addUser', component: CreateUserComponent},
   {path: 'signStock', component: SignStockMarketComponent},

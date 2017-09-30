@@ -1,5 +1,19 @@
+{{message}}
 <row>
   <label>Добавлить продукт</label>
+</row>
+<row>
+  <select [(ngModel)]="product"  class="form-control">
+    <option *ngFor="let product of products" [ngValue]="product" class="form-control">{{product.name}}</option>
+  </select>
+</row>
+<row>
+  <column>
+    <input type="file"(change)="selectImage($event)" #fileInput />
+  </column>
+  <column>
+<input type="text" [(ngModel)]="product.urlPhoto">
+  </column>
 </row>
 <row>
   <column sm="5"><label>Название продукта</label></column>
@@ -8,7 +22,7 @@
   </column>
 </row>
 <row>
-  <button class="btn-group buttonLog" (click)="saveProduct()">
+  <button class="btn-group buttonLog" (click)="save()">
     {{'save'|translate}}
   </button>
 </row>

@@ -1,0 +1,38 @@
+<row >
+  <column sm="2">
+    <div *ngFor="let cat of categoryService.getCategories()">
+      <button type="button" class="btn btn-primary selectCategory" style="width: 100%" (click)="selectCategory(cat)">
+        {{cat.name}}
+      </button>
+    </div>
+  </column >
+  <column sm="10">
+    <row *ngIf="accessService.productCreate ">
+      <column sm="3">
+        <button type="button" class="btn btn-primary btn-sm selectCategory"
+                (click)="navigate('category/createProduct')">
+          {{'createProduct'|translate}}
+        </button>
+      </column>
+      <column sm="3" *ngIf="accessService.editPriceAndStock">
+        <button type="button" class="btn btn-primary btn-sm  selectCategory"
+                (click)="navigate('category/addPrice')">
+          {{'price'|translate}}
+        </button>
+      </column>
+      <column sm="3" *ngIf="accessService.editPriceAndStock">
+        <button type="button" class="btn btn-primary btn-sm  selectCategory"
+                (click)="navigate('category/addDescription')">
+          {{'addDescription'|translate}}
+        </button>
+      </column>
+    </row>
+    <row class="childRout">
+      <column sm="12">
+        <router-outlet></router-outlet>
+      </column>
+    </row>
+  </column>
+
+</row>
+

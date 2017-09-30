@@ -80,4 +80,24 @@ public class UserRestController {
 		return new ResponseEntity<User>(user, headers, HttpStatus.OK);
 	}
 
+	/**
+	 * 
+	 * The controller method accepts a password request for the user. The method
+	 * requests data from the service, receives data, and sends a response.
+	 * 
+	 * @see {@link User} , {@link UserService} , {@link UserRepository}
+	 */
+	@RequestMapping(value = "/user/{id}/password", method = RequestMethod.GET)
+	public ResponseEntity<String> getPasswortUser(@PathVariable("id") int id) {
+		LOGGER.info("Find user password.");
+		User user = userService.findOne(id);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "application/json; charset=UTF-8");
+		if (user == null) {
+			headers.add(MESSAGE, "Do not save.");
+			return new ResponseEntity<String>(headers, HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<String>(user.password, headers, HttpStatus.OK);
+	}
+
 }

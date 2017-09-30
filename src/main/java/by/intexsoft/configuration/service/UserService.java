@@ -2,10 +2,8 @@ package by.intexsoft.configuration.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Role;
 import by.intexsoft.entity.Stock;
@@ -22,8 +20,7 @@ import by.intexsoft.repository.UserRepository;
 public class UserService {
 	private UserRepository userRepository;
 
-	@Autowired
-	UserService(UserRepository userRepository) {
+	public UserService(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
 

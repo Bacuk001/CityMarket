@@ -1,10 +1,8 @@
 package by.intexsoft.configuration.rest;
 
 import java.util.List;
-import javax.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import by.intexsoft.configuration.service.CategoryService;
 import by.intexsoft.configuration.service.ProductService;
-import by.intexsoft.configuration.service.StockService;
 import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Product;
-import by.intexsoft.entity.Stock;
 import by.intexsoft.repository.PriceRepository;
 
 /**
@@ -38,11 +34,8 @@ public class ProductRestController {
 	private static final String MESSAGE = "Message";
 	private ProductService productService;
 	private CategoryService categoryService;
-	private StockService stockService;
 
-	@Autowired
-	ProductRestController(StockService stockService, CategoryService categoryService, ProductService productService) {
-		this.stockService = stockService;
+	ProductRestController(CategoryService categoryService, ProductService productService) {
 		this.productService = productService;
 		this.categoryService = categoryService;
 	}
@@ -84,18 +77,13 @@ public class ProductRestController {
 	}
 
 	/**
-	 * Preservation of the product.
+	 * Save the product.
 	 */
-	@Transactional
 	@RequestMapping(value = "/product/save/category/{idCategory}/stock/{idStock}", method = RequestMethod.POST)
 	public ResponseEntity<Product> save(@RequestBody Product product, @PathVariable("idCategory") int idCategory,
 			@PathVariable("idStock") int idStock) {
 		LOGGER.info("Save product.");
-		Stock stock = stockService.findOne(idStock);
-		Category category = categoryService.findOne(idCategory);
-		product.category = category;
-		product = productService.save(product);
-		stock.product.add(product);
+		product = productService.save(product, idCategory, idStock);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=UTF-8");
 		if (product == null) {

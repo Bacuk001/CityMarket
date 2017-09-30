@@ -1,3 +1,46 @@
-.sizeImg{
+.sizeImg {
   width: 50px;
+  margin: 5px;
 }
+
+.lineProduct {
+  border-top: 1px solid gray;
+  margin: 5px;
+}
+.lineProduct:hover{
+  font-size: 15px;
+}
+.pagination{
+  margin: auto;
+  width: 15px;
+  display: block;
+}
+.column-product{
+  margin: 5px;
+}
+.orderMove:hover{
+  font-size: 18px;
+  border-bottom: 1px solid gray;
+}
+.pagination{
+  align-content: center;
+  display: -webkit-box;
+}
+
+.selectCategory {
+  margin-left: 5px;
+  padding-left: 5px;
+  font-size: 11px;
+  width: 90%;
+  background-color: black;
+  -webkit-transition: font-size 0.5s;
+  transition: font-size 0.5s ease;
+}
+
+.selectCategory:hover {
+  background-color: gray;
+  font-size: 15px;
+}
+
+
+

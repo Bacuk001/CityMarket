@@ -8,16 +8,15 @@ import {AppComponent} from './app.component';
 import {AppRoutes} from './app.routes';
 import {FooterComponent} from './bottom/footer.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {LeftNavigateComponent} from './category-navigate/left-navigate.component';
-import {RigthNavigateComponent} from './rigth-navigate/rigth-navigate.component';
+import {LeftNavigateComponent} from './category-navigate/category-navigate.component';
+import {RightNavigateComponent} from './right-navigate/right-navigate.component';
 import {TopNavigateComponent} from './top-navigate/top-navigate.component';
 import {BodyApplicationComponent} from './body-application/body-application.component';
 import {CategoryService} from './services/category/category-service.service';
 import {MarketService} from './services/market/market.service';
 import {BootstrapGridModule} from 'ng2-bootstrap-grid';
 import {AboutComponent} from './about/about.component';
-import {DeliveryComponent} from './delivery/delivery.component';
-import {InstallmentplanComponent} from './installmentplan/installmentplan.component';
+import {StartPageComponent} from './installmentplan/startPageComponent.component';
 import {ViewProductListComponent} from './category-navigate/view-product-list/view-product-list.component';
 import {ProductService} from './services/product/product.service';
 import {AddProductComponent} from './category-navigate/add-product/add-product.component';
@@ -37,6 +36,7 @@ import {ListOrderMarketComponent} from './list-order-market/list-order-market.co
 import {DescriptionProductComponent} from './category-navigate/description-product/description-product.component';
 import {DescriptionProductCreateComponent} from './category-navigate/description-product-create/description-product-create.component';
 import {DescriptionService} from "./services/description/description.service";
+import {ImageUploadService} from "./services/imageUpload/image-upload.service";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '/CityMarket/localisation/', '.json');
@@ -53,14 +53,13 @@ const translModel = {
 @NgModule({
   declarations: [
     AppComponent,
+    StartPageComponent,
     FooterComponent,
     LeftNavigateComponent,
-    RigthNavigateComponent,
+    RightNavigateComponent,
     TopNavigateComponent,
     BodyApplicationComponent,
     AboutComponent,
-    DeliveryComponent,
-    InstallmentplanComponent,
     ViewProductListComponent,
     AddProductComponent,
     AddCategoryComponent,
@@ -92,6 +91,7 @@ const translModel = {
     {provide: 'priceService', useClass: PriceService},
     {provide: 'orderService', useClass: OrderService},
     {provide: 'descriptionService', useClass: DescriptionService},
+    {provide: 'imageService', useClass: ImageUploadService},
     AccessService
   ],
   bootstrap: [AppComponent]

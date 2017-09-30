@@ -51,6 +51,12 @@ public class Product extends AbstractPersistable<Integer> {
 	public String name;
 
 	/**
+	 * This column save foto product.
+	 */
+	@Column
+	public String urlPhoto;
+
+	/**
 	 * To which group this product belongs.
 	 * 
 	 * @see {@link Category}

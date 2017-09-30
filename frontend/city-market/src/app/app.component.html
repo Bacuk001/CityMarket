@@ -1,19 +1,18 @@
 ﻿<bootstrap-grid>
-    <row class="topComponent">
-      <column sm="12">
-        <app-top-navigate></app-top-navigate>
-      </column>
-    </row>
-
-  <row class="centerComponent">
-    <column sm="9">
-      <router-outlet></router-outlet>
-    </column>
-    <column sm="3">
-      <app-rigth-navigate></app-rigth-navigate>
+  <row>
+    <column sm="12">
+      <app-top-navigate></app-top-navigate>
     </column>
   </row>
-  <row >
+  <row>
+    <column sm="10">
+      <router-outlet></router-outlet>
+    </column>
+    <column sm="2">
+      <app-right-navigate></app-right-navigate>
+    </column>
+  </row>
+  <row>
     <column sm="12">
       <app-footer sm="12"></app-footer>
     </column>
