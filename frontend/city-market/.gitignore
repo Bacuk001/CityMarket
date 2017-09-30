@@ -1,8 +1,4 @@
 /.idea/
-/e2e/
 /node_modules
-karma.conf.js
-protractor.conf.js
 README.md
-tslint.json
 npm-debug.log
