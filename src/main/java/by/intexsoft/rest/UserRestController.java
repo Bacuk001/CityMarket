@@ -1,4 +1,4 @@
-package by.intexsoft.configuration.rest;
+package by.intexsoft.rest;
 
 import java.util.List;
 import org.slf4j.Logger;
@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import by.intexsoft.configuration.service.UserService;
+
 import by.intexsoft.entity.User;
 import by.intexsoft.repository.UserRepository;
+import by.intexsoft.service.UserService;
 
 /**
  * The controller processes requests for receiving, adding and editing users of

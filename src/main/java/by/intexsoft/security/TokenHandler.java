@@ -2,8 +2,9 @@ package by.intexsoft.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import by.intexsoft.configuration.service.UserService;
+
 import by.intexsoft.entity.User;
+import by.intexsoft.service.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 

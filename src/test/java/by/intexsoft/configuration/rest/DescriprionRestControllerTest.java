@@ -12,10 +12,12 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import by.intexsoft.configuration.service.DescriptionService;
-import by.intexsoft.configuration.service.ProductService;
+
 import by.intexsoft.entity.Description;
 import by.intexsoft.entity.Product;
+import by.intexsoft.rest.DescriprionRestController;
+import by.intexsoft.service.DescriptionService;
+import by.intexsoft.service.ProductService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DescriprionRestControllerTest {

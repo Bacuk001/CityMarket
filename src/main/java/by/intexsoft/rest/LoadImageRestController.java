@@ -1,4 +1,4 @@
-package by.intexsoft.configuration.rest;
+package by.intexsoft.rest;
 
 import java.io.File;
 import javax.servlet.ServletContext;
@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @RestController
 public class LoadImageRestController {
+	private static final String IMAGE_PATH = "/image/";
 	private ServletContext servletContext;
 
 	@Autowired
@@ -33,7 +34,7 @@ public class LoadImageRestController {
 	public ResponseEntity<String> getImage(@RequestParam MultipartFile file) {
 		if (!file.isEmpty()) {
 			try {
-				File destinationFile = new File(servletContext.getRealPath("/image/") + file.getOriginalFilename());
+				File destinationFile = new File(servletContext.getRealPath(IMAGE_PATH) + file.getOriginalFilename());
 				file.transferTo(destinationFile);
 				return new ResponseEntity<>(HttpStatus.OK);
 			} catch (Exception exeption) {

@@ -12,6 +12,7 @@ import by.intexsoft.entity.Price;
 import by.intexsoft.entity.Product;
 import by.intexsoft.entity.Stock;
 import by.intexsoft.repository.PriceRepository;
+import by.intexsoft.service.PriceServicse;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PriceServiceTest {

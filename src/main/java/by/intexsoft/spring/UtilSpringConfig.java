@@ -1,4 +1,4 @@
-package by.intexsoft.configuration.spring;
+package by.intexsoft.spring;
 
 public class UtilSpringConfig {
 	private static UtilSpringConfig singltoneSpringConfig;

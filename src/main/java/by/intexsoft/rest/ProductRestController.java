@@ -1,4 +1,4 @@
-package by.intexsoft.configuration.rest;
+package by.intexsoft.rest;
 
 import java.util.List;
 import org.slf4j.Logger;
@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import by.intexsoft.configuration.service.CategoryService;
-import by.intexsoft.configuration.service.ProductService;
+
 import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Product;
 import by.intexsoft.repository.PriceRepository;
+import by.intexsoft.service.CategoryService;
+import by.intexsoft.service.ProductService;
 
 /**
  * A controller that processes requests for information about products. The
@@ -30,6 +31,13 @@ import by.intexsoft.repository.PriceRepository;
  */
 @RestController
 public class ProductRestController {
+	private static final String SAVE_PRODUCT = "Save product.";
+	private static final String PRODUCT_NOT_SAVE = "Product don't save";
+	private static final String APPLICATION_JSON = "application/json; charset=UTF-8";
+	private static final String CONTENT_TYPE = "Content-Type";
+	private static final String FIND_PRODUCTS_BY_CATEGORY = "Find products by category.";
+	private static final String ERROR_FIND = "Error find product by id.";
+	private static final String FIND_PRODUCT = "Find product by id.";
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductRestController.class);
 	private static final String PRODUCTS_NOT_FOUND = "Products not found.";
 	private static final String MESSAGE = "Message";
@@ -47,12 +55,12 @@ public class ProductRestController {
 	 */
 	@RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Product> getById(@PathVariable("id") int id) {
-		LOGGER.info("Find product by id.");
+		LOGGER.info(FIND_PRODUCT);
 		Product product = productService.findOne(id);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json; charset=UTF-8");
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
 		if (product == null) {
-			LOGGER.error("Error find product by id.");
+			LOGGER.error(ERROR_FIND);
 			headers.add(MESSAGE, PRODUCTS_NOT_FOUND);
 			return new ResponseEntity<Product>(headers, HttpStatus.NO_CONTENT);
 		}
@@ -66,11 +74,11 @@ public class ProductRestController {
 	 */
 	@RequestMapping(value = "/products/category/{id}", method = RequestMethod.GET)
 	public ResponseEntity<List<Product>> getByCategory(@PathVariable("id") int id) {
-		LOGGER.info("Find products by category.");
+		LOGGER.info(FIND_PRODUCTS_BY_CATEGORY);
 		Category category = categoryService.findOne(id);
 		List<Product> products = productService.findByCategory(category);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json; charset=UTF-8");
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
 		if (products == null) {
 			headers.add(MESSAGE, PRODUCTS_NOT_FOUND);
 			return new ResponseEntity<List<Product>>(headers, HttpStatus.NO_CONTENT);
@@ -84,12 +92,12 @@ public class ProductRestController {
 	@RequestMapping(value = "/product/save/category/{idCategory}/stock/{idStock}", method = RequestMethod.POST)
 	public ResponseEntity<Product> save(@RequestBody Product product, @PathVariable("idCategory") int idCategory,
 			@PathVariable("idStock") int idStock) {
-		LOGGER.info("Save product.");
+		LOGGER.info(SAVE_PRODUCT);
 		product = productService.save(product, idCategory, idStock);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json; charset=UTF-8");
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
 		if (product == null) {
-			headers.add(MESSAGE, "Product don't save");
+			headers.add(MESSAGE, PRODUCT_NOT_SAVE);
 			return new ResponseEntity<Product>(headers, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Product>(product, headers, HttpStatus.OK);

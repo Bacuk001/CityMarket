@@ -1,4 +1,4 @@
-package by.intexsoft.configuration.rest;
+package by.intexsoft.rest;
 
 import java.util.List;
 import org.slf4j.Logger;
@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import by.intexsoft.configuration.service.CategoryService;
+
 import by.intexsoft.entity.Category;
+import by.intexsoft.service.CategoryService;
 
 /**
  * A controller that processes requests for product categories. The controller
@@ -26,6 +27,11 @@ import by.intexsoft.entity.Category;
  */
 @RestController
 public class CategoryRestController {
+	private static final String ERROR_FIND_CATEGORY = "Error find all category from database";
+	private static final String CREATE_CATEGORY = "Create new category";
+	private static final String APPLICATION_JSON = "application/json; charset=UTF-8";
+	private static final String CONTENT_TYPE = "Content-Type";
+	private static final String FIND_CATEGORY_BY_NAME = "Start find category by name.";
 	private static final String MESSAGE = "Message";
 	private static final String ERROR_OF_CREATING_A_CATEGORY = "Error of creating a category, an entry with this name exists in the database.";
 	private static final Logger LOGGER = LoggerFactory.getLogger(CategoryRestController.class);
@@ -43,7 +49,7 @@ public class CategoryRestController {
 	 */
 	@RequestMapping(value = "/category/{name}", method = RequestMethod.GET)
 	public ResponseEntity<Category> getByName(@PathVariable("name") String nameCategory) {
-		LOGGER.info("Start find category by name.");
+		LOGGER.info(FIND_CATEGORY_BY_NAME);
 		Category category = categoryService.findByName(nameCategory);
 		if (category == null)
 			return new ResponseEntity<Category>(HttpStatus.NOT_FOUND);
@@ -57,12 +63,11 @@ public class CategoryRestController {
 	 */
 	@RequestMapping(value = "/category/save", method = RequestMethod.POST)
 	public ResponseEntity<Category> createCaterory(@RequestBody Category category) {
-		LOGGER.info("Create new category");
+		LOGGER.info(CREATE_CATEGORY);
 		Category categoryFind = categoryService.findByName(category.name);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json; charset=UTF-8");
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
 		if (categoryFind != null) {
-			LOGGER.info("An attempt to record existing categories.");
 			headers.add(MESSAGE, ERROR_OF_CREATING_A_CATEGORY);
 			return new ResponseEntity<Category>(null, headers, HttpStatus.FORBIDDEN);
 		}
@@ -80,9 +85,9 @@ public class CategoryRestController {
 		LOGGER.info("Get all categories");
 		List<Category> categories = categoryService.findAll();
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json; charset=UTF-8");
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
 		if (categories == null) {
-			headers.add(MESSAGE, "Error find all category from database");
+			headers.add(MESSAGE, ERROR_FIND_CATEGORY);
 			return new ResponseEntity<List<Category>>(headers, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<List<Category>>(categories, headers, HttpStatus.OK);

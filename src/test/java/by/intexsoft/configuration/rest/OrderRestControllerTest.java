@@ -15,14 +15,15 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import by.intexsoft.configuration.service.MarketService;
-import by.intexsoft.configuration.service.OrderService;
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Order;
 import by.intexsoft.entity.Product;
 import by.intexsoft.repository.MarketRepository;
 import by.intexsoft.repository.OrderRepository;
 import by.intexsoft.repository.ProductRepository;
+import by.intexsoft.rest.OrderRestController;
+import by.intexsoft.service.MarketService;
+import by.intexsoft.service.OrderService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OrderRestControllerTest {
