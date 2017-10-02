@@ -96,7 +96,7 @@ public class DescriptionService {
 	 * to save to the database.
 	 */
 	@Transactional
-	public List<Description> seveListDescription(List<Description> descriptions) {
+	public List<Description> saveListDescription(List<Description> descriptions) {
 		for (int index = 0; index < descriptions.size(); index++) {
 			descriptionRepository.save(descriptions.get(index));
 		}

@@ -2,6 +2,7 @@ package by.intexsoft.configuration.rest;
 
 import java.io.File;
 import javax.servlet.ServletContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class LoadImageRestController {
 	private ServletContext servletContext;
 
-	LoadImageRestController(ServletContext servletContext) {
+	@Autowired
+	public LoadImageRestController(ServletContext servletContext) {
 		this.servletContext = servletContext;
 	}
 

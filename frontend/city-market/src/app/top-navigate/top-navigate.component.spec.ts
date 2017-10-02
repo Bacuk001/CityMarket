@@ -1,25 +1,22 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { TopNavigateComponent } from './top-navigate.component';
+import {TopNavigateComponent} from './top-navigate.component';
+import {browser, by, element, protractor} from 'protractor';
 
 describe('TopNavigateComponent', () => {
-  let component: TopNavigateComponent;
-  let fixture: ComponentFixture<TopNavigateComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TopNavigateComponent ]
-    })
-    .compileComponents();
-  }));
+  const selectMarket = element(by.id('selectMarket'));
+  const optionMarket = element(by.tagName('option'));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TopNavigateComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it('Select market', () => {
+    selectMarket.click();
+    const until = protractor.ExpectedConditions;
+    browser.wait(until.presenceOf(selectMarket), 2000);
+    optionMarket.click();
+  })
 });
+
+
+
+
+

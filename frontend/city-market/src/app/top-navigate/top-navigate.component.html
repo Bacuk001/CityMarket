@@ -7,8 +7,9 @@
       <li *ngIf="access.viewCategorySelect"><a (click)="navigate('category')">{{'category'|translate}}</a></li>
     </ul>
     <div class="navbar-form navbar-right" role="search">
-      <select [(ngModel)]="market" (ngModelChange)="selectMarket()" class="form-control">
-        <option *ngFor="let mark of markets" [ngValue]="mark" class="form-control">{{mark.name}}</option>
+      <a class="navbar-brand">Магазин</a>
+      <select id="selectMarket" [(ngModel)]="market" (ngModelChange)="selectMarket()" class="form-control">
+        <option id="optionMarket" *ngFor="let mark of markets" [ngValue]="mark" class="form-control">{{mark.name}}</option>
       </select>
       <select *ngIf="false" name="select" #t (change)=" selectLanguage(t.value)" class="form-control">
         <option value="ru">Русский</option>

@@ -3,6 +3,7 @@ package by.intexsoft.configuration.rest;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,11 +26,19 @@ import by.intexsoft.entity.Market;
  */
 @RestController
 public class MarketRestController {
+	private static final String GET_ALL_MARKETS = "Get all markets.";
+	private static final String CONTENT_TYPE = "Content-Type";
+	private static final String MARKET_DO_NOT_SAVE = "Market do not save.";
+	private static final String SAVE_MARKET_TO_DATABASE = "Save market to database.";
+	private static final String APPLICATION_JSON = "application/json; charset=UTF-8";
+	private static final String MARKET_NOT_FOUND = "Market not found.";
+	private static final String DELETE_MARKET = "Delete market.";
 	private static final Logger LOGGER = LoggerFactory.getLogger(MarketRestController.class);
 	private static final String MESSAGE = "Message";
 	private MarketService marketService;
 
-	MarketRestController(MarketService marketService) {
+	@Autowired
+	public MarketRestController(MarketService marketService) {
 		this.marketService = marketService;
 	}
 
@@ -39,12 +48,12 @@ public class MarketRestController {
 	 */
 	@RequestMapping(value = "/market/save", method = RequestMethod.POST)
 	public ResponseEntity<Market> save(@RequestBody Market market) {
-		LOGGER.info("Save market to database");
+		LOGGER.info(SAVE_MARKET_TO_DATABASE);
 		market = marketService.save(market);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json; charset=UTF-8");
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
 		if (market == null) {
-			headers.add(MESSAGE, "Market do not save.");
+			headers.add(MESSAGE, MARKET_DO_NOT_SAVE);
 			return new ResponseEntity<Market>(headers, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Market>(market, headers, HttpStatus.OK);
@@ -55,12 +64,12 @@ public class MarketRestController {
 	 */
 	@RequestMapping(value = "/markets", method = RequestMethod.GET)
 	public ResponseEntity<List<Market>> getAllMarket() {
-		LOGGER.info("Get all markets.");
+		LOGGER.info(GET_ALL_MARKETS);
 		List<Market> markets = marketService.findAllMarket();
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json; charset=UTF-8");
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
 		if (markets == null) {
-			headers.add(MESSAGE, "Market do not save.");
+			headers.add(MESSAGE, MARKET_DO_NOT_SAVE);
 			return new ResponseEntity<List<Market>>(headers, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<List<Market>>(markets, headers, HttpStatus.OK);
@@ -71,10 +80,10 @@ public class MarketRestController {
 	 */
 	@RequestMapping(value = "/market/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Market> delete(@PathVariable("id") int id) {
-		LOGGER.info("Delete market.");
+		LOGGER.info(DELETE_MARKET);
 		marketService.delete(id);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json; charset=UTF-8");
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
 		return new ResponseEntity<Market>(headers, HttpStatus.OK);
 	}
 
@@ -86,9 +95,9 @@ public class MarketRestController {
 	public ResponseEntity<Market> getById(@PathVariable("id") int id) {
 		Market market = marketService.findOne(id);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json; charset=UTF-8");
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
 		if (market == null) {
-			headers.add(MESSAGE, "Market not found.");
+			headers.add(MESSAGE, MARKET_NOT_FOUND);
 			return new ResponseEntity<Market>(headers, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Market>(market, headers, HttpStatus.OK);

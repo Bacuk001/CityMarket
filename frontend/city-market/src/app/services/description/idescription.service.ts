@@ -1,5 +1,5 @@
-import {Product} from "../../entities/product";
-import {Description} from "../../entities/description";
+import {Product} from '../../entities/product';
+import {Description} from '../../entities/description';
 
 /**
  * The interface describes the basic methods with the work of describing products.

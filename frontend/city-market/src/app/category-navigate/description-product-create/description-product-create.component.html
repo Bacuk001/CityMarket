@@ -3,14 +3,14 @@
 </row>
 <row>
   <column sm="3"></column>
-  <column sm="9">{{product.name}}</column>
+  <column sm="9"><label>{{product.name}}</label></column>
 </row>
 <row>
   <column sm="3">
-    {{'nameDescription'|translate}}
+    <label> {{'nameDescription'|translate}}</label>
   </column>
   <column sm="9">
-    {{'value'|translate}}
+    <label>значение</label>
   </column>
 </row>
 <row *ngFor="let description of descriptions; let indexDes = index">
@@ -31,16 +31,20 @@
 </row>
 <row>
   <column>
-    <button><label class="btn-primary" (click)='addDescription()'>{{'addDescription'|translate}}</label></button>
+    <button class="btn btn-primary btn-sm  selectButton"><label (click)='addDescription()'>{{'addDescription'|translate}}</label>
+    </button>
   </column>
   <column *ngIf="!visibleChange">
-    <button><label class="btn-primary" (click)='saveDescriptions()'>{{'save'|translate}}</label></button>
+    <button class="btn btn-primary btn-sm  selectButton"><label
+      (click)='saveDescriptions()'>{{'save'|translate}}</label></button>
   </column>
   <column *ngIf="visibleChange">
-    <button><label class="btn-primary" (click)='changeDescription()'>{{'change'|translate}}</label></button>
+    <button class="btn btn-primary btn-sm  selectButton"><label
+      (click)='changeDescription()'>{{'change'|translate}}</label></button>
   </column>
   <column *ngIf="visibleChange">
-    <button><label class="btn-primary" (click)='deleteDescription()'>{{'delete'|translate}}</label></button>
+    <button class="btn btn-primary btn-sm  selectButton"><label
+      (click)='deleteDescription()'>{{'delete'|translate}}</label></button>
   </column>
 </row>
 

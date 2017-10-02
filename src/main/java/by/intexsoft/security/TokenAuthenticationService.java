@@ -1,7 +1,8 @@
-package by.intexsoft.configuration.security;
+package by.intexsoft.security;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ public class TokenAuthenticationService {
 	private static final String AUTH_HEADER_NAME = "X-AUTH-TOKEN";
 	private TokenHandler tokenHand;
 
+	@Autowired
 	public TokenAuthenticationService(TokenHandler tokenHand) {
 		this.tokenHand = tokenHand;
 	}

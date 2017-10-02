@@ -1,3 +1,21 @@
 .borderStyle{
-  border: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.selectCategory {
+  margin-left: 15px;
+  margin-top: 5px;
+  padding-left: 5px;
+  font-size: 11px;
+  width: 90%;
+  background-color: black;
+  -webkit-transition: font-size 0.5s;
+  transition: font-size 0.5s;
+}
+
+.selectCategory:hover {
+  background-color: gray;
+  font-size: 15px;
+}
+.sizeImg {
+  width: 120px;
 }

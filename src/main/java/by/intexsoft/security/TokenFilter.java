@@ -1,4 +1,4 @@
-package by.intexsoft.configuration.security;
+package by.intexsoft.security;
 
 import java.io.IOException;
 
@@ -29,14 +29,14 @@ public class TokenFilter extends GenericFilterBean {
 	TokenAuthenticationService tokenAuthenticationService;
 
 	@Autowired
-	TokenFilter(TokenAuthenticationService tokenAuthenticationService) {
+	public TokenFilter(TokenAuthenticationService tokenAuthenticationService) {
 		this.tokenAuthenticationService = tokenAuthenticationService;
 	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		HttpServletRequest httpRequest = (HttpServletRequest) request;		
+		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		Authentication authentication = tokenAuthenticationService.getAuthentication(httpRequest);
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		chain.doFilter(request, response);

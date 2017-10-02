@@ -16,7 +16,7 @@ import {IPriceService} from "../services/price/iprice.service";
   templateUrl: './category-navigate.component.html',
   styleUrls: ['./category-navigate.component.css']
 })
-export class LeftNavigateComponent implements OnInit {
+export class CategoryNavigateComponent implements OnInit {
   /**
    * Messages for the user during the application process.
    */

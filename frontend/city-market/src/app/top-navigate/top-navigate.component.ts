@@ -26,7 +26,7 @@ export class TopNavigateComponent implements OnInit {
   public market: Market;
 
 
-  constructor(@Inject('marketService') private marketService: IMarketService,
+  constructor(@Inject('marketService') public marketService: IMarketService,
               @Inject('categoryService') private categoryService: ICategoryService,
               private router: Router,
               public access: AccessService,

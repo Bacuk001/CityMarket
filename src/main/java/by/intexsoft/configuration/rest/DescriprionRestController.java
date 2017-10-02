@@ -1,9 +1,9 @@
 package by.intexsoft.configuration.rest;
 
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import by.intexsoft.configuration.service.DescriptionService;
 import by.intexsoft.configuration.service.ProductService;
 import by.intexsoft.entity.Description;
@@ -31,7 +30,8 @@ public class DescriprionRestController {
 	private DescriptionService descriptionService;
 	private ProductService productService;
 
-	DescriprionRestController(DescriptionService descriptionService, ProductService productService) {
+	@Autowired
+	public DescriprionRestController(DescriptionService descriptionService, ProductService productService) {
 		this.descriptionService = descriptionService;
 		this.productService = productService;
 	}
@@ -67,7 +67,7 @@ public class DescriprionRestController {
 		LOGGER.info("Save list descriptions for product.");
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=UTF-8");
-		descriptions = descriptionService.seveListDescription(descriptions);
+		descriptions = descriptionService.saveListDescription(descriptions);
 		if (descriptions == null) {
 			headers.add(MESSAGE, "Descriptions do not save");
 			return new ResponseEntity<List<Description>>(headers, HttpStatus.INTERNAL_SERVER_ERROR);

@@ -52,10 +52,8 @@ export class PriceService implements IPriceService {
    * @param {Price} price
    */
   savePrice(price: Price) {
-    alert(price.price);
     return new Promise((response, error) => {
       const body = JSON.stringify(price);
-      alert(body);
       const headers = new Headers({'Content-Type': CONTENT_TYPE_VALUE});
       this.http.post(URL + '/save', body, {headers: headers})
         .subscribe((resp) => response(resp.json()),

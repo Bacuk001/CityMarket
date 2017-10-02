@@ -11,7 +11,7 @@
 </row>
 <row class="lineRow">
   <column sm="7"> количество товара на складе</column>
-  <column sm="5">{{price.inStock}} </column>
+  <column sm="5">{{price.inStock}}</column>
 </row>
 <row class="lineRow">
   <column sm="7"> цена товара</column>
@@ -31,12 +31,16 @@
   </column>
 </row>
 
-<row class="lineRow">
-  <button class="btn-group buttonLog" (click)="savePrice()">
-    {{'save'|translate}}
-  </button>
-  <button class="btn-group buttonLog" (click)="closePrice()">
-    {{'close'|translate}}
-  </button>
+<row>
+  <column sm="2">
+    <button class="btn btn-primary btn-sm  selectButton" (click)="savePrice()">
+      {{'save'|translate}}
+    </button>
+  </column>
+  <column sm="2">
+    <button class="btn btn-primary btn-sm  selectButton" (click)="closePrice()">
+      {{'close'|translate}}
+    </button>
+  </column>
 </row>
 {{newPrice}}

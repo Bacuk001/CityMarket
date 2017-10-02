@@ -10,9 +10,10 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import by.intexsoft.configuration.security.TokenAuthenticationService;
+
 import by.intexsoft.configuration.service.UserService;
 import by.intexsoft.entity.User;
+import by.intexsoft.security.TokenAuthenticationService;
 
 
 @RunWith(MockitoJUnitRunner.class)

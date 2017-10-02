@@ -11,43 +11,22 @@ import {Http} from "@angular/http";
 import {IMarketService} from "../../services/market/imarket.service";
 import {Price} from "../../entities/price";
 
-const NOT_AVARIBLE = 'Нет в наличии'
-
 @Component({
   selector: 'app-view-product-list',
   templateUrl: './view-product-list.component.html',
   styleUrls: ['./view-product-list.component.css']
 })
-export class ViewProductListComponent implements OnInit {
+export class ViewProductListComponent {
   /**
    * Messages for the user during the application process.
    */
   public message: string;
-  /**
-   * Stores the number of pages in the category.
-   * @type {any[]}
-   */
-  public pageCount: number[] = new Array(1);
 
   constructor(@Inject('productService') public  productService: IProductService,
               @Inject('priceService') public priceService: IPriceService,
               @Inject('marketService') public marketService: IMarketService,
               private access: AccessService,
               private router: Router) {
-  }
-
-  /**
-   * If the market is selected, the method requests the quantity of the product in the category
-   * from the service and calculates the number of pages. The method is executed when the component
-   * is initialized.
-   */
-  ngOnInit() {
-    if (this.marketService.getSelectMarket() != null)
-      this.productService.loadCountProduct().then(resp => {
-        let countPages = Math.trunc(resp / 10);
-        if (resp % 10 > 0) countPages++;
-        this.pageCount = new Array(countPages);
-      });
   }
 
   /**
