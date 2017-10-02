@@ -1,4 +1,4 @@
-package by.intexsoft.configuration.security;
+package by.intexsoft.security;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,7 +20,7 @@ public class UserAuthentication implements Authentication {
 	private User user;
 	private boolean authenticated = true;
 
-	UserAuthentication(User user) {
+	public UserAuthentication(User user) {
 		this.user = user;
 	}
 

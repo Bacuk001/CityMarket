@@ -1,14 +1,14 @@
-import { AppPage } from './app.po';
+import {browser} from 'protractor';
 
-describe('sity-market App', () => {
-  let page: AppPage;
+describe('City-market App', () => {
 
   beforeEach(() => {
-    page = new AppPage();
+    browser.get('');
   });
 
   it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    browser.getTitle().then(title => {
+      expect(title).toEqual('CityMarket');
+    });
   });
 });

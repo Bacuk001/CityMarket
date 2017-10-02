@@ -5,7 +5,9 @@
       <input type="checkbox" [(ngModel)]="check[index]">{{stock.name}}
     </row>
     <row>
-      <button (click)="sendSign()">обновить</button>
+      <column sm="3">
+        <button class="btn btn-primary btn-sm  selectButton" (click)="sendSign()">обновить</button>
+      </column>
     </row>
   </column>
 </row>

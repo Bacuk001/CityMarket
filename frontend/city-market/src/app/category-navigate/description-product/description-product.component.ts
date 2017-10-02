@@ -29,7 +29,7 @@ export class DescriptionProductComponent implements OnInit {
 
   constructor(@Inject('productService') private productService: IProductService,
               @Inject('descriptionService') private descriptionService: IDescriptionService,
-              router: Router) {
+              public router: Router) {
   }
 
   /**

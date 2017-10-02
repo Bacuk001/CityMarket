@@ -3,6 +3,7 @@ package by.intexsoft.configuration.rest;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +36,8 @@ public class ProductRestController {
 	private ProductService productService;
 	private CategoryService categoryService;
 
-	ProductRestController(CategoryService categoryService, ProductService productService) {
+	@Autowired
+	public ProductRestController(CategoryService categoryService, ProductService productService) {
 		this.productService = productService;
 		this.categoryService = categoryService;
 	}

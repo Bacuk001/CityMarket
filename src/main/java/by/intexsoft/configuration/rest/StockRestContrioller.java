@@ -3,6 +3,7 @@ package by.intexsoft.configuration.rest;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,8 @@ public class StockRestContrioller {
 	private StockService stockService;
 	private MarketService marketService;
 
-	StockRestContrioller(MarketService marketService, StockService stockService) {
+	@Autowired
+	public StockRestContrioller(MarketService marketService, StockService stockService) {
 		this.stockService = stockService;
 		this.marketService = marketService;
 	}

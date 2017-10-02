@@ -3,6 +3,7 @@ package by.intexsoft.configuration.rest;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import by.intexsoft.configuration.service.CategoryService;
-import by.intexsoft.configuration.service.MarketService;
-import by.intexsoft.configuration.service.StockService;
 import by.intexsoft.entity.Category;
 
 /**
@@ -32,7 +31,8 @@ public class CategoryRestController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CategoryRestController.class);
 	private CategoryService categoryService;
 
-	CategoryRestController(CategoryService categoryService) {
+	@Autowired
+	public CategoryRestController(CategoryService categoryService) {
 		this.categoryService = categoryService;
 	}
 

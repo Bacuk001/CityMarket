@@ -1,9 +1,18 @@
 <row>{{message}}</row>
 <row>
- <column sm="3"><img *ngIf="product.urlPhoto!=null" [src]="product.urlPhoto" class="sizeImg"></column>
+  <column sm="3"><img *ngIf="product.urlPhoto!=null" [src]="product.urlPhoto" class="sizeImg"></column>
   <column sm="5">{{product.name}}</column>
 </row>
 <row *ngFor="let description of descriptions" class="description">
   <column sm="3">{{description.name}}</column>
   <column sm="3">{{description.value}}</column>
+</row>
+<row>
+  <column sm="2"></column>
+  <column sm="2">
+    <button id="closeDescription" type="button" class="btn btn-primary btn-sm  button-close"
+            (click)="router.navigateByUrl('category/listProduct')">
+      закрыть
+    </button>
+  </column>
 </row>

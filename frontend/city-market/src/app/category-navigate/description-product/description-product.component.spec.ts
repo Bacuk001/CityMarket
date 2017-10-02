@@ -1,25 +1,21 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { DescriptionProductComponent } from './description-product.component';
+import {browser, by, element, protractor} from 'protractor';
 
 describe('DescriptionProductComponent', () => {
-  let component: DescriptionProductComponent;
-  let fixture: ComponentFixture<DescriptionProductComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ DescriptionProductComponent ]
-    })
-    .compileComponents();
-  }));
+  const closeDescription = element(by.id('closeDescription'));
+  const openDescription = element(by.id('inDescription'));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DescriptionProductComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Description open', () => {
+    openDescription.click();
+    const until = protractor.ExpectedConditions;
+    browser.wait(until.presenceOf(closeDescription), 2000);
+    closeDescription.click();
   });
 });
+
+
+
+
+

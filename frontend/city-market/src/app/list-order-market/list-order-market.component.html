@@ -1,12 +1,12 @@
 <row>
   <column sm="2">
   </column>
-  <column sm="8">
+  <column sm="10">
     <row>
       <column sm="3"><label>{{'nameUser'|translate}}</label></column>
-      <column sm="3"><label>{{'address'|translate}}</label></column>
-      <column sm="3"><label>{{'contacts'|translate}}</label></column>
-      <column sm="3"><label>{{'status'|translate}}</label></column>
+      <column sm="3"><label>Адрес</label></column>
+      <column sm="3"><label>Сонтакты</label></column>
+      <column sm="3"><label>Статус</label></column>
     </row>
     <div *ngFor="let order of orders">
         <row>
@@ -33,9 +33,5 @@
         <column sm="7"><label>{{product.name}}</label></column>
       </row>
     </div>
-    <row>
-      <column><label>{{'nameProduct'|translate}}</label></column>
-      <column><label>{{'price'|translate}}</label></column>
-    </row>
   </column>
 </row>

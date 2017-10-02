@@ -1,5 +1,5 @@
 {
-  "name": "sity-market",
+  "name": "city-market",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e  --proxy-config proxy.conf.json"
   },
   "private": true,
   "dependencies": {
@@ -25,7 +25,6 @@
     "@ngx-translate/http-loader": "^1.0.2",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
-    "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "ng2-bootstrap-grid": "^0.5.1",
     "rxjs": "^5.4.2",

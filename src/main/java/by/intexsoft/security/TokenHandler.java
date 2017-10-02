@@ -1,4 +1,4 @@
-package by.intexsoft.configuration.security;
+package by.intexsoft.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

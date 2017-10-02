@@ -47,4 +47,8 @@ export class AddCategoryComponent implements OnInit {
         error => this.message = error);
   };
 
+  clear() {
+    this.category = new Category;
+  }
+
 }

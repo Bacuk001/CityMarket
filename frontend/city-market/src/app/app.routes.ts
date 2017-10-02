@@ -1,8 +1,7 @@
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
-import {LeftNavigateComponent} from './category-navigate/category-navigate.component';
-import {AboutComponent} from './about/about.component';
-import {StartPageComponent} from './installmentplan/startPageComponent.component';
+import {CategoryNavigateComponent} from './category-navigate/category-navigate.component';
+import {StartPageComponent} from './startPage/startPageComponent.component';
 import {ViewProductListComponent} from './category-navigate/view-product-list/view-product-list.component';
 import {AddCategoryComponent} from './add-category/add-category.component';
 import {AddProductComponent} from './category-navigate/add-product/add-product.component';
@@ -12,9 +11,9 @@ import {CreateStockComponent} from './create-stock/create-stock.component';
 import {CreateMarketComponent} from './create-market/create-market.component';
 import {AddPriceComponent} from './category-navigate/add-price/add-price.component';
 import {OrderUserComponent} from './category-navigate/order-user/order-user.component';
-import {ListOrderMarketComponent} from "./list-order-market/list-order-market.component";
-import {DescriptionProductCreateComponent} from "./category-navigate/description-product-create/description-product-create.component";
-import {DescriptionProductComponent} from "./category-navigate/description-product/description-product.component";
+import {ListOrderMarketComponent} from './list-order-market/list-order-market.component';
+import {DescriptionProductCreateComponent} from './category-navigate/description-product-create/description-product-create.component';
+import {DescriptionProductComponent} from './category-navigate/description-product/description-product.component';
 
 /**
  * Nested routing in the list of banks.
@@ -33,8 +32,7 @@ const itemRoutes: Routes = [
  */
 export const appRoutes: Routes = [
   {path: '', component: StartPageComponent},
-  {path: 'category', component: LeftNavigateComponent, children: itemRoutes},
-  {path: 'about', component: AboutComponent},
+  {path: 'category', component: CategoryNavigateComponent, children: itemRoutes},
   {path: 'installment', component: StartPageComponent},
   {path: 'addCategory', component: AddCategoryComponent},
   {path: 'addUser', component: CreateUserComponent},

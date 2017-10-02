@@ -3,27 +3,36 @@
   <label>Добавлить продукт</label>
 </row>
 <row>
-  <select [(ngModel)]="product"  class="form-control">
-    <option *ngFor="let product of products" [ngValue]="product" class="form-control">{{product.name}}</option>
-  </select>
-</row>
-<row>
-  <column>
-    <input type="file"(change)="selectImage($event)" #fileInput />
-  </column>
-  <column>
-<input type="text" [(ngModel)]="product.urlPhoto">
+  <column sm="3"><label>Продукты </label></column>
+  <column sm="3">
+    <select [(ngModel)]="product" class="form-control">
+      <option *ngFor="let product of products" [ngValue]="product" class="form-control">{{product.name}}</option>
+    </select>
   </column>
 </row>
 <row>
-  <column sm="5"><label>Название продукта</label></column>
-  <column sm="7">
+  <column sm="3"><label>Изображение продукта</label></column>
+  <column sm="3">
+    <input type="text" [(ngModel)]="product.urlPhoto">
+  </column>
+  <column sm="3">
+    <span class="btn btn-default btn-file selectButton">Открыть файл
+    <input type="file" (change)="selectImage($event)" #fileInput/>
+    </span>
+  </column>
+</row>
+<row>
+  <column sm="3"><label>Название продукта</label></column>
+  <column sm="3">
     <input type="text" [(ngModel)]="product.name" class="input-group"/>
   </column>
 </row>
 <row>
-  <button class="btn-group buttonLog" (click)="save()">
-    {{'save'|translate}}
-  </button>
+  <column sm="2"></column>
+  <column sm="2">
+    <button class="btn btn-primary btn-sm  selectButton" (click)="save()">
+      {{'save'|translate}}
+    </button>
+  </column>
 </row>
 

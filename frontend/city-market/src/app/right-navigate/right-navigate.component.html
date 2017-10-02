@@ -7,28 +7,28 @@
       <label *ngIf="authService.isLoginSystem()" class="text">{{'nameUser'|translate}}:</label>
     </column>
     <column sm="12">
-      <label *ngIf="authService.isLoginSystem()" class="text">{{user.name}}</label>
+      <label id="userName" *ngIf="authService.isLoginSystem()" class="text">{{user.name}}</label>
     </column>
   </row>
   <row>
     <column sm="12">
-      <input *ngIf="!authService.isLoginSystem()" type="text" [(ngModel)]="authService.getUser().name" class="input"
+      <input id="inputLogin" *ngIf="!authService.isLoginSystem()" type="text" [(ngModel)]="authService.getUser().name" class="input"
              placeholder="Enter user name"/>
     </column>
   </row>
   <row>
     <column sm="12">
-      <input *ngIf="!authService.isLoginSystem()" type="password"
+      <input id="inputPassword" *ngIf="!authService.isLoginSystem()" type="password"
              [(ngModel)]="authService.getUser().password" class="input-group" class="input"
              placeholder="Enter password"/>
     </column>
   </row>
   <row>
     <div class="button-group">
-      <button *ngIf="!authService.isLoginSystem()" class="btn btn-primary btn-sm selectCategory" (click)="loginSystem()">
+      <button id="loginButton" *ngIf="!authService.isLoginSystem()" class="btn btn-primary btn-sm selectCategory" (click)="loginSystem()">
         {{'enter'|translate}}
       </button>
-      <button *ngIf="authService.isLoginSystem()" class="btn btn-primary btn-sm selectCategory" (click)="logOut()">
+      <button id="loginOutButton" *ngIf="authService.isLoginSystem()" class="btn btn-primary btn-sm selectCategory" (click)="logOut()">
         {{'exit'|translate}}
       </button>
     </div>

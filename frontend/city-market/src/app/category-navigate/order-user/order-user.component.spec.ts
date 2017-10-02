@@ -1,25 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { OrderUserComponent } from './order-user.component';
+import {by, element} from 'protractor';
 
 describe('OrderUserComponent', () => {
-  let component: OrderUserComponent;
-  let fixture: ComponentFixture<OrderUserComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ OrderUserComponent ]
-    })
-    .compileComponents();
-  }));
+  const userName = element(by.id('nameOrderUser'));
+  const userContacts = element(by.id('userContacts'));
+  const userAddress = element(by.id('userAddress'));
+  const closeOrder = element(by.id('closeOrderUser'));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OrderUserComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Create order category', () => {
+    userName.sendKeys('Jon smith');
+    userContacts.sendKeys('+3752978265895');
+    userAddress.sendKeys('BY, Grodno, TRE 7-15');
+    expect(userName.getText()).toEqual('');
+    closeOrder.click();
   });
 });
+
+
+
+
+

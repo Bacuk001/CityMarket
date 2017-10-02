@@ -1,7 +1,7 @@
-<row >
+<row>
   <column sm="2">
     <div *ngFor="let cat of categoryService.getCategories()">
-      <button type="button" class="btn btn-primary selectCategory" style="width: 100%" (click)="selectCategory(cat)">
+      <button id="category" type="button" class="btn btn-primary selectCategory" style="width: 100%" (click)="selectCategory(cat)">
         {{cat.name}}
       </button>
     </div>

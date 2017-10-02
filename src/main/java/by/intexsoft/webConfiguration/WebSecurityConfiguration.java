@@ -1,10 +1,14 @@
-package by.intexsoft.configuration.security;
+package by.intexsoft.webConfiguration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import by.intexsoft.security.TokenFilter;
 
 /**
  * Class for configuring WebSecurity. In the class, the configuration method is
@@ -15,12 +19,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  * @see {@link TokenFilter}, {@link HttpSecurity}.
  * 
  */
+@Configuration
 @EnableWebSecurity
+@ComponentScan("by.intexsoft.security")
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	private TokenFilter tokenFilter;
 
 	@Autowired
-	WebSecurityConfiguration(TokenFilter tokenFilter) {
+	public WebSecurityConfiguration(TokenFilter tokenFilter) {
 		this.tokenFilter = tokenFilter;
 	}
 
@@ -29,8 +35,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers("/api/products/**", "/localisation/*", "/api/category/*", "/api/markets", "/api/user**",
 						"/api/Application**")
-				.permitAll().antMatchers("/api/order").hasRole("ADMIN").antMatchers("/api/orders")
-				.access("hasRole('ADMIN')").and().csrf().disable()
+				.permitAll().antMatchers("/user/save", "/market/save", "/stock/save").hasRole("ADMIN")
+				.antMatchers("/stock/sign").hasRole("MANAGER_SHOP").antMatchers("/category/save", "/product/save/")
+				.hasRole("MANAGER_STOCK").antMatchers("/api/orders").access("hasRole('ADMIN')").and().csrf().disable()
 				.addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class).authorizeRequests().and();
 	}
 }

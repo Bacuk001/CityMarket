@@ -1,4 +1,4 @@
-<row>
+<row id="productList" >
   {{message}}
 </row>
 <row>
@@ -19,10 +19,10 @@
   </column>
   <column sm="1">
     <row>
-      <label class=" orderMove" (click)="checkout(product)">{{'inOrder'|translate}}</label>
+      <label id="inOrder" class="orderMove" (click)="checkout(product)">{{'inOrder'|translate}}</label>
     </row>
     <row>
-      <label class="orderMove" (click)="viewDescription(product)">{{'description'|translate}}</label>
+      <label id="inDescription" class="orderMove" (click)="viewDescription(product)">{{'description'|translate}}</label>
     </row>
   </column>
 </row>

@@ -8,10 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import by.intexsoft.configuration.service.CategoryService;
@@ -27,12 +25,11 @@ public class CategoryRestControllerTest {
 	CategoryRestController categoryRestController = new CategoryRestController(categoryService);
 
 	@Test
-	public void getBynameTest() {
+	public void getByNameTest() {
 		Category category = new Category();
 		when(categoryService.findByName("")).thenReturn(category);
 		ResponseEntity<Category> response = new ResponseEntity<Category>(category, HttpStatus.OK);
 		assertEquals(categoryRestController.getByName(""), response);
-
 		when(categoryService.findByName("sam")).thenReturn(null);
 		response = new ResponseEntity<Category>(HttpStatus.NOT_FOUND);
 		assertEquals(categoryRestController.getByName("sam"), response);

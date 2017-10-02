@@ -1,31 +1,51 @@
 <row>
-  <select [(ngModel)]="category" class="form-control">
-    <option *ngFor="let category of categories" [ngValue]="category" class="form-control">{{category.name}}</option>
-  </select>
-</row>
-<row>
-  <column sm="5">
-    <label>{{'createCategory'|translate}}</label>
+  <column sm="2"></column>
+  <column sm="10">
+    <row>
+      <column sm="3"><label>Категории товаров</label></column>
+      <column sm="3">
+        <select [(ngModel)]="category" class="form-control">
+          <option *ngFor="let category of categories" [ngValue]="category" class="form-control">{{category.name}}
+          </option>
+        </select>
+      </column>
+    </row>
+    <row>
+      <column sm="2"></column>
+      <column sm="3">
+        <label>{{'createCategory'|translate}}</label>
+      </column>
+    </row>
+    <row>
+      <column sm="3">
+        <label>{{'nameCategory'|translate}}</label>
+      </column>
+      <column sm="3">
+        <input *ngIf="!inSystem" type="text" [(ngModel)]="category.name" class="input-group"/>
+      </column>
+    </row>
+    <row>
+      <column sm="3">
+        <label>Изображение категории</label>
+      </column>
+      <column sm="3">
+        <input *ngIf="!inSystem" type="text" [(ngModel)]="category.urlPhoto" class="input-group"/>
+      </column>
+    </row>
+    <row>
+      <column sm="3">
+      </column>
+      <column sm="2">
+        <div class="button-group">
+          <button class="btn btn-primary btn-sm  selectButton" (click)="save()">{{'save'|translate}}</button>
+        </div>
+      </column>
+      <column sm="2">
+        <div class="button-group">
+          <button class="btn btn-primary btn-sm  selectButton" (click)="clear()">Очистить</button>
+        </div>
+      </column>
+    </row>
+    {{message}}
   </column>
 </row>
-<row>
-  <column sm="5">
-    <label>{{'nameCategory'|translate}}</label>
-  </column>
-  <column sm="7">
-    <input *ngIf="!inSystem" type="text" [(ngModel)]="category.name" class="input-group"/>
-  </column>
-</row>
-<row>
-  <column sm="3">
-    <div class="button-group">
-    </div>
-  </column>
-  <column sm="5">
-    <div class="button-group">
-      <button class="btn-group" (click)="save()">{{'save'|translate}}</button>
-    </div>
-  </column>
-</row>
-{{message}}
-

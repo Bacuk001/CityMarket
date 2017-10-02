@@ -1,25 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {browser, by, element, protractor} from 'protractor';
 
-import { RightNavigateComponent } from './right-navigate.component';
-
-describe('RightNavigateComponent', () => {
-  let component: RightNavigateComponent;
-  let fixture: ComponentFixture<RightNavigateComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ RightNavigateComponent ]
-    })
-    .compileComponents();
-  }));
+describe('OrderUserComponent', () => {
+  const inputPassword = element(by.id('inputPassword'));
+  const inputLogin = element(by.id('inputLogin'));
+  const loginButton = element(by.id('loginButton'));
+  const userName = element(by.id('userName'));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RightNavigateComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('enter password', () => {
+    inputPassword.sendKeys('123');
+    inputLogin.sendKeys('vasik');
+    loginButton.click();
+    const until = protractor.ExpectedConditions;
+    browser.wait(until.presenceOf(userName), 2000);
+    expect(userName.getText()).toEqual('vasik');
   });
 });
+
+
+
+
+

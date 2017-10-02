@@ -2,3 +2,5 @@
 /node_modules
 README.md
 npm-debug.log
+/dist/
+.editorconfig
