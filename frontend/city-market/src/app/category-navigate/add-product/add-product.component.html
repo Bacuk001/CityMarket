@@ -1,0 +1,39 @@
+{{message}}
+<row>
+  <column sm="4"></column>
+  <column><label>добавлить продукт</label></column>
+</row>
+<row>
+  <column sm="3"><label>продукты </label></column>
+  <column sm="5">
+    <select [(ngModel)]="product" class="form-control">
+      <option *ngFor="let product of products" [ngValue]="product" class="form-control">{{product.name}}</option>
+    </select>
+  </column>
+</row>
+<row>
+  <column sm="3"><label>изображение продукта</label></column>
+  <column sm="5">
+    <input type="text" [(ngModel)]="product.urlPhoto" class="form-control">
+  </column>
+  <column sm="2">
+    <span class="btn btn-default btn-file selectButton">Открыть файл
+    <input type="file" (change)="selectImage($event)" #fileInput/>
+    </span>
+  </column>
+</row>
+<row>
+  <column sm="3"><label>название продукта</label></column>
+  <column sm="5">
+    <input type="text" [(ngModel)]="product.name" class="form-control"/>
+  </column>
+</row>
+<row>
+  <column sm="2"></column>
+  <column sm="2">
+    <button class="btn btn-primary btn-sm  selectButton" (click)="save()">
+      {{'save'|translate}}
+    </button>
+  </column>
+</row>
+

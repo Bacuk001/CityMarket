@@ -1,0 +1,37 @@
+<row>
+  <column sm="2">
+  </column>
+  <column sm="10">
+    <row>
+      <column sm="3"><label>{{'nameUser'|translate}}</label></column>
+      <column sm="3"><label>адрес</label></column>
+      <column sm="3"><label>контакты</label></column>
+      <column sm="3"><label>статус</label></column>
+    </row>
+    <div *ngFor="let order of orders">
+        <row>
+          <column sm="3">
+            <label>{{order.nameUser}}</label>
+          </column>
+          <column sm="3">
+            <label>{{order.address}}</label>
+          </column>
+          <column sm="3">
+            <label>{{order.contacts}}</label>
+          </column>
+          <column sm="3" *ngIf="order.status!='Ожидание'">
+            <label>{{'processed'|translate}}</label>
+          </column>
+          <column sm="3" *ngIf="order.status=='Ожидание'">
+            <select [(ngModel)]="order.status" (ngModelChange)="selectStatus(order)" class="form-control">
+              <option *ngFor="let status of statusList" [ngValue]="status">{{status}}</option>
+            </select>
+          </column>
+        </row>
+      <row class="bottomBorder" *ngFor="let product of order.product">
+        <column sm="5">{{'nameProduct'|translate}}</column>
+        <column sm="7"><label>{{product.name}}</label></column>
+      </row>
+    </div>
+  </column>
+</row>

@@ -1,0 +1,26 @@
+.lineRow{
+  border-bottom: 1px solid gainsboro;
+  margin: 5px;
+}
+.buttonLog{
+  margin: 5px;
+}
+
+.selectButton {
+  margin-left: 15px;
+  margin-top: 5px;
+  padding-left: 5px;
+  font-size: 11px;
+  width: 90%;
+  background-color: black;
+  -webkit-transition: font-size 0.5s;
+  transition: font-size 0.5s;
+}
+
+.selectButton:hover {
+  background-color: gray;
+  font-size: 15px;
+}
+input{
+  margin: 2px;
+}

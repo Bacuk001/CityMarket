@@ -1,0 +1,21 @@
+.bk {
+    background-color: lightblue;
+}
+
+.bk2 {
+    background-color: blue;
+}
+
+.bk3 {
+    background-color: red;
+}
+
+.bk4 {
+    background-color: green;
+}
+.topComponent{
+  padding: 10px;
+}
+.centerComponent{
+  padding-left: 10px;
+}

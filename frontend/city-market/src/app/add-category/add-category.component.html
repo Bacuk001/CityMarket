@@ -1,0 +1,47 @@
+<row>
+  <column sm="2"></column>
+  <column sm="10">
+    <row>
+      <column sm="3"><label>категории товаров</label></column>
+      <column sm="5">
+        <select [(ngModel)]="category" class="form-control">
+          <option *ngFor="let category of categories" [ngValue]="category" class="form-control">{{category.name}}
+          </option>
+        </select>
+      </column>
+    </row>
+    <row>
+      <column sm="2"></column>
+      <column sm="3">
+        <label>{{'createCategory'|translate}}</label>
+      </column>
+    </row>
+    <row>
+      <column sm="3">
+        <label>{{'nameCategory'|translate}}</label>
+      </column>
+      <column sm="5">
+        <input *ngIf="!inSystem" type="text" [(ngModel)]="category.name" class="form-control"/>
+      </column>
+    </row>
+    <row>
+      <column sm="3">
+        <label>изображение категории</label>
+      </column>
+      <column sm="5">
+        <input *ngIf="!inSystem" type="text" [(ngModel)]="category.urlPhoto" class="form-control"/>
+      </column>
+    </row>
+    <row>
+      <column sm="3">
+      </column>
+      <column sm="2">
+          <button class="btn btn-primary btn-sm  selectButton" (click)="save()">{{'save'|translate}}</button>
+      </column>
+      <column sm="2">
+          <button class="btn btn-primary btn-sm  selectButton" (click)="clear()">Очистить</button>
+      </column>
+    </row>
+    {{message}}
+  </column>
+</row>
