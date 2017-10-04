@@ -1,0 +1,23 @@
+.bottomBorder {
+  border-bottom: 1px solid darkgrey;
+}
+
+.selectButton {
+  margin-left: 15px;
+  margin-top: 5px;
+  padding-left: 5px;
+  font-size: 11px;
+  width: 90%;
+  background-color: black;
+  -webkit-transition: font-size 0.5s;
+  transition: font-size 0.5s;
+}
+
+.selectButton:hover {
+  background-color: gray;
+  font-size: 15px;
+}
+
+select {
+  margin: 2px;
+}

@@ -5,7 +5,7 @@ use city_market;
 
 -- Tаблица  магазинов.
 create table if not exists market(
-    id int(11),
+    id int(11) not null auto_increment,
     name varchar(11) default null,
     address varchar(20) default null,
     about varchar(255) default null,
@@ -14,7 +14,7 @@ create table if not exists market(
 
 -- Tаблица  складов.
 create table if not exists stock(
-    id int(11),
+    id int(11) not null auto_increment,
     name varchar(11) default null,
     address varchar(20) default null,
     about varchar(255) default null,
@@ -62,7 +62,7 @@ create table if not exists user_role (
     primary key (id)
  );
  
-  -- связь категорий товаров с магазинами.
+  -- Связь категорий товаров с магазинами.
 create table if not exists category_market(
     category_id int(11) default null,
     merket_id int(11) default null,
@@ -79,7 +79,7 @@ create table if not exists category_market(
     primary key (id)
  );
  
- -- связь товаров с категориями.
+ -- Связь товаров с категориями.
 create table if not exists cetegory_product(
     category_id int(11) default null,
     product_id int(11) default null,

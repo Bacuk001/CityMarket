@@ -1,0 +1,22 @@
+.description {
+  border-bottom: 1px solid darkgrey;
+}
+
+.sizeImg {
+  width: 120px;
+}
+
+.button-close {
+  margin-left: 15px;
+  padding-left: 5px;
+  font-size: 11px;
+  width: 100%;
+  background-color: black;
+  -webkit-transition: font-size 0.5s;
+  transition: font-size 0.5s;
+}
+
+.button-closes:hover {
+  background-color: gray;
+  font-size: 15px;
+}

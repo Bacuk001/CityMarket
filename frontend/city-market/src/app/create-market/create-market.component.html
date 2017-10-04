@@ -1,0 +1,36 @@
+<row>
+  <column sm="2"></column>
+  <column sm="10">
+    <row>
+      {{message}}
+    </row>
+    <row>
+      <column sm="3"><label>список магазинов:</label></column>
+      <column sm="5">
+        <select [(ngModel)]="market" class="form-control">
+          <option *ngFor="let mark of markets" [ngValue]="mark" class="form-control">{{mark.name}}</option>
+        </select>
+      </column>
+    </row>
+    <row>
+      <column sm="3"><label>название магазина</label></column>
+      <column sm="5"><input type="text" [(ngModel)]="market.name" placeholder="название магазина" class="form-control"></column>
+    </row>
+    <row>
+      <column sm="3"><label>адрес</label></column>
+      <column sm="5"><input type="text" [(ngModel)]="market.address" placeholder="адресс магазин" class="form-control"></column>
+    </row>
+    <row>
+      <column sm="3"><label>о магазине</label></column>
+      <column sm="5"><input type="text" [(ngModel)]="market.about" class="form-control"></column>
+    </row>
+    <row>
+      <column sm="2">
+        <button class="btn btn-primary btn-sm  selectButton" (click)="createMarket()">создать</button>
+      </column>
+      <column sm="2">
+        <button class="btn btn-primary btn-sm  selectButton" (click)="clearEditMarket()">очистить</button>
+      </column>
+    </row>
+  </column>
+</row>

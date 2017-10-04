@@ -1,0 +1,54 @@
+<row>
+  {{message}}
+</row>
+<row>
+  <column sm="2"></column>
+  <column sm="10">
+  <row>
+    <column sm="3"></column>
+    <column sm="9"><label>{{product.name}}</label></column>
+  </row>
+  <row>
+    <column sm="3">
+      <label> {{'nameDescription'|translate}}</label>
+    </column>
+    <column sm="5">
+      <label>значение</label>
+    </column>
+  </row>
+  <row *ngFor="let description of descriptions; let indexDes = index">
+    <column sm="3">
+      <label (click)="selectedEditDescription(description,indexDes)">{{description.name}}</label>
+    </column>
+    <column sm="9">
+      <label>{{description.value}}</label>
+    </column>
+  </row>
+  <row>
+    <column sm="3">
+      <input [(ngModel)]="descriptionCreate.name" class="form-control">
+    </column>
+    <column sm="3">
+      <input [(ngModel)]="descriptionCreate.value" class="form-control">
+    </column>
+  </row>
+  <row>
+    <column>
+      <button class="btn btn-primary btn-sm  selectButton"><label (click)='addDescription()'>{{'addDescription'|translate}}</label>
+      </button>
+    </column>
+    <column *ngIf="!visibleChange">
+      <button class="btn btn-primary btn-sm  selectButton"><label
+        (click)='saveDescriptions()'>{{'save'|translate}}</label></button>
+    </column>
+    <column *ngIf="visibleChange">
+      <button class="btn btn-primary btn-sm  selectButton"><label
+        (click)='changeDescription()'>{{'change'|translate}}</label></button>
+    </column>
+    <column *ngIf="visibleChange">
+      <button class="btn btn-primary btn-sm  selectButton"><label
+        (click)='deleteDescription()'>{{'delete'|translate}}</label></button>
+    </column>
+  </row>
+  </column>
+</row>
