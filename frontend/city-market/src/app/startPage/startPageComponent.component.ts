@@ -29,12 +29,7 @@ export class StartPageComponent implements OnInit {
    *
    * @param {Category} category
    */
-  selectCategory(category: Category) {
-    this.accessService.editPriceAndStock = false;
-    this.categoryService.setCategory(category);
-    this.productService.getPromiseProducts(0)
-      .catch(error => this.message = error);
-    this.router.navigateByUrl('/category/listProduct')
-      .then().catch((error => this.message = error))
+  selectCategory() {
+    alert('Для просмотра необходимо выбрать магазин!');
   }
 }

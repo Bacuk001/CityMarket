@@ -7,7 +7,7 @@
         <img *ngIf="category.urlPhoto!=null" [src]="category.urlPhoto" class="sizeImg">
       </row>
       <row>
-        <button class="btn btn-primary btn-sm selectCategory" (click)="selectCategory(category)">{{category.name}}
+        <button class="btn btn-primary btn-sm selectCategory" (click)="selectCategory()">{{category.name}}
         </button>
       </row>
     </column>

@@ -1,4 +1,4 @@
-package by.intexsoft.configuration.rest;
+package by.intexsoft.rest;
 
 import java.util.List;
 import org.slf4j.Logger;
@@ -12,15 +12,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import by.intexsoft.configuration.service.MarketService;
-import by.intexsoft.configuration.service.PriceServicse;
-import by.intexsoft.configuration.service.ProductService;
-import by.intexsoft.configuration.service.StockService;
+
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Price;
 import by.intexsoft.entity.Product;
 import by.intexsoft.entity.Stock;
 import by.intexsoft.repository.PriceRepository;
+import by.intexsoft.service.MarketService;
+import by.intexsoft.service.PriceServicse;
+import by.intexsoft.service.ProductService;
+import by.intexsoft.service.StockService;
 
 /**
  * A controller that processes requests for prices information The controller
@@ -34,6 +35,12 @@ import by.intexsoft.repository.PriceRepository;
  */
 @RestController
 public class PriceRestController {
+	private static final String PRICES_NOT_FOND = "Prices not fond.";
+	private static final String PRICE_NOT_SAVE = "Price do not save.";
+	private static final String SAVE_PRICE = "Save price product for stock.";
+	private static final String APPLICATION_JSON = "application/json; charset=UTF-8";
+	private static final String CONTENT_TYPE = "Content-Type";
+	private static final String FIND_PRICES_BY_PRODUCT_AND_MARKET = "Find prices by product and market.";
 	private static final Logger LOGGER = LoggerFactory.getLogger(PriceRestController.class);
 	private static final String MESSAGE = "Message";
 	private PriceServicse priceServicse;
@@ -59,15 +66,15 @@ public class PriceRestController {
 	@RequestMapping(value = "/prices/product/{idProduct}/market/{idMarket}", method = RequestMethod.GET)
 	public ResponseEntity<List<Price>> getPriseByProductAndMarket(@PathVariable("idProduct") int idProduct,
 			@PathVariable("idMarket") int idmarket) {
-		LOGGER.info("Find prices by product and market.");
+		LOGGER.info(FIND_PRICES_BY_PRODUCT_AND_MARKET);
 		Product product = productService.findOne(idProduct);
 		Market market = marketService.findOne(idmarket);
 		List<Stock> stocks = stockService.finfByMasrket(market);
 		List<Price> prices = priceServicse.findByProductAndStocks(product, stocks);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json; charset=UTF-8");
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
 		if (prices == null) {
-			headers.add(MESSAGE, "Prices not fond.");
+			headers.add(MESSAGE, PRICES_NOT_FOND);
 			return new ResponseEntity<List<Price>>(headers, HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<List<Price>>(prices, headers, HttpStatus.OK);
@@ -78,12 +85,12 @@ public class PriceRestController {
 	 */
 	@RequestMapping(value = "/price/save", method = RequestMethod.POST)
 	public ResponseEntity<Price> save(@RequestBody Price price) {
-		LOGGER.info("Save price product for stock.");
+		LOGGER.info(SAVE_PRICE);
 		price = priceServicse.save(price);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json; charset=UTF-8");
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
 		if (price == null) {
-			headers.add(MESSAGE, "Price do not save.");
+			headers.add(MESSAGE, PRICE_NOT_SAVE);
 			return new ResponseEntity<>(headers, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Price>(price, headers, HttpStatus.OK);
@@ -100,14 +107,14 @@ public class PriceRestController {
 	@RequestMapping(value = "/prices/product/{idProduct}/stock/{idStock}", method = RequestMethod.GET)
 	public ResponseEntity<List<Price>> getPriseByProductAndStock(@PathVariable("idProduct") int idProduct,
 			@PathVariable("idStock") int idStock) {
-		LOGGER.info("Find prices by product and market.");
+		LOGGER.info(FIND_PRICES_BY_PRODUCT_AND_MARKET);
 		Product product = productService.findOne(idProduct);
 		Stock stock = stockService.findOne(idStock);
 		List<Price> prices = priceServicse.findByProductAndStock(product, stock);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json; charset=UTF-8");
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
 		if (prices == null) {
-			headers.add(MESSAGE, "Prices not fond.");
+			headers.add(MESSAGE, PRICES_NOT_FOND);
 			return new ResponseEntity<List<Price>>(headers, HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<List<Price>>(prices, headers, HttpStatus.OK);

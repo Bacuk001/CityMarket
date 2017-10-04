@@ -67,7 +67,7 @@ export class CreateUserComponent implements OnInit {
    * The method loads all markets registered in the system.
    */
   private loadMarkets() {
-    this.marketService.getPromiseMarkets()
+    this.marketService.loadMarkets()
       .then(resp => this.markets = resp)
       .catch(error => this.message = error);
   }
@@ -95,9 +95,8 @@ export class CreateUserComponent implements OnInit {
    *
    * @param {User} user
    */
-  private loadPassword(user: User) {
-
-    this.user=user;
+  public loadPassword(user: User) {
+    this.user = user;
     this.authService.getUserPassword(user.id)
       .then(resp => this.user.password = resp)
       .catch(error => this.message = error);
@@ -123,8 +122,14 @@ export class CreateUserComponent implements OnInit {
     for (let index = 0; index < this.roles.length; index++)
       if (this.checkedRole[index]) this.user.roles.push(this.roles[index]);
     this.authService.saveUser(this.user)
-      .then(resp => this.message = resp)
-      .catch(error => this.message = error);
+      .then(resp => {
+        this.message = resp;
+        setTimeout(() => this.message = '', 1000);
+      })
+      .catch(error => {
+        this.message = error;
+        setTimeout(() => this.message = '', 1000);
+      });
   }
 
   /**

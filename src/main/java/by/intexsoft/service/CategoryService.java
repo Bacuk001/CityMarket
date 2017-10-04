@@ -1,6 +1,7 @@
-package by.intexsoft.configuration.service;
+package by.intexsoft.service;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import by.intexsoft.entity.Category;
@@ -16,7 +17,8 @@ import by.intexsoft.repository.CategoryRepository;
 public class CategoryService {
 	private CategoryRepository categoryRepository;
 
-	CategoryService(CategoryRepository categoryRepository) {
+	@Autowired
+	public CategoryService(CategoryRepository categoryRepository) {
 		this.categoryRepository = categoryRepository;
 	}
 

@@ -1,6 +1,7 @@
-.bottomBorder{
-  border-bottom: 1px solid darkgrey ;
+.bottomBorder {
+  border-bottom: 1px solid darkgrey;
 }
+
 .selectButton {
   margin-left: 15px;
   margin-top: 5px;
@@ -17,3 +18,6 @@
   font-size: 15px;
 }
 
+select {
+  margin: 2px;
+}

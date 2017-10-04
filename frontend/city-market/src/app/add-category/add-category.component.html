@@ -2,8 +2,8 @@
   <column sm="2"></column>
   <column sm="10">
     <row>
-      <column sm="3"><label>Категории товаров</label></column>
-      <column sm="3">
+      <column sm="3"><label>категории товаров</label></column>
+      <column sm="5">
         <select [(ngModel)]="category" class="form-control">
           <option *ngFor="let category of categories" [ngValue]="category" class="form-control">{{category.name}}
           </option>
@@ -20,30 +20,26 @@
       <column sm="3">
         <label>{{'nameCategory'|translate}}</label>
       </column>
-      <column sm="3">
-        <input *ngIf="!inSystem" type="text" [(ngModel)]="category.name" class="input-group"/>
+      <column sm="5">
+        <input *ngIf="!inSystem" type="text" [(ngModel)]="category.name" class="form-control"/>
       </column>
     </row>
     <row>
       <column sm="3">
-        <label>Изображение категории</label>
+        <label>изображение категории</label>
       </column>
-      <column sm="3">
-        <input *ngIf="!inSystem" type="text" [(ngModel)]="category.urlPhoto" class="input-group"/>
+      <column sm="5">
+        <input *ngIf="!inSystem" type="text" [(ngModel)]="category.urlPhoto" class="form-control"/>
       </column>
     </row>
     <row>
       <column sm="3">
       </column>
       <column sm="2">
-        <div class="button-group">
           <button class="btn btn-primary btn-sm  selectButton" (click)="save()">{{'save'|translate}}</button>
-        </div>
       </column>
       <column sm="2">
-        <div class="button-group">
           <button class="btn btn-primary btn-sm  selectButton" (click)="clear()">Очистить</button>
-        </div>
       </column>
     </row>
     {{message}}

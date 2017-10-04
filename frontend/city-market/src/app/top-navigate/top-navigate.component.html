@@ -7,9 +7,11 @@
       <li *ngIf="access.viewCategorySelect"><a (click)="navigate('category')">{{'category'|translate}}</a></li>
     </ul>
     <div class="navbar-form navbar-right" role="search">
-      <a class="navbar-brand">Магазин</a>
+      <a class="navbar-brand">магазин</a>
       <select id="selectMarket" [(ngModel)]="market" (ngModelChange)="selectMarket()" class="form-control">
-        <option id="optionMarket" *ngFor="let mark of markets" [ngValue]="mark" class="form-control">{{mark.name}}</option>
+        <option id="optionMarket" *ngFor="let mark of marketService.getMarkets()" [ngValue]="mark" class="form-control">
+          {{mark.name}}
+        </option>
       </select>
       <select *ngIf="false" name="select" #t (change)=" selectLanguage(t.value)" class="form-control">
         <option value="ru">Русский</option>
@@ -29,8 +31,8 @@
   <div *ngIf="access.managerShopBar">
     <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
       <ul class="nav navbar-nav">
-        <li><a (click)="navigate('signStock')">  {{'signStock'|translate}}</a></li>
-        <li><a (click)="navigate('orderListMarket')">  {{'listOrder'|translate}}</a></li>
+        <li><a (click)="navigate('signStock')"> {{'signStock'|translate}}</a></li>
+        <li><a (click)="navigate('orderListMarket')"> {{'listOrder'|translate}}</a></li>
       </ul>
     </div>
   </div>

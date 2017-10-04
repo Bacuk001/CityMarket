@@ -1,4 +1,4 @@
-package by.intexsoft.configuration.service;
+package by.intexsoft.service;
 
 import java.util.List;
 

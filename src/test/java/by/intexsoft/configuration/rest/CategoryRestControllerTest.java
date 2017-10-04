@@ -12,8 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import by.intexsoft.configuration.service.CategoryService;
+
 import by.intexsoft.entity.Category;
+import by.intexsoft.rest.CategoryRestController;
+import by.intexsoft.service.CategoryService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CategoryRestControllerTest {

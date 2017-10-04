@@ -69,7 +69,8 @@ export class AuthenticationService implements IAuthenticationService {
         if (res.status != 200) return error(ERROR_AUTHENTICATION);
         this.user = res.json();
         this.token = res.headers.get(HEADERS_PROPERTY_NAME_TOKEN);
-        this.openComponent();
+        this.marketService.setToken(this.token);
+        this.definitionOfAccess();
         return response(this.user);
       }, () => error(ERROR_AUTHENTICATION)));
   }
@@ -114,7 +115,7 @@ export class AuthenticationService implements IAuthenticationService {
   /**
    * The method opens and closes the components for users.
    */
-  private openComponent() {
+  private definitionOfAccess() {
     this.isSign = true;
     const roles: Role[] = this.user.roles;
     for (let role of roles) {

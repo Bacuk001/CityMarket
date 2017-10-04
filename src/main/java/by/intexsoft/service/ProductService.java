@@ -1,9 +1,10 @@
-package by.intexsoft.configuration.service;
+package by.intexsoft.service;
 
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,8 @@ public class ProductService {
 	private StockRepository stockRepository;
 	private CategoryRepository categoryRepository;
 
-	ProductService(CategoryRepository categoryRepository, StockRepository stockRepository,
+	@Autowired
+	public ProductService(CategoryRepository categoryRepository, StockRepository stockRepository,
 			ProductRepository productRepository) {
 		this.productRepository = productRepository;
 		this.stockRepository = stockRepository;

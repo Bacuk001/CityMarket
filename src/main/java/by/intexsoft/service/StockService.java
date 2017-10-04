@@ -1,8 +1,10 @@
-package by.intexsoft.configuration.service;
+package by.intexsoft.service;
 
 import java.util.List;
 
 import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Stock;
@@ -23,7 +25,8 @@ public class StockService {
 	private StockRepository stockRepository;
 	private MarketRepository marketRepository;
 
-	StockService(MarketRepository marketRepository, StockRepository stockRepository) {
+	@Autowired
+	public StockService(MarketRepository marketRepository, StockRepository stockRepository) {
 		this.stockRepository = stockRepository;
 		this.marketRepository = marketRepository;
 	}

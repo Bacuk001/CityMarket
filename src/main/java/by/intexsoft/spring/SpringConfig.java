@@ -1,4 +1,4 @@
-package by.intexsoft.configuration.spring;
+package by.intexsoft.spring;
 
 import java.util.List;
 import java.util.Properties;
@@ -6,6 +6,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -29,6 +30,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories("by.intexsoft.repository")
+@ComponentScan("by.intexsoft.service")
 @PropertySource(value = { "classpath:resources/application.properties" })
 public class SpringConfig {
 	@Autowired

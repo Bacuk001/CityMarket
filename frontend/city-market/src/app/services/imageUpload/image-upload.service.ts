@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {IImageUploadService} from "./iimage-upload.service";
 import {Http} from "@angular/http";
 
-const IMAGE_DOWNLOAD_SUCCESS: string = 'Image  download!';
-const IMAGE_DO_NOT_DOWNLOAD: string = 'File do not download!';
+const IMAGE_DOWNLOAD_SUCCESS: string = 'Изображение загруженно!';
+const IMAGE_DO_NOT_DOWNLOAD: string = 'Не загруженно!';
 const NAME_FORM_PROPERTY: string = 'file';
 const URL: string = '/CityMarket/api/image';
 

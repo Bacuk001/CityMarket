@@ -12,8 +12,10 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import by.intexsoft.configuration.service.MarketService;
+
 import by.intexsoft.entity.Market;
+import by.intexsoft.rest.MarketRestController;
+import by.intexsoft.service.MarketService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MarketRestControllerTest {

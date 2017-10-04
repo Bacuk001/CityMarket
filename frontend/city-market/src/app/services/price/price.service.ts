@@ -7,9 +7,9 @@ import {IPriceService} from './iprice.service';
 import {IAuthenticationService} from '../authentication/iauthentication.service';
 
 const URL = '/CityMarket/api/price';
-const NOT_DOWNLOAD = 'Error download!';
+const NOT_DOWNLOAD = 'Ошибка загрузки!';
 const CONTENT_TYPE_VALUE = 'application/json;charset=utf-8';
-const NOT_SAVE = 'Price do not save!';
+const NOT_SAVE = 'Не сохранено!';
 
 /**
  *  Class describing the basic methods for working with the prices of products.

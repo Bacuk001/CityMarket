@@ -1,6 +1,7 @@
-.borderStyle{
+.borderStyle {
   border-bottom: 1px solid black;
 }
+
 .selectCategory {
   margin-left: 15px;
   margin-top: 5px;
@@ -16,6 +17,11 @@
   background-color: gray;
   font-size: 15px;
 }
+
 .sizeImg {
   width: 120px;
+}
+
+input {
+  margin: 2px;
 }
