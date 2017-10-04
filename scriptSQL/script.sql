@@ -34,7 +34,6 @@ create table if not exists market_stock (
 create table if not exists user (  
     id int(11) not null auto_increment,
     name varchar(15) default null,
-    password varchar(15) default null,
     market_id int(11) default null,
     stock_id int(11) default null, 
     foreign key (market_id) references market(id),
