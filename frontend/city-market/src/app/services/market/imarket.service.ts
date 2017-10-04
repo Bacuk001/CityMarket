@@ -7,7 +7,7 @@ export interface IMarketService {
   /**
    * The method generates a query to obtain a list of markets created in the application.
    */
-  getPromiseMarkets();
+  getMarkets();
 
   /**
    * The method returns the store that was selected for work.
@@ -23,4 +23,10 @@ export interface IMarketService {
    * The method generates a request to store the store.
    */
   saveMarket(market: Market);
+
+  /**
+   * The method sends a request to the server to get all the markets registered in the system.
+   */
+  loadMarkets();
+  setToken(token:string);
 }

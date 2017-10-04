@@ -11,11 +11,12 @@ import {resolveReflectiveProviders} from "@angular/core/src/di/reflective_provid
 import {Price} from "../../entities/price";
 
 const URL = '/CityMarket/api/product';
-const STATUS_SAVE_SUCCESS = 'Save successfully!';
+const STATUS_SAVE_SUCCESS = 'Сохранено!';
 const CONTENT_TYPE_VALUE = 'application/json;charset=utf-8';
 const TOKEN_NAME_FIELD_HEADERS = 'X-AUTH-TOKEN';
-const ERROR_LOAD = 'Error load product!';
-const NOT_SAVE = 'Description do not save!'
+const ERROR_LOAD = 'Ошибка загрузки!';
+const NOT_SAVE = 'Не сохранено!';
+const NOT_PRICE = 'Нет в наличии!';
 
 /**
  * The class that defines the methods of interaction with products in the application.
@@ -100,9 +101,9 @@ export class ProductService implements IProductService {
    * @param {number} count
    */
   counterPage(count: number) {
-    let countPages = Math.trunc(count / 10);
-    if (count % 10 > 0) countPages++;
-    this.countPageProduct = new Array(countPages);
+    let countPage = Math.trunc(count / 10);
+    if (count % 10 > 0) countPage++;
+    this.countPageProduct = new Array(countPage);
   }
 
   /**
@@ -177,7 +178,7 @@ export class ProductService implements IProductService {
         return;
       }
     }
-    product.priceView = 'Нет в наличии';
+    product.priceView = NOT_PRICE;
   }
 
   /**

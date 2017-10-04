@@ -5,7 +5,7 @@ import {Category} from '../../entities/category';
 import {Headers} from '@angular/http';
 import {IAuthenticationService} from "../authentication/iauthentication.service";
 
-const ERROR = 'Error download categories!';
+const ERROR = 'Ошибка загрузки катеории';
 const URL = '/CityMarket/api/categor';
 const TOKEN_NAME_FIELD_HEADERS = 'X-AUTH-TOKEN';
 const CONTENT_TYPE_VALUE = 'application/json;charset=utf-8';

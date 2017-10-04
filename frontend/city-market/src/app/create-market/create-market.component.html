@@ -5,7 +5,7 @@
       {{message}}
     </row>
     <row>
-      <column sm="2">Список магазинов:</column>
+      <column sm="3"><label>список магазинов:</label></column>
       <column sm="5">
         <select [(ngModel)]="market" class="form-control">
           <option *ngFor="let mark of markets" [ngValue]="mark" class="form-control">{{mark.name}}</option>
@@ -13,23 +13,23 @@
       </column>
     </row>
     <row>
-      <column sm="2">название магазина</column>
-      <column sm="5"><input type="text" [(ngModel)]="market.name" placeholder="Название магазина"></column>
+      <column sm="3"><label>название магазина</label></column>
+      <column sm="5"><input type="text" [(ngModel)]="market.name" placeholder="название магазина" class="form-control"></column>
     </row>
     <row>
-      <column sm="2">Адрес</column>
-      <column sm="5"><input type="text" [(ngModel)]="market.address" placeholder="адресс магазин"></column>
+      <column sm="3"><label>адрес</label></column>
+      <column sm="5"><input type="text" [(ngModel)]="market.address" placeholder="адресс магазин" class="form-control"></column>
     </row>
     <row>
-      <column sm="2">О сладе</column>
-      <column sm="5"><input type="text" [(ngModel)]="market.about"></column>
+      <column sm="3"><label>о магазине</label></column>
+      <column sm="5"><input type="text" [(ngModel)]="market.about" class="form-control"></column>
     </row>
     <row>
       <column sm="2">
-        <button class="btn btn-primary btn-sm  selectButton" (click)="createMarket()">Создать</button>
+        <button class="btn btn-primary btn-sm  selectButton" (click)="createMarket()">создать</button>
       </column>
       <column sm="2">
-        <button class="btn btn-primary btn-sm  selectButton" (click)="claerEditMarket()">Очистить</button>
+        <button class="btn btn-primary btn-sm  selectButton" (click)="clearEditMarket()">очистить</button>
       </column>
     </row>
   </column>

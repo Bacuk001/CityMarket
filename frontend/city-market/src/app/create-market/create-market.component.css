@@ -13,3 +13,9 @@
   background-color: gray;
   font-size: 15px;
 }
+input{
+  margin: 2px;
+}
+select{
+  margin: 2px;
+}

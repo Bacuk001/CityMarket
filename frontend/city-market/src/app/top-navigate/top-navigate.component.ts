@@ -37,11 +37,7 @@ export class TopNavigateComponent implements OnInit {
    * When the components are initialized, all markets are loaded.
    */
   ngOnInit() {
-    this.marketService.getPromiseMarkets()
-      .then((resp) => {
-        this.markets = resp;
-        this.selectDefaultMarket(this.markets[0])
-      });
+    this.marketService.loadMarkets();
   }
 
   /**
@@ -70,14 +66,5 @@ export class TopNavigateComponent implements OnInit {
    */
   selectLanguage(selected) {
     this.translate.use(selected);
-  }
-
-  /**
-   * Market that is initialized by default.
-   *
-   * @param {Market} market
-   */
-  selectDefaultMarket(market: Market) {
-    this.marketService.setSelectMarket(market);
   }
 }

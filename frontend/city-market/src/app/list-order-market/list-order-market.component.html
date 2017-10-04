@@ -4,9 +4,9 @@
   <column sm="10">
     <row>
       <column sm="3"><label>{{'nameUser'|translate}}</label></column>
-      <column sm="3"><label>Адрес</label></column>
-      <column sm="3"><label>Сонтакты</label></column>
-      <column sm="3"><label>Статус</label></column>
+      <column sm="3"><label>адрес</label></column>
+      <column sm="3"><label>контакты</label></column>
+      <column sm="3"><label>статус</label></column>
     </row>
     <div *ngFor="let order of orders">
         <row>
@@ -23,7 +23,7 @@
             <label>{{'processed'|translate}}</label>
           </column>
           <column sm="3" *ngIf="order.status=='Ожидание'">
-            <select [(ngModel)]="order.status" (ngModelChange)="selectStatus(order)">
+            <select [(ngModel)]="order.status" (ngModelChange)="selectStatus(order)" class="form-control">
               <option *ngFor="let status of statusList" [ngValue]="status">{{status}}</option>
             </select>
           </column>

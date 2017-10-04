@@ -7,9 +7,9 @@ import {IAuthenticationService} from "../authentication/iauthentication.service"
 const URL = '/CityMarket/api/order';
 const CONTENT_TYPE_VALUE = 'application/json;charset=utf-8';
 const TOKEN_NAME_FIELD_HEADERS = 'X-AUTH-TOKEN';
-const SAVE_SUCCESS = 'The saving was successful!';
-const NOT_SAVE = 'Description do not save!';
-const ERROR_LOAD = 'Error load order!';
+const SAVE_SUCCESS = 'Сохранено!';
+const NOT_SAVE = 'Не сохранено!';
+const ERROR_LOAD = 'Ошибка загрузки!';
 
 /**
  * Class describing methods for working with product orders.

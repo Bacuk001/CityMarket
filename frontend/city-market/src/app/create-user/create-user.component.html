@@ -1,48 +1,63 @@
 <row>
-  <column sm="1"></column>
-  <column sm="11">
+  <column sm="2"></column>
+  <column sm="10">
     <row>
-      <column><label>Создать вользоателя:</label></column>
+      <column sm="4"></column>
+      <column cm="3"><label>создать пользователя:</label></column>
     </row>
     <row>
-      <select [(ngModel)]="user" (ngModelChange)="loadPassword(user)" class="form-control">
-        <option *ngFor="let user of users" [ngValue]="user" class="form-control">{{user.name}}</option>
-      </select>
-      <div *ngIf="user.stock!=null">{{user.stock.name}}</div>
-      <div *ngIf="user.market!=null">{{user.market.name}}</div>
+      <column sm="3">
+        <label> пользователи в системе:</label>
+      </column>
+      <column sm="5">
+        <select [(ngModel)]="user" (ngModelChange)="loadPassword(user)" class="form-control">
+          <option *ngFor="let user of users" [ngValue]="user" class="form-control">{{user.name}}</option>
+        </select>
+      </column>
+      <div *ngIf="user.stock!=null"><label> склад:{{user.stock.name}}</label></div>
+      <div *ngIf="user.market!=null"><label> магазин:{{user.market.name}}</label></div>
     </row>
     <row>
-      <column sm="3">имя пользователя:</column>
-      <column sm="3"><input type="text" [(ngModel)]="user.name" placeholder="имя пользователя"></column>
+      <column sm="3"><label>имя пользователя:</label></column>
+      <column sm="5"><input type="text" [(ngModel)]="user.name" placeholder="имя пользователя" class="form-control">
+      </column>
     </row>
     <row>
-      <column sm="3">пароль:</column>
-      <column sm="3"><input type="text" [(ngModel)]="user.password" placeholder="пароль для входа"></column>
+      <column sm="3"><label>пароль:</label></column>
+      <column sm="5"><input type="text" [(ngModel)]="user.password" placeholder="пароль" class="form-control"></column>
     </row>
     <row>
-      <column>
-        <label sm="4">Выберите магазин</label>
-        <select [(ngModel)]="user.market">
+      <column sm="3">
+        <label>выберите магазин</label>
+      </column>
+      <column sm="5">
+        <select [(ngModel)]="user.market" class="form-control">
           <option *ngFor="let market of markets" [ngValue]="market">{{market.name}}</option>
         </select>
       </column>
-      <column sm="4">
-        <label>Выберите склад</label>
-        <select [(ngModel)]="user.stock">
+    </row>
+    <row>
+      <column sm="3">
+        <label>выберите склад</label>
+      </column>
+      <column sm="5">
+        <select [(ngModel)]="user.stock" class="form-control">
           <option *ngFor="let stock of stocks" [ngValue]="stock">{{stock.name}}</option>
         </select>
       </column>
-      <column sm="4">
-        <row *ngFor="let role of roles; let index = index">
-          <input type="checkbox" [(ngModel)]="checkedRole[index]"><label>{{role.name}}</label>
-        </row>
+    </row>
+    <row>
+      <column sm="3" *ngFor="let role of roles; let index = index">
+        <input type="checkbox" [(ngModel)]="checkedRole[index]"><label>{{role.name|translate}}</label>
       </column>
     </row>
     <row>
-      <button (click)="createUser()">отправить</button>
-    </row>
-    <row>
-      <button (click)="clearFields()">{{'chancel'|translate}}</button>
+      <column sm="2">
+        <button class="btn btn-primary btn-sm  selectButton" (click)="createUser()">отправить</button>
+      </column>
+      <column sm="2">
+        <button class="btn btn-primary btn-sm  selectButton" (click)="clearFields()">очистить</button>
+      </column>
     </row>
     {{message}}
   </column>

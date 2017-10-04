@@ -17,7 +17,7 @@ describe('TopNavigateComponent', () => {
     const until = protractor.ExpectedConditions;
     browser.wait(until.presenceOf(listProduct), 3000);
     listProduct.click();
-    expect(orderTitle.getText()).toEqual('Заявка на Приобретение товара');
+    expect(orderTitle.getText()).toEqual('заявка на приобретение товара');
   });
 });
 

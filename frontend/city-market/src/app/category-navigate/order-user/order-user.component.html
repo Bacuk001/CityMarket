@@ -1,7 +1,7 @@
 <row>
   <column sm="4"></column>
   <column sm="8">
-    <label class="borderStyle" id="orderTitle">Заявка на Приобретение товара</label>
+    <label class="borderStyle" id="orderTitle">заявка на приобретение товара</label>
   </column>
 </row>
 <row>
@@ -21,39 +21,39 @@
       </column>
     </row>
     <row *ngFor="let price of prices">
-      <column class="borderStyle" sm="2"><label>ценa товара:</label></column>
-      <column class="borderStyle" sm="2"><label>{{price.price}}</label></column>
+      <column  sm="3"><label>ценa товара:</label></column>
+      <column  sm="2"><label>{{price.price}} руб</label></column>
     </row>
     <row>
-      <column sm="4">
-        <label>Введите ваше имя:</label>
+      <column sm="3">
+        <label>введите Ваше имя:</label>
       </column>
-      <column sm="4">
-        <input id="nameOrderUser" type="text" [(ngModel)]="order.nameUser" placeholder="Введите Ваше имя">
-      </column>
-    </row>
-    <row>
-      <column sm="4">
-        <label>Контактный номер телефона:</label>
-      </column>
-      <column sm="4">
-        <input id="userContacts" type="text" [(ngModel)]="order.contacts" placeholder="Введите Ваш контактный телефон!">
+      <column sm="5">
+        <input id="nameOrderUser" type="text" [(ngModel)]="order.nameUser" placeholder="введите Ваше имя" class="form-control">
       </column>
     </row>
     <row>
-      <column sm="4">
-        <label>Адрес доставки товара:</label>
+      <column sm="3">
+        <label>контактный номер телефона:</label>
       </column>
-      <column sm="4">
-        <input id="userAddress" type="text" [(ngModel)]="order.address" placeholder="Адрес доставки товара">
+      <column sm="5">
+        <input id="userContacts" type="text" [(ngModel)]="order.contacts" placeholder="введите Ваш контактный телефон!" class="form-control">
+      </column>
+    </row>
+    <row>
+      <column sm="3">
+        <label>адрес доставки товара:</label>
+      </column>
+      <column sm="5">
+        <input id="userAddress" type="text" [(ngModel)]="order.address" placeholder="адрес доставки товара" class="form-control">
       </column>
     </row>
     <row>
       <column sm="2">
-        <button class="btn btn-primary btn-sm  selectCategory" (click)="sendOrder()">Отрпавить</button>
+        <button class="btn btn-primary btn-sm  selectCategory" (click)="sendOrder()">отрпавить</button>
       </column>
       <column sm="2">
-        <button class="btn btn-primary btn-sm  selectCategory" id="closeOrderUser" (click)="chancelOrder()">Отмена
+        <button class="btn btn-primary btn-sm  selectCategory" id="closeOrderUser" (click)="chancelOrder()">отмена
         </button>
       </column>
     </row>

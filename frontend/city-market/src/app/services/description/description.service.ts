@@ -8,9 +8,9 @@ import {IAuthenticationService} from "../authentication/iauthentication.service"
 const URL: string = '/CityMarket/api/description';
 const CONTENT_TYPE_VALUE = 'application/json;charset=utf-8';
 const TOKEN_NAME_FIELD_HEADERS = 'X-AUTH-TOKEN';
-const ERROR_LOAD_DESCRIPTION = 'Error load description!';
-const SAVE_SUCCESS = 'The saving was successful!';
-const NOT_SAVE = 'Description do not save!';
+const ERROR_LOAD_DESCRIPTION = 'Ошибка загрузки описания!';
+const SAVE_SUCCESS = 'Сохранено!';
+const NOT_SAVE = 'Не сохранено!';
 
 
 /**

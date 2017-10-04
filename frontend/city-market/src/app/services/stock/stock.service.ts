@@ -7,10 +7,10 @@ import {IAuthenticationService} from "../authentication/iauthentication.service"
 
 const URL = '/CityMarket/api/stock';
 const TOKEN_NAME_FIELD_HEADERS = 'X-AUTH-TOKEN';
-const STOCK_NOT_SAVE = 'Stock do not save!';
-const SAVE_SUCCESS = 'The saving was successful!';
-const SIGN_SUCCESS = 'The sign was successful!';
-const NOT_DOWNLOAD = 'Error download!';
+const STOCK_NOT_SAVE = 'Не сохранено!';
+const SAVE_SUCCESS = 'Сохранено!';
+const SIGN_SUCCESS = 'Привяка прошла успешно!';
+const NOT_DOWNLOAD = 'Ошибка загрузки!';
 const CONTENT_TYPE_VALUE = 'application/json;charset=utf-8';
 
 /**

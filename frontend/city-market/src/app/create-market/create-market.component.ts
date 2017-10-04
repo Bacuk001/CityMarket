@@ -33,7 +33,7 @@ export class CreateMarketComponent implements OnInit {
    */
   ngOnInit() {
     this.market = new Market();
-    this.marketService.getPromiseMarkets()
+    this.marketService.loadMarkets()
       .then(resp => this.markets = resp)
       .catch(error => this.message = error);
   }
@@ -44,11 +44,14 @@ export class CreateMarketComponent implements OnInit {
   createMarket() {
     if (this.market.name !== '')
       this.marketService.saveMarket(this.market)
-        .then(resp => this.message = resp)
-        .cacth(error => this.message = error);
-    this.marketService.getPromiseMarkets();
+        .then(resp => {
+          this.message = resp;
+          this.marketService.getMarkets();
+          setTimeout(() => this.message = '', 1000);
+        })
   }
-  claerEditMarket(){
+
+  clearEditMarket() {
     this.market = new Market();
   }
 }

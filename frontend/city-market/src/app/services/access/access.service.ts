@@ -37,7 +37,7 @@ export class AccessService {
    */
   public createShop: boolean;
   /**
-   * Defines access to the component to create a market...
+   * Defines access to the component to create a market.
    */
   public createStock: boolean;
   /**

@@ -1,33 +1,33 @@
 <row>
-  <column sm="7"><label>Название продукта</label></column>
+  <column sm="3"><label>Название продукта</label></column>
   <column sm="5">{{product.name}}</column>
 </row>
 <row>
-  <column sm="7"> цена</column>
+  <column sm="3"> цена</column>
   <column sm="5">
     <row *ngFor="let priceProd of product.price">{{priceProd.price}}
     </row>
   </column>
 </row>
 <row class="lineRow">
-  <column sm="7"> количество товара на складе</column>
+  <column sm="3"> количество товара на складе</column>
   <column sm="5">{{price.inStock}}</column>
 </row>
 <row class="lineRow">
-  <column sm="7"> цена товара</column>
+  <column sm="3"> цена товара</column>
   <column sm="5">{{price.price}}</column>
 </row>
 <row class="lineRow">
-  <column sm="7"> количество товара в резерве</column>
+  <column sm="3"> количество товара в резерве</column>
   <column sm="5">{{price.inReserv}}</column>
 </row>
 <row class="lineRow">
-  <column sm="7"> новая цена</column>
-  <column sm="5"><input type="text" [(ngModel)]="newPrice" class="input-group" placeholder="новая цена"/></column>
+  <column sm="3"> новая цена</column>
+  <column sm="5"><input type="text" [(ngModel)]="newPrice" class="form-control" placeholder="новая цена"/></column>
 </row>
 <row class="lineRow">
-  <column sm="7"> Добавить количество</column>
-  <column sm="5"><input type="text" [(ngModel)]="addProductInStock" class="input-group" placeholder="добавить товара"/>
+  <column sm="3"> добавить количество</column>
+  <column sm="5"><input type="text" [(ngModel)]="addProductInStock" class="form-control" placeholder="добавить товара"/>
   </column>
 </row>
 

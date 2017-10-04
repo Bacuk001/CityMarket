@@ -7,8 +7,8 @@ import {IAuthenticationService} from "../services/authentication/iauthentication
 import {Market} from "../entities/merket";
 import {Price} from "../entities/price";
 
-const DENIED = 'DENIED';
-const OK = 'OK';
+const DENIED = 'отказано';
+const OK = 'одобрено';
 
 /**
  * Component for processing orders in the store.

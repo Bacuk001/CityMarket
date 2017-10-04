@@ -1,4 +1,4 @@
-package by.intexsoft.webConfiguration;
+package by.intexsoft.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -8,15 +8,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import by.intexsoft.security.TokenFilter;
-
 /**
  * Class for configuring WebSecurity. In the class, the configuration method is
  * overridden, which in the HttpSecurity settings has permission and
- * prohibitions on using the components of the application. class extends
+ * prohibitions on using the components of the application. Class extends
  * {@link WebSecurityConfigurerAdapter}.
  * 
- * @see {@link TokenFilter}, {@link HttpSecurity}.
+ * @see {@link TokenFilter}, {@link HttpSecurity},
+ *      {@link WebSecurityConfigurerAdapter}.
  * 
  */
 @Configuration
@@ -35,9 +34,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers("/api/products/**", "/localisation/*", "/api/category/*", "/api/markets", "/api/user**",
 						"/api/Application**")
-				.permitAll().antMatchers("/user/save", "/market/save", "/stock/save").hasRole("ADMIN")
-				.antMatchers("/stock/sign").hasRole("MANAGER_SHOP").antMatchers("/category/save", "/product/save/")
-				.hasRole("MANAGER_STOCK").antMatchers("/api/orders").access("hasRole('ADMIN')").and().csrf().disable()
+				.permitAll().antMatchers("/api/user/save", "/api/market/save", "/api/stock/save", "/api/orders**")
+				.hasRole("ADMIN").antMatchers("/api/stock/sign").hasRole("MANAGER_SHOP")
+				.antMatchers("/api/category/save", "/api/product/save/").hasRole("MANAGER_STOCK").and().csrf().disable()
 				.addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class).authorizeRequests().and();
 	}
 }

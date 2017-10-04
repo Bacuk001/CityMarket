@@ -22,6 +22,7 @@ import by.intexsoft.service.ProductService;
 @RunWith(MockitoJUnitRunner.class)
 public class DescriprionRestControllerTest {
 	private static final String MESSAGE = "Message";
+	private static final String DESCRIPTION_NOT_FOUND = "Description for product not found.";
 	@Mock
 	private DescriptionService descriptionService;
 	@Mock
@@ -42,7 +43,7 @@ public class DescriprionRestControllerTest {
 		assertEquals(descriprionRestController.getByProduct(5), response);
 		when(productService.findOne(1)).thenReturn(product);
 		when(descriptionService.findByProduct(product)).thenReturn(null);
-		headers.add(MESSAGE, "Product description not fond");
+		headers.add(MESSAGE, DESCRIPTION_NOT_FOUND);
 		response = new ResponseEntity<List<Description>>(headers, HttpStatus.NOT_FOUND);
 		assertEquals(descriprionRestController.getByProduct(5), response);
 
