@@ -69,10 +69,6 @@ public class MarketRestController {
 		List<Market> markets = marketService.findAllMarket();
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (markets == null) {
-			headers.add(MESSAGE, MARKET_DO_NOT_SAVE);
-			return new ResponseEntity<List<Market>>(headers, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
 		return new ResponseEntity<List<Market>>(markets, headers, HttpStatus.OK);
 	}
 

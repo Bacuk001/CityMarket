@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Price;
 import by.intexsoft.entity.Product;
@@ -73,10 +72,6 @@ public class PriceRestController {
 		List<Price> prices = priceServicse.findByProductAndStocks(product, stocks);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (prices == null) {
-			headers.add(MESSAGE, PRICES_NOT_FOND);
-			return new ResponseEntity<List<Price>>(headers, HttpStatus.NO_CONTENT);
-		}
 		return new ResponseEntity<List<Price>>(prices, headers, HttpStatus.OK);
 	}
 
@@ -113,10 +108,6 @@ public class PriceRestController {
 		List<Price> prices = priceServicse.findByProductAndStock(product, stock);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (prices == null) {
-			headers.add(MESSAGE, PRICES_NOT_FOND);
-			return new ResponseEntity<List<Price>>(headers, HttpStatus.NO_CONTENT);
-		}
 		return new ResponseEntity<List<Price>>(prices, headers, HttpStatus.OK);
 	}
 }

@@ -62,10 +62,6 @@ public class ProductStockRestController {
 		List<Product> products = productService.finByStock(stock);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (products == null) {
-			headers.add(MESSAGE, PRODUCTS_NOT_FOUND);
-			return new ResponseEntity<List<Product>>(headers, HttpStatus.NO_CONTENT);
-		}
 		return new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
 	}
 
@@ -84,10 +80,6 @@ public class ProductStockRestController {
 		List<Product> products = productService.findByStockAndCategory(stock, category);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (products == null) {
-			headers.add(MESSAGE, PRODUCTS_NOT_FOUND);
-			return new ResponseEntity<List<Product>>(headers, HttpStatus.NO_CONTENT);
-		}
 		return new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
 	}
 
@@ -104,10 +96,6 @@ public class ProductStockRestController {
 		Integer countProducts = productService.countByStockAndCategory(stock, category);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (countProducts == null) {
-			headers.add(MESSAGE, PRODUCTS_NOT_FOUND);
-			return new ResponseEntity<Integer>(headers, HttpStatus.NO_CONTENT);
-		}
 		return new ResponseEntity<Integer>(countProducts, headers, HttpStatus.OK);
 	}
 }

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Price;
@@ -79,10 +78,6 @@ public class ProductMarketContoller {
 		Integer countProducts = productService.countByMarketsAndCategory(market, category);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (countProducts == null) {
-			headers.add(MESSAGE, PRODUCTS_NOT_FOUND);
-			return new ResponseEntity<Integer>(headers, HttpStatus.NO_CONTENT);
-		}
 		return new ResponseEntity<Integer>(countProducts, headers, HttpStatus.OK);
 	}
 
@@ -96,10 +91,6 @@ public class ProductMarketContoller {
 		List<Product> products = productService.findByMarket(market);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (products == null) {
-			headers.add(MESSAGE, PRODUCTS_NOT_FOUND);
-			new ResponseEntity<List<Product>>(headers, HttpStatus.NO_CONTENT);
-		}
 		return new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
 	}
 
@@ -119,10 +110,6 @@ public class ProductMarketContoller {
 		List<Stock> stocks = stockService.finfByMasrket(market);
 		Category category = categoryService.findOne(idCategory);
 		List<Product> products = productService.findByMarketAndCategory(market, category);
-		if (products == null) {
-			headers.add(MESSAGE, PRODUCTS_NOT_FOUND);
-			return new ResponseEntity<List<Product>>(headers, HttpStatus.NO_CONTENT);
-		}
 		for (int index = 0; index < products.size(); index++) {
 			List<Price> prices = priceServicse.findByProductAndStocks(products.get(index), stocks);
 			products.get(index).prices = prices;
@@ -147,10 +134,6 @@ public class ProductMarketContoller {
 		List<Product> products = productService.findByCategoryAndStocks(category, stocks);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (products == null) {
-			headers.add(MESSAGE, PRODUCTS_NOT_FOUND);
-			return new ResponseEntity<List<Product>>(headers, HttpStatus.OK);
-		}
 		return new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
 	}
 
@@ -175,10 +158,6 @@ public class ProductMarketContoller {
 				new PageRequest(page, sizePage));
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (products == null) {
-			headers.add(MESSAGE, PRODUCTS_NOT_FOUND);
-			return new ResponseEntity<List<Product>>(headers, HttpStatus.OK);
-		}
 		return new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
 	}
 
@@ -200,10 +179,6 @@ public class ProductMarketContoller {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
 		Integer products = productService.countProductByCategoryAndStocks(category, stocks);
-		if (products == null) {
-			headers.add(MESSAGE, PRODUCTS_NOT_FOUND);
-			return new ResponseEntity<Integer>(headers, HttpStatus.OK);
-		}
 		return new ResponseEntity<Integer>(products, headers, HttpStatus.OK);
 	}
 }

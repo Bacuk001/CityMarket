@@ -2,10 +2,8 @@ package by.intexsoft.configuration.rest;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -14,7 +12,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Order;
 import by.intexsoft.entity.Product;
@@ -65,10 +62,6 @@ public class OrderRestControllerTest {
 		when(orderRepository.findAll()).thenReturn(orders);
 		ResponseEntity<List<Order>> response = new ResponseEntity<List<Order>>(orders, headers, HttpStatus.OK);
 		assertEquals(orderRestController.getAll(), response);
-		when(orderRepository.findAll()).thenReturn(null);
-		headers.add(MESSAGE, ORDERS_NOT_FOUND);
-		response = new ResponseEntity<List<Order>>(headers, HttpStatus.NOT_FOUND);
-		assertEquals(orderRestController.getAll(), response);
 	}
 
 	@Test
@@ -80,10 +73,6 @@ public class OrderRestControllerTest {
 		when(marketRepository.findOne(0)).thenReturn(market);
 		when(orderService.findByMarket(market)).thenReturn(orders);
 		ResponseEntity<List<Order>> response = new ResponseEntity<List<Order>>(orders, headers, HttpStatus.OK);
-		assertEquals(orderRestController.getOrderByMarket(0), response);
-		headers.add(MESSAGE, ORDERS_NOT_FOUND);
-		when(orderService.findByMarket(market)).thenReturn(null);
-		response = new ResponseEntity<List<Order>>(headers, HttpStatus.NOT_FOUND);
 		assertEquals(orderRestController.getOrderByMarket(0), response);
 	}
 

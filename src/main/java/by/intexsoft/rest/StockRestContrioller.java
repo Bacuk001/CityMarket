@@ -79,10 +79,6 @@ public class StockRestContrioller {
 		List<Stock> stocks = stockService.findAll();
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (stocks == null) {
-			headers.add(MESSAGE, NOT_FOUND);
-			return new ResponseEntity<List<Stock>>(headers, HttpStatus.NO_CONTENT);
-		}
 		return new ResponseEntity<List<Stock>>(stocks, headers, HttpStatus.OK);
 	}
 
@@ -101,10 +97,6 @@ public class StockRestContrioller {
 		List<Stock> stocks = stockService.finfByMasrket(market);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (stocks == null) {
-			headers.add(MESSAGE, NOT_FOUND);
-			return new ResponseEntity<List<Stock>>(headers, HttpStatus.NO_CONTENT);
-		}
 		return new ResponseEntity<List<Stock>>(stocks, headers, HttpStatus.OK);
 	}
 
@@ -121,10 +113,6 @@ public class StockRestContrioller {
 		stocks = stockService.signStockforMarket(stocks, idMarket);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (stocks == null) {
-			headers.add(MESSAGE, NOT_SAVE);
-			return new ResponseEntity<List<Stock>>(headers, HttpStatus.NO_CONTENT);
-		}
 		return new ResponseEntity<List<Stock>>(stocks, headers, HttpStatus.OK);
 	}
 }

@@ -62,9 +62,5 @@ public class CategoryRestControllerTest {
 		ResponseEntity<List<Category>> response = new ResponseEntity<List<Category>>(new ArrayList<Category>(), headers,
 				HttpStatus.OK);
 		assertEquals(categoryRestController.getAllCategory(), response);
-		when(categoryService.findAll()).thenReturn(null);
-		headers.add(MESSAGE, "Error find all category from database");
-		response = new ResponseEntity<List<Category>>(headers, HttpStatus.NOT_FOUND);
-		assertEquals(categoryRestController.getAllCategory(), response);
 	}
 }

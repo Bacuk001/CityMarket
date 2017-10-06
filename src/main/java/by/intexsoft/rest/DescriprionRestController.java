@@ -55,11 +55,6 @@ public class DescriprionRestController {
 		List<Description> descriptions = descriptionService.findByProduct(product);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (descriptions == null) {
-			LOGGER.info(DESCRIPTION_NOT_FOUND);
-			headers.add(MESSAGE, DESCRIPTION_NOT_FOUND);
-			return new ResponseEntity<List<Description>>(headers, HttpStatus.NOT_FOUND);
-		}
 		return new ResponseEntity<List<Description>>(descriptions, headers, HttpStatus.OK);
 	}
 

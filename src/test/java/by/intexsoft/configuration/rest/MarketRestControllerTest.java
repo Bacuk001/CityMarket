@@ -48,10 +48,6 @@ public class MarketRestControllerTest {
 		when(marketService.findAllMarket()).thenReturn(markets);
 		ResponseEntity<List<Market>> response = new ResponseEntity<List<Market>>(markets, headers, HttpStatus.OK);
 		assertEquals(marketRestController.getAllMarket(), response);
-		when(marketService.findAllMarket()).thenReturn(null);
-		headers.add(MESSAGE, "Market do not save.");
-		response = new ResponseEntity<List<Market>>(headers, HttpStatus.INTERNAL_SERVER_ERROR);
-		assertEquals(marketRestController.getAllMarket(), response);
 	}
 
 	@Test

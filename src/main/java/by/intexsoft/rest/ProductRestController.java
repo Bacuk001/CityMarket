@@ -79,10 +79,6 @@ public class ProductRestController {
 		List<Product> products = productService.findByCategory(category);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (products == null) {
-			headers.add(MESSAGE, PRODUCTS_NOT_FOUND);
-			return new ResponseEntity<List<Product>>(headers, HttpStatus.NO_CONTENT);
-		}
 		return new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
 	}
 

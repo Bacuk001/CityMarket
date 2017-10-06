@@ -47,10 +47,6 @@ public class RoleRestController {
 		List<Role> roles = roleService.findAll();
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (roles == null) {
-			headers.add(MESSAGE, ROLE_NOT_FOUND);
-			return new ResponseEntity<>(headers, HttpStatus.NO_CONTENT);
-		}
 		return new ResponseEntity<List<Role>>(roles, headers, HttpStatus.OK);
 	}
 }

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import by.intexsoft.entity.Category;
 import by.intexsoft.service.CategoryService;
 
@@ -86,10 +85,6 @@ public class CategoryRestController {
 		List<Category> categories = categoryService.findAll();
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		if (categories == null) {
-			headers.add(MESSAGE, ERROR_FIND_CATEGORY);
-			return new ResponseEntity<List<Category>>(headers, HttpStatus.NOT_FOUND);
-		}
 		return new ResponseEntity<List<Category>>(categories, headers, HttpStatus.OK);
 	}
 

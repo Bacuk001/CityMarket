@@ -41,12 +41,6 @@ public class DescriprionRestControllerTest {
 		ResponseEntity<List<Description>> response = new ResponseEntity<List<Description>>(new ArrayList<Description>(),
 				headers, HttpStatus.OK);
 		assertEquals(descriprionRestController.getByProduct(5), response);
-		when(productService.findOne(1)).thenReturn(product);
-		when(descriptionService.findByProduct(product)).thenReturn(null);
-		headers.add(MESSAGE, DESCRIPTION_NOT_FOUND);
-		response = new ResponseEntity<List<Description>>(headers, HttpStatus.NOT_FOUND);
-		assertEquals(descriprionRestController.getByProduct(5), response);
-
 	}
 
 	@Test

@@ -1,6 +1,10 @@
 apply plugin: 'war'
 apply plugin: 'com.bmuschko.tomcat'
-version = '1.0.0'
+apply plugin: 'jacoco'
+apply plugin: 'eclipse'
+//version = '1.0.0'
+
+def tomcatVersion = '7.0.76'
 
 buildscript {
     repositories {
@@ -8,6 +12,20 @@ buildscript {
     }
     dependencies {
         classpath 'com.bmuschko:gradle-tomcat-plugin:2.3'
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+eclipse {
+    classpath {
+       downloadSources=true
+       downloadJavadoc = true
     }
 }
 
@@ -34,9 +52,9 @@ dependencies {
     	compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.0'
 	compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.2.1'
 	compile group: 'commons-io', name: 'commons-io', version: '2.5'
-		tomcat 'org.apache.tomcat.embed:tomcat-embed-core:7.0.76',
-           		'org.apache.tomcat.embed:tomcat-embed-logging-juli:7.0.76',
-           		'org.apache.tomcat.embed:tomcat-embed-jasper:7.0.76'
+		tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+           		"org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+           		"org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
 }
 war {
 	from 'rootResources','frontend/city-market/dist'

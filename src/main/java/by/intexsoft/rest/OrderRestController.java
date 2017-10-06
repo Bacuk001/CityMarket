@@ -75,10 +75,6 @@ public class OrderRestController {
 		List<Order> orders = orderService.findAll();
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION);
-		if (orders == null) {
-			headers.add(MESSAGE, ORDERS_NOT_FOUND);
-			return new ResponseEntity<List<Order>>(headers, HttpStatus.NOT_FOUND);
-		}
 		return new ResponseEntity<List<Order>>(orders, headers, HttpStatus.OK);
 	}
 
@@ -94,10 +90,6 @@ public class OrderRestController {
 		List<Order> orders = orderService.findByMarket(market);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(CONTENT_TYPE, APPLICATION);
-		if (orders == null) {
-			headers.add(MESSAGE, ORDERS_NOT_FOUND);
-			return new ResponseEntity<List<Order>>(headers, HttpStatus.NOT_FOUND);
-		}
 		return new ResponseEntity<List<Order>>(orders, headers, HttpStatus.OK);
 	}
 

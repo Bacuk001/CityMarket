@@ -61,10 +61,6 @@ public class UserRestController {
 		List<User> users = userService.findAll();
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=UTF-8");
-		if (users == null) {
-			headers.add(MESSAGE, USER_NOT_FOUND);
-			return new ResponseEntity<List<User>>(headers, HttpStatus.NO_CONTENT);
-		}
 		return new ResponseEntity<List<User>>(users, headers, HttpStatus.OK);
 	}
 
