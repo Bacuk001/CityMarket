@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 import by.intexsoft.entity.Description;
 import by.intexsoft.entity.Product;
 import by.intexsoft.service.DescriptionService;
@@ -25,6 +26,7 @@ import by.intexsoft.service.ProductService;
  */
 @RestController
 public class DescriprionRestController {
+	private static final String DESCRIPTION_NOT_FOUND = "Description for product not found.";
 	private static final String SAVE_DESCRIPTIONS_PRODUCT = "Save list descriptions for product.";
 	private static final String DESCRIPTIONS_NOT_SAVE = "Descriptions do not save";
 	private static final String APPLICATION_JSON = "application/json; charset=UTF-8";

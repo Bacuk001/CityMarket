@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Stock;
 import by.intexsoft.repository.StockRepository;
@@ -27,7 +28,9 @@ import by.intexsoft.service.StockService;
 @RestController
 public class StockRestContrioller {
 	private static final String FIND_BY_MARKET = "Find all stock by market.";
+	private static final String NOT_SAVE = "Do not save.";
 	private static final String SIGN_STOCKS_MARKET = "Sign stock for market.";
+	private static final String NOT_FOUND = "Not Found.";
 	private static final String FIND_STOCKS = "Find all stock.";
 	private static final String DO_NOT_SAVE = "Do not save to database.";
 	private static final String APPLICATION_JSON = "application/json; charset=UTF-8";

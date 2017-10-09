@@ -33,7 +33,6 @@ repositories {
 	 mavenCentral()
 }
 
-
 compileJava{dependsOn 'frontend/city-market:buildCline'}
 
 dependencies {
@@ -42,7 +41,7 @@ dependencies {
 	compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.10.RELEASE'
 	compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.11.6.RELEASE' 
 	compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.2.10.Final' 
-	compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'  
+	compile group: 'mysql', name: 'mysql-connector-java', version: '5.0.8'  
 	compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
     	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.0'    
 	compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.2.3.RELEASE'
@@ -53,7 +52,7 @@ dependencies {
     	compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.0'
 	compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.2.1'
 	compile group: 'commons-io', name: 'commons-io', version: '2.5'
-		tomcat 	"org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+		tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
            		"org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
            		"org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
 }
