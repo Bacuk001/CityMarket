@@ -34,7 +34,6 @@ import by.intexsoft.service.StockService;
  */
 @RestController
 public class PriceRestController {
-	private static final String PRICES_NOT_FOND = "Prices not fond.";
 	private static final String PRICE_NOT_SAVE = "Price do not save.";
 	private static final String SAVE_PRICE = "Save price product for stock.";
 	private static final String APPLICATION_JSON = "application/json; charset=UTF-8";

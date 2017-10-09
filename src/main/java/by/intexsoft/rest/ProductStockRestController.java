@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Product;
 import by.intexsoft.entity.Stock;
@@ -38,8 +37,6 @@ public class ProductStockRestController {
 	private static final String CONTENT_TYPE = "Content-Type";
 	private static final String FIND_PRODUCT = "Find product by stock id.";
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductRestController.class);
-	private static final String PRODUCTS_NOT_FOUND = "Products not found.";
-	private static final String MESSAGE = "Message";
 	private StockService stockService;
 	private ProductService productService;
 	private CategoryService categoryService;

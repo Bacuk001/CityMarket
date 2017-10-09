@@ -45,8 +45,6 @@ public class ProductMarketContoller {
 	private static final String CONTENT_TYPE = "Content-Type";
 	private static final String FIND_PRODUCT_BY_MARKET_AND_CATEGORY = "Find product by market and category.";
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductRestController.class);
-	private static final String PRODUCTS_NOT_FOUND = "Products not found.";
-	private static final String MESSAGE = "Message";
 	private MarketService marketService;
 	private CategoryService categoryService;
 	private ProductService productService;

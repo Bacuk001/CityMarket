@@ -26,7 +26,6 @@ import by.intexsoft.service.CategoryService;
  */
 @RestController
 public class CategoryRestController {
-	private static final String ERROR_FIND_CATEGORY = "Error find all category from database";
 	private static final String CREATE_CATEGORY = "Create new category";
 	private static final String APPLICATION_JSON = "application/json; charset=UTF-8";
 	private static final String CONTENT_TYPE = "Content-Type";

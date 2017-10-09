@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Order;
 import by.intexsoft.repository.OrderRepository;
@@ -39,7 +38,6 @@ public class OrderRestController {
 	private static final String CONTENT_TYPE = "Content-Type";
 	private static final String FIND_ORDER = "Find order by id.";
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrderRestController.class);
-	private static final String ORDERS_NOT_FOUND = "Orders not found.";
 	private static final String MESSAGE = "Message";
 	private OrderService orderService;
 	private MarketService marketService;
