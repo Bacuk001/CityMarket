@@ -1,12 +1,10 @@
-import {Inject, Injectable} from '@angular/core';
-import {Headers, Http} from '@angular/http';
-import {IMarketService} from './imarket.service';
-import {Market} from '../../entities/merket';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
-import {IAuthenticationService} from "../authentication/iauthentication.service";
-
+import {Injectable} from "@angular/core";
+import {Headers, Http} from "@angular/http";
+import {IMarketService} from "./imarket.service";
+import {Market} from "../../entities/merket";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/catch";
+import "rxjs/add/observable/throw";
 const URL = '/CityMarket/api/market';
 const CONTENT_TYPE_VALUE = 'application/json;charset=utf-8';
 const MARKET_NOT_SAVE = 'Не сохранено!';

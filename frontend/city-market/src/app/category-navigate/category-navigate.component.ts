@@ -5,7 +5,6 @@ import {Router} from '@angular/router';
 import {IProductService} from '../services/product/iproduct.service';
 import {IAuthenticationService} from '../services/authentication/iauthentication.service';
 import {AccessService} from '../services/access/access.service';
-import {Product} from "../entities/product";
 import {IPriceService} from "../services/price/iprice.service";
 
 /**
@@ -44,7 +43,6 @@ export class CategoryNavigateComponent implements OnInit {
    * @param {Category} category
    */
   selectCategory(category: Category) {
-    this.accessService.editPriceAndStock = false;
     this.categoryService.setCategory(category);
     this.productService.getPromiseProducts(0)
       .catch(error => this.message = error);

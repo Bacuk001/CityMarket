@@ -74,7 +74,6 @@ export class AddPriceComponent implements OnInit {
    * Return to product viewing.
    */
   closePrice() {
-    this.accessService.editPriceAndStock = false;
     this.productService.setSelectProduct(null);
     this.router.navigateByUrl('category/listProduct').then();
   }

@@ -6,8 +6,6 @@ import {IMarketService} from '../market/imarket.service';
 import {Product} from '../../entities/product';
 import {IAuthenticationService} from '../authentication/iauthentication.service';
 import {IPriceService} from "../price/iprice.service";
-import {stringDistance} from "codelyzer/util/utils";
-import {resolveReflectiveProviders} from "@angular/core/src/di/reflective_provider";
 import {Price} from "../../entities/price";
 
 const URL = '/CityMarket/api/product';

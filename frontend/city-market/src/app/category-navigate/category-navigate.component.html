@@ -1,8 +1,8 @@
 <row>
   <column sm="2">
-    <div *ngFor="let cat of categoryService.getCategories()">
-      <button id="category" type="button" class="btn btn-primary selectCategory" style="width: 100%" (click)="selectCategory(cat)">
-        {{cat.name}}
+    <div *ngFor="let category of categoryService.getCategories()">
+      <button id="category" type="button" class="btn btn-primary selectCategory" style="width: 100%" (click)="selectCategory(category)">
+        {{category.name}}
       </button>
     </div>
   </column >
@@ -33,6 +33,5 @@
       </column>
     </row>
   </column>
-
 </row>
 

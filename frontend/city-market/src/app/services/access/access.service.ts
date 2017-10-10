@@ -89,6 +89,7 @@ export class AccessService {
     this.selectMarket = false;
     this.viewCategorySelect = true;
     this.managerStockBar = true;
+    this.editPriceAndStock= true;
   }
 
   /**

@@ -17,10 +17,6 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class TopNavigateComponent implements OnInit {
   /**
-   * List of stores registered in the system for selection.
-   */
-  public markets: Market[];
-  /**
    * Market that has been selected.
    */
   public market: Market;

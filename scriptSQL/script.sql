@@ -8,8 +8,8 @@ use city_market;
 
 create table if not exists Market(
     id int(11) not null auto_increment,
-    name varchar(11) default null,
-    addres varchar(20) default null,
+    name varchar(100) default null,
+    addres varchar(255) default null,
     about varchar(255) default null,
     primary key (id)
 ); 
@@ -22,8 +22,8 @@ insert into Market (about, addres, name) values
 -- Tаблица  складов.
 create table if not exists Stock(
     id int(11) not null auto_increment,
-    name varchar(11) default null,
-    address varchar(20) default null,
+    name varchar(100) default null,
+    address varchar(255) default null,
     about varchar(255) default null,
     primary key (id)
 ); 
@@ -43,7 +43,7 @@ insert into market_stock (stocks, markets) values
 -- Tаблица зарегистрированных пользователей в приложении.
 create table if not exists User (  
     id int(11) not null auto_increment,
-    name varchar(15) default null,
+    name varchar(100) default null,
     password varchar(255) default null,
     market_id int(11) default null,
     stock_id int(11) default null, 
@@ -62,7 +62,7 @@ insert into User (name, password, market_id, stock_id) values
 -- Tаблица ролей определяющих права доступа в приложении. 
 create table if not exists Role (  
     id int(11) not null auto_increment,
-    name varchar(15) default null,
+    name varchar(25) default null,
     primary key (id));
 
 insert into Role (name) values
@@ -82,8 +82,8 @@ insert into roles_users (users, roles) values
 -- Tаблица категорий товаров.
  create table if not exists Category(
     id int(11) not null auto_increment,
-    name varchar(20) default null,
-    urlPhoto varchar(70) default null,
+    name varchar(150) default null,
+    urlPhoto varchar(255) default null,
     primary key (id)
  );
 
@@ -104,8 +104,8 @@ insert into Category (name, urlPhoto) values
  -- Таблитца продуктов.
  create table if not exists Product(
     id int(11) not null auto_increment,
-    name varchar(20) default null,
-    urlPhoto varchar(70) default null,
+    name varchar(100) default null,
+    urlPhoto varchar(255) default null,
     category_id int(11) default null,
     foreign key (category_id) references Category (id),
     primary key (id)
