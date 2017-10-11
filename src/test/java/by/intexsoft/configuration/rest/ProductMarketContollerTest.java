@@ -3,6 +3,9 @@ package by.intexsoft.configuration.rest;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -10,12 +13,15 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Market;
+import by.intexsoft.entity.Product;
+import by.intexsoft.entity.Stock;
 import by.intexsoft.repository.CategoryRepository;
 import by.intexsoft.repository.MarketRepository;
 import by.intexsoft.repository.PriceRepository;
@@ -76,6 +82,98 @@ public class ProductMarketContollerTest {
 		when(productRepository.countByMarketsAndCategory(market, category)).thenReturn(count);
 		ResponseEntity<Integer> response = new ResponseEntity<Integer>(count, headers, HttpStatus.OK);
 		assertEquals(productMarketContoller.conuntByMarketAndCategory(1, 1), response);
+	}
+
+	@Test
+	public void getProductByMarketTest() {
+		List<Product> products = new ArrayList<>();
+		when(productRepository.findByMarkets(new Market())).thenReturn(products);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
+		ResponseEntity<List<Product>> response = new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
+		assertEquals(productMarketContoller.getProductsByMarket(0), response);
+	}
+
+	@Test
+	public void getProductByMarketAndCategoryTest() {
+		Market market = new Market();
+		Category category = new Category();
+		List<Stock> stocks = new ArrayList<>();
+		List<Product> products = new ArrayList<>();
+		products.add(new Product());
+		when(marketRepository.findOne(1)).thenReturn(market);
+		when(stockRepository.findByMarkets(market)).thenReturn(stocks);
+		when(categoryRepository.findOne(1)).thenReturn(category);
+		when(productRepository.findByMarketsAndCategory(market, category)).thenReturn(products);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
+		ResponseEntity<List<Product>> response = new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
+		assertEquals(productMarketContoller.getByMarketAndCategory(1, 1), response);
+	}
+
+	@Test
+	public void getProductByCategoryAndMarketTest() {
+		Market market = new Market();
+		Category category = new Category();
+		List<Stock> stocks = new ArrayList<>();
+		List<Product> products = new ArrayList<>();
+		when(marketRepository.findOne(1)).thenReturn(market);
+		when(categoryRepository.findOne(1)).thenReturn(category);
+		when(productRepository.findProductDistinctByCategoryAndStocksIn(category, stocks)).thenReturn(products);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
+		ResponseEntity<List<Product>> response = new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
+		assertEquals(productMarketContoller.getByMarketAndCategory(1, 1), response);
+	}
+
+	@Test
+	public void getProductByMarketPagableTest() {
+		Market market = new Market();
+		Category category = new Category();
+		List<Stock> stocks = new ArrayList<>();
+		List<Product> products = new ArrayList<>();
+		when(marketRepository.findOne(1)).thenReturn(market);
+		when(stockRepository.findByMarkets(market)).thenReturn(stocks);
+		when(categoryRepository.findOne(1)).thenReturn(category);
+		when(productRepository.findProductDistinctByCategoryAndStocksIn(category, stocks, new PageRequest(1, 1)))
+				.thenReturn(products);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
+		ResponseEntity<List<Product>> response = new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
+		assertEquals(productMarketContoller.getProductByMarketPagable(1, 1, 1, 1), response);
+	}
+
+	@Test
+	public void countProductByMarketTest() {
+		Market market = new Market();
+		Category category = new Category();
+		List<Stock> stocks = new ArrayList<>();
+		List<Product> products = new ArrayList<>();
+		int count = 1;
+		when(marketRepository.findOne(1)).thenReturn(market);
+		when(stockRepository.findByMarkets(market)).thenReturn(stocks);
+		when(categoryRepository.findOne(1)).thenReturn(category);
+		when(productRepository.countProductDistinctByCategoryAndStocksIn(category, stocks)).thenReturn(count);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
+		ResponseEntity<Integer> response = new ResponseEntity<Integer>(count, headers, HttpStatus.OK);
+		assertEquals(productMarketContoller.countProductByMarket(1, 1), response);
+	}
+
+	@Test
+	public void getProductByCaregoryAndMarketTest() {
+		Market market = new Market();
+		Category category = new Category();
+		List<Stock> stocks = new ArrayList<>();
+		List<Product> products = new ArrayList<>();
+		when(marketRepository.findOne(1)).thenReturn(market);
+		when(stockRepository.findByMarkets(market)).thenReturn(stocks);
+		when(categoryRepository.findOne(1)).thenReturn(category);
+		when(productRepository.findProductDistinctByCategoryAndStocksIn(category, stocks)).thenReturn(products);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
+		ResponseEntity<List<Product>> response = new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
+		assertEquals(productMarketContoller.getProductByCategoryAndMarket(1, 1), response);
 	}
 
 }

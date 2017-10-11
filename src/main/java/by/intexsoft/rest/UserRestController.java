@@ -68,7 +68,7 @@ public class UserRestController {
 	 * The controller processes requests for user retention.
 	 */
 	@RequestMapping(value = "/user/save", method = RequestMethod.POST)
-	public ResponseEntity<User> name(@RequestBody User user) {
+	public ResponseEntity<User> save(@RequestBody User user) {
 		user = userService.save(user);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=UTF-8");
