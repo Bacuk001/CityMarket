@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import by.intexsoft.entity.Description;
 import by.intexsoft.entity.Product;
-import by.intexsoft.service.DescriptionService;
-import by.intexsoft.service.ProductService;
+import by.intexsoft.service.IDescriptionService;
+import by.intexsoft.service.IProductService;
+import by.intexsoft.service.impl.DescriptionService;
 
 /**
  * A controller that processes requests for a description, the controller works
@@ -26,7 +26,6 @@ import by.intexsoft.service.ProductService;
  */
 @RestController
 public class DescriprionRestController {
-	private static final String DESCRIPTION_NOT_FOUND = "Description for product not found.";
 	private static final String SAVE_DESCRIPTIONS_PRODUCT = "Save list descriptions for product.";
 	private static final String DESCRIPTIONS_NOT_SAVE = "Descriptions do not save";
 	private static final String APPLICATION_JSON = "application/json; charset=UTF-8";
@@ -34,11 +33,11 @@ public class DescriprionRestController {
 	private static final String FIND_DESCRIPRION_BY_PRODUCT = "Find Descriprion by product in database.";
 	private static final Logger LOGGER = LoggerFactory.getLogger(DescriprionRestController.class);
 	private static final String MESSAGE = "Message";
-	private DescriptionService descriptionService;
-	private ProductService productService;
+	private IDescriptionService descriptionService;
+	private IProductService productService;
 
 	@Autowired
-	public DescriprionRestController(DescriptionService descriptionService, ProductService productService) {
+	public DescriprionRestController(IDescriptionService descriptionService, IProductService productService) {
 		this.descriptionService = descriptionService;
 		this.productService = productService;
 	}

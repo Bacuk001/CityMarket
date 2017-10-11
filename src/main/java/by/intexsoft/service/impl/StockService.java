@@ -1,4 +1,4 @@
-package by.intexsoft.service;
+package by.intexsoft.service.impl;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import by.intexsoft.entity.User;
 import by.intexsoft.repository.MarketRepository;
 import by.intexsoft.repository.StockRepository;
 import by.intexsoft.repository.UserRepository;
+import by.intexsoft.service.IStockService;
 
 /**
  * Service for working with the repository, which processes information about
@@ -21,7 +22,7 @@ import by.intexsoft.repository.UserRepository;
  * @see {@link User}, {@link UserRepository}
  */
 @Service
-public class StockService {
+public class StockService implements IStockService{
 	private StockRepository stockRepository;
 	private MarketRepository marketRepository;
 

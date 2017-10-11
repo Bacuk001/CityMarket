@@ -16,8 +16,8 @@ import org.springframework.http.ResponseEntity;
 import by.intexsoft.entity.Description;
 import by.intexsoft.entity.Product;
 import by.intexsoft.rest.DescriprionRestController;
-import by.intexsoft.service.DescriptionService;
-import by.intexsoft.service.ProductService;
+import by.intexsoft.service.impl.DescriptionService;
+import by.intexsoft.service.impl.ProductService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DescriprionRestControllerTest {

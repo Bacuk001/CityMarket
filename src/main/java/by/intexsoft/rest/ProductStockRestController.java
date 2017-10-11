@@ -11,14 +11,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Product;
 import by.intexsoft.entity.Stock;
 import by.intexsoft.repository.PriceRepository;
-import by.intexsoft.service.CategoryService;
-import by.intexsoft.service.ProductService;
-import by.intexsoft.service.StockService;
+import by.intexsoft.service.ICategoryService;
+import by.intexsoft.service.IProductService;
+import by.intexsoft.service.IStockService;
+import by.intexsoft.service.impl.ProductService;
+import by.intexsoft.service.impl.StockService;
 
 /**
  * A controller that processes requests for information about products with
@@ -38,15 +39,13 @@ public class ProductStockRestController {
 	private static final String CONTENT_TYPE = "Content-Type";
 	private static final String FIND_PRODUCT = "Find product by stock id.";
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductRestController.class);
-	private static final String PRODUCTS_NOT_FOUND = "Products not found.";
-	private static final String MESSAGE = "Message";
-	private StockService stockService;
-	private ProductService productService;
-	private CategoryService categoryService;
+	private IStockService stockService;
+	private IProductService productService;
+	private ICategoryService categoryService;
 
 	@Autowired
-	public ProductStockRestController(StockService stockService, ProductService productService,
-			CategoryService categoryService) {
+	public ProductStockRestController(IStockService stockService, IProductService productService,
+			ICategoryService categoryService) {
 		this.productService = productService;
 		this.stockService = stockService;
 		this.categoryService = categoryService;

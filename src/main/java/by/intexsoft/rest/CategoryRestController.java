@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import by.intexsoft.entity.Category;
-import by.intexsoft.service.CategoryService;
+import by.intexsoft.service.ICategoryService;
+import by.intexsoft.service.impl.CategoryService;
 
 /**
  * A controller that processes requests for product categories. The controller
@@ -26,7 +27,6 @@ import by.intexsoft.service.CategoryService;
  */
 @RestController
 public class CategoryRestController {
-	private static final String ERROR_FIND_CATEGORY = "Error find all category from database";
 	private static final String CREATE_CATEGORY = "Create new category";
 	private static final String APPLICATION_JSON = "application/json; charset=UTF-8";
 	private static final String CONTENT_TYPE = "Content-Type";
@@ -34,10 +34,10 @@ public class CategoryRestController {
 	private static final String MESSAGE = "Message";
 	private static final String ERROR_OF_CREATING_A_CATEGORY = "Error of creating a category, an entry with this name exists in the database.";
 	private static final Logger LOGGER = LoggerFactory.getLogger(CategoryRestController.class);
-	private CategoryService categoryService;
+	private ICategoryService categoryService;
 
 	@Autowired
-	public CategoryRestController(CategoryService categoryService) {
+	public CategoryRestController(ICategoryService categoryService) {
 		this.categoryService = categoryService;
 	}
 

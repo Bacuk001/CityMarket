@@ -1,4 +1,4 @@
-package by.intexsoft.service;
+package by.intexsoft.service.impl;
 
 import java.util.List;
 import javax.transaction.Transactional;
@@ -10,6 +10,7 @@ import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Description;
 import by.intexsoft.entity.Product;
 import by.intexsoft.repository.DescriptionRepository;
+import by.intexsoft.service.IDescriptionService;
 
 /**
  * The service interacts with the repository and manipulates the data. the
@@ -21,7 +22,7 @@ import by.intexsoft.repository.DescriptionRepository;
  *      {@link Description}
  */
 @Service
-public class DescriptionService {
+public class DescriptionService implements IDescriptionService {
 	private DescriptionRepository descriptionRepository;
 
 	@Autowired
@@ -36,6 +37,7 @@ public class DescriptionService {
 	 * 
 	 * @return {@link List}<{@link Description}>
 	 */
+	@Override
 	public List<Description> findByName(String nameDescription) {
 		return descriptionRepository.findByName(nameDescription);
 	}
@@ -48,6 +50,7 @@ public class DescriptionService {
 	 * 
 	 * @return {@link List}<{@link Description}>
 	 */
+	@Override
 	public List<Description> findByValue(String nameValue) {
 		return descriptionRepository.findByValue(nameValue);
 	}
@@ -61,6 +64,7 @@ public class DescriptionService {
 	 * 
 	 * @return {@link List} <{@link Description}>
 	 */
+	@Override
 	public List<Description> findByProduct(Product product) {
 		return descriptionRepository.findByProduct(product);
 	}
@@ -70,6 +74,7 @@ public class DescriptionService {
 	 * be saved to the database, if the object is saved then the method returns an
 	 * object if there is no null.
 	 */
+	@Override
 	public Description seve(Description description) {
 		return descriptionRepository.save(description);
 	}
@@ -79,6 +84,7 @@ public class DescriptionService {
 	 * repository. After receiving an array of objects, the service method returns
 	 * to the user of the service.
 	 */
+	@Override
 	public List<Description> findAll() {
 		return descriptionRepository.findAll();
 	}
@@ -90,6 +96,7 @@ public class DescriptionService {
 	 * 
 	 * @return {@link Category}
 	 */
+	@Override
 	public Description findOne(int id) {
 		return descriptionRepository.findOne(id);
 	}
@@ -98,6 +105,7 @@ public class DescriptionService {
 	 * The method takes an array of categories and renders one object per repository
 	 * to save to the database.
 	 */
+	@Override
 	@Transactional
 	public List<Description> saveListDescription(List<Description> descriptions) {
 		for (int index = 0; index < descriptions.size(); index++) {
@@ -109,8 +117,8 @@ public class DescriptionService {
 	/**
 	 * Deletes the description by id.
 	 */
+	@Override
 	public void delete(int id) {
 		descriptionRepository.delete(id);
 	}
-
 }

@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Product;
 import by.intexsoft.repository.PriceRepository;
-import by.intexsoft.service.CategoryService;
-import by.intexsoft.service.ProductService;
+import by.intexsoft.service.ICategoryService;
+import by.intexsoft.service.IProductService;
+import by.intexsoft.service.impl.ProductService;
 
 /**
  * A controller that processes requests for information about products. The
@@ -41,11 +41,11 @@ public class ProductRestController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductRestController.class);
 	private static final String PRODUCTS_NOT_FOUND = "Products not found.";
 	private static final String MESSAGE = "Message";
-	private ProductService productService;
-	private CategoryService categoryService;
+	private IProductService productService;
+	private ICategoryService categoryService;
 
 	@Autowired
-	public ProductRestController(CategoryService categoryService, ProductService productService) {
+	public ProductRestController(ICategoryService categoryService, IProductService productService) {
 		this.productService = productService;
 		this.categoryService = categoryService;
 	}

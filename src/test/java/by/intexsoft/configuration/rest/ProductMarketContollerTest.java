@@ -23,11 +23,11 @@ import by.intexsoft.repository.ProductRepository;
 import by.intexsoft.repository.StockRepository;
 import by.intexsoft.rest.ProductMarketContoller;
 import by.intexsoft.rest.ProductRestController;
-import by.intexsoft.service.CategoryService;
-import by.intexsoft.service.MarketService;
-import by.intexsoft.service.PriceServicse;
-import by.intexsoft.service.ProductService;
-import by.intexsoft.service.StockService;
+import by.intexsoft.service.impl.CategoryService;
+import by.intexsoft.service.impl.MarketService;
+import by.intexsoft.service.impl.PriceServicse;
+import by.intexsoft.service.impl.ProductService;
+import by.intexsoft.service.impl.StockService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ProductMarketContollerTest {

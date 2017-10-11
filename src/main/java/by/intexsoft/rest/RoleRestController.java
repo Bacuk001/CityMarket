@@ -9,10 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import by.intexsoft.entity.Role;
 import by.intexsoft.repository.RoleRepository;
-import by.intexsoft.service.RoleService;
+import by.intexsoft.service.IRoleService;
+import by.intexsoft.service.impl.RoleService;
 
 /**
  * The controller receives processing requests, retrieves role information in
@@ -29,12 +29,10 @@ public class RoleRestController {
 	private static final String CONTENT_TYPE = "Content-Type";
 	private static final String FIND_ROLES = "Find all roles from database.";
 	private static final Logger LOGGER = LoggerFactory.getLogger(RoleRestController.class);
-	private static final String ROLE_NOT_FOUND = "role not found.";
-	private static final String MESSAGE = "Message";
-	private RoleService roleService;
+	private IRoleService roleService;
 
 	@Autowired
-	public RoleRestController(RoleService roleService) {
+	public RoleRestController(IRoleService roleService) {
 		this.roleService = roleService;
 	}
 

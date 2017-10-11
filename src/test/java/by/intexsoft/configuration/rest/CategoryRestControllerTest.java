@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 
 import by.intexsoft.entity.Category;
 import by.intexsoft.rest.CategoryRestController;
-import by.intexsoft.service.CategoryService;
+import by.intexsoft.service.impl.CategoryService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CategoryRestControllerTest {

@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import by.intexsoft.entity.Market;
-import by.intexsoft.service.MarketService;
+import by.intexsoft.service.IMarketService;
+import by.intexsoft.service.impl.MarketService;
 
 /**
  * A controller that processes requests for information about the market. The
@@ -36,10 +36,10 @@ public class MarketRestController {
 	private static final String DELETE_MARKET = "Delete market.";
 	private static final Logger LOGGER = LoggerFactory.getLogger(MarketRestController.class);
 	private static final String MESSAGE = "Message";
-	private MarketService marketService;
+	private IMarketService marketService;
 
 	@Autowired
-	public MarketRestController(MarketService marketService) {
+	public MarketRestController(IMarketService marketService) {
 		this.marketService = marketService;
 	}
 

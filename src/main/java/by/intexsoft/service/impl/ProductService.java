@@ -1,9 +1,7 @@
-package by.intexsoft.service;
+package by.intexsoft.service.impl;
 
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,6 +13,7 @@ import by.intexsoft.entity.Stock;
 import by.intexsoft.repository.CategoryRepository;
 import by.intexsoft.repository.ProductRepository;
 import by.intexsoft.repository.StockRepository;
+import by.intexsoft.service.IProductService;
 
 /**
  * A method that works with the product repository. the method extracts, adds
@@ -23,7 +22,7 @@ import by.intexsoft.repository.StockRepository;
  * @see {@link JpaRepository}, {@link ProductRepository}, {@link Product}
  */
 @Service
-public class ProductService {
+public class ProductService implements IProductService {
 	private ProductRepository productRepository;
 	private StockRepository stockRepository;
 	private CategoryRepository categoryRepository;

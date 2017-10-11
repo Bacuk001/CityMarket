@@ -1,4 +1,4 @@
-package by.intexsoft.service;
+package by.intexsoft.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,7 @@ import by.intexsoft.entity.User;
 import by.intexsoft.repository.MarketRepository;
 import by.intexsoft.repository.OrderRepository;
 import by.intexsoft.repository.ProductRepository;
+import by.intexsoft.service.IOrderService;
 
 /**
  * Service processing information about orders from the store. With the help of
@@ -23,7 +24,7 @@ import by.intexsoft.repository.ProductRepository;
  * @see {@link Order}, {@link OrderRepository}, {@link JpaRepository}
  */
 @Service
-public class OrderService {
+public class OrderService implements IOrderService {
 	private OrderRepository orderRepository;
 	private MarketRepository marketRepository;
 	private ProductRepository productRepository;
@@ -91,6 +92,7 @@ public class OrderService {
 		return orderRepository.findByMarket(market);
 	}
 
+	@Override
 	@Transactional
 	public Order saveByMarket(Order order, int idMarket, int idProduct) {
 		Market market = marketRepository.findOne(idMarket);

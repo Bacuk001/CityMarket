@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import by.intexsoft.entity.User;
 import by.intexsoft.repository.UserRepository;
-import by.intexsoft.service.UserService;
+import by.intexsoft.service.IUserService;
+import by.intexsoft.service.impl.UserService;
 
 /**
  * The controller processes requests for receiving, adding and editing users of
@@ -29,10 +29,10 @@ public class UserRestController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserRestController.class);
 	private static final String USER_NOT_FOUND = "User not found.";
 	private static final String MESSAGE = "Message";
-	private UserService userService;
+	private IUserService userService;
 
 	@Autowired
-	public UserRestController(UserService userService) {
+	public UserRestController(IUserService userService) {
 		this.userService = userService;
 	}
 

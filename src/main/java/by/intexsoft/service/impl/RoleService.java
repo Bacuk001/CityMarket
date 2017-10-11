@@ -1,4 +1,4 @@
-package by.intexsoft.service;
+package by.intexsoft.service.impl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import by.intexsoft.entity.Role;
 import by.intexsoft.entity.User;
 import by.intexsoft.repository.RoleRepository;
+import by.intexsoft.service.IRoleService;
 
 /**
  * Service that interacts with the repository of roles that are responsible for
@@ -17,7 +18,7 @@ import by.intexsoft.repository.RoleRepository;
  *      ,{@link RoleRepository}.
  */
 @Service
-public class RoleService {
+public class RoleService implements IRoleService {
 	private RoleRepository roleRepository;
 
 	@Autowired

@@ -17,10 +17,11 @@ import by.intexsoft.entity.Price;
 import by.intexsoft.entity.Product;
 import by.intexsoft.entity.Stock;
 import by.intexsoft.repository.PriceRepository;
-import by.intexsoft.service.MarketService;
-import by.intexsoft.service.PriceServicse;
-import by.intexsoft.service.ProductService;
-import by.intexsoft.service.StockService;
+import by.intexsoft.service.IMarketService;
+import by.intexsoft.service.IPriceService;
+import by.intexsoft.service.IProductService;
+import by.intexsoft.service.IStockService;
+import by.intexsoft.service.impl.PriceServicse;
 
 /**
  * A controller that processes requests for prices information The controller
@@ -34,7 +35,6 @@ import by.intexsoft.service.StockService;
  */
 @RestController
 public class PriceRestController {
-	private static final String PRICES_NOT_FOND = "Prices not fond.";
 	private static final String PRICE_NOT_SAVE = "Price do not save.";
 	private static final String SAVE_PRICE = "Save price product for stock.";
 	private static final String APPLICATION_JSON = "application/json; charset=UTF-8";
@@ -42,14 +42,14 @@ public class PriceRestController {
 	private static final String FIND_PRICES_BY_PRODUCT_AND_MARKET = "Find prices by product and market.";
 	private static final Logger LOGGER = LoggerFactory.getLogger(PriceRestController.class);
 	private static final String MESSAGE = "Message";
-	private PriceServicse priceServicse;
-	private ProductService productService;
-	private StockService stockService;
-	private MarketService marketService;
+	private IPriceService priceServicse;
+	private IProductService productService;
+	private IStockService stockService;
+	private IMarketService marketService;
 
 	@Autowired
-	public PriceRestController(MarketService marketService, StockService stockService, ProductService productService,
-			PriceServicse priceServicse) {
+	public PriceRestController(IMarketService marketService, IStockService stockService, IProductService productService,
+			IPriceService priceServicse) {
 		this.priceServicse = priceServicse;
 		this.productService = productService;
 		this.stockService = stockService;

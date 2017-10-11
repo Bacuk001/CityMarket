@@ -1,4 +1,4 @@
-package by.intexsoft.service;
+package by.intexsoft.service.impl;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import by.intexsoft.entity.Role;
 import by.intexsoft.entity.Stock;
 import by.intexsoft.entity.User;
 import by.intexsoft.repository.UserRepository;
+import by.intexsoft.service.IUserService;
 
 /**
  * A service for working with a repository that accesses information about
@@ -18,7 +19,7 @@ import by.intexsoft.repository.UserRepository;
  * @see {@link UserRepository}, {@link User}
  */
 @Service
-public class UserService {
+public class UserService implements IUserService {
 	private UserRepository userRepository;
 
 	@Autowired

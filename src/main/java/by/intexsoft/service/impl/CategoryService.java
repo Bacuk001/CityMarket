@@ -1,4 +1,4 @@
-package by.intexsoft.service;
+package by.intexsoft.service.impl;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import by.intexsoft.entity.Category;
 import by.intexsoft.repository.CategoryRepository;
+import by.intexsoft.service.ICategoryService;
 
 /**
  * Service providing a level of data service extracting from the repository
@@ -14,7 +15,7 @@ import by.intexsoft.repository.CategoryRepository;
  * @see {@link Category}, {@link JpaRepository}, {@link CategoryRepository}
  */
 @Service
-public class CategoryService {
+public class CategoryService implements ICategoryService {
 	private CategoryRepository categoryRepository;
 
 	@Autowired

@@ -13,7 +13,7 @@ import by.intexsoft.entity.Role;
 import by.intexsoft.entity.Stock;
 import by.intexsoft.entity.User;
 import by.intexsoft.repository.UserRepository;
-import by.intexsoft.service.UserService;
+import by.intexsoft.service.impl.UserService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {

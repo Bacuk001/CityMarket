@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import by.intexsoft.entity.User;
 import by.intexsoft.security.TokenAuthenticationService;
-import by.intexsoft.service.UserService;
+import by.intexsoft.service.IUserService;
+import by.intexsoft.service.impl.UserService;
 
 /**
  * The controller is responsible for registering the user in the system. When
@@ -31,10 +32,10 @@ public class AuthorizationRestController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AuthorizationRestController.class);
 	private static final String MESSAGE = "Message";
 	private TokenAuthenticationService authenticationService;
-	private UserService userService;
+	private IUserService userService;
 
 	@Autowired
-	public AuthorizationRestController(UserService userService, TokenAuthenticationService authenticationService) {
+	public AuthorizationRestController(IUserService userService, TokenAuthenticationService authenticationService) {
 		this.authenticationService = authenticationService;
 		this.userService = userService;
 	}

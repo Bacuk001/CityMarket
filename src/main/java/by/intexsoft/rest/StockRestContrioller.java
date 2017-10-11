@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Stock;
 import by.intexsoft.repository.StockRepository;
-import by.intexsoft.service.MarketService;
-import by.intexsoft.service.StockService;
+import by.intexsoft.service.IMarketService;
+import by.intexsoft.service.IStockService;
+import by.intexsoft.service.impl.MarketService;
+import by.intexsoft.service.impl.StockService;
 
 /**
  * A controller that processes requests for working with warehouse data. The
@@ -28,9 +29,7 @@ import by.intexsoft.service.StockService;
 @RestController
 public class StockRestContrioller {
 	private static final String FIND_BY_MARKET = "Find all stock by market.";
-	private static final String NOT_SAVE = "Do not save.";
 	private static final String SIGN_STOCKS_MARKET = "Sign stock for market.";
-	private static final String NOT_FOUND = "Not Found.";
 	private static final String FIND_STOCKS = "Find all stock.";
 	private static final String DO_NOT_SAVE = "Do not save to database.";
 	private static final String APPLICATION_JSON = "application/json; charset=UTF-8";
@@ -38,11 +37,11 @@ public class StockRestContrioller {
 	private static final String SAVE_CTOCK = "Save ctock to database.";
 	private static final Logger LOGGER = LoggerFactory.getLogger(StockRestContrioller.class);
 	private static final String MESSAGE = "Message";
-	private StockService stockService;
-	private MarketService marketService;
+	private IStockService stockService;
+	private IMarketService marketService;
 
 	@Autowired
-	public StockRestContrioller(MarketService marketService, StockService stockService) {
+	public StockRestContrioller(IMarketService marketService, IStockService stockService) {
 		this.stockService = stockService;
 		this.marketService = marketService;
 	}

@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Order;
 import by.intexsoft.repository.OrderRepository;
-import by.intexsoft.service.MarketService;
-import by.intexsoft.service.OrderService;
+import by.intexsoft.service.IMarketService;
+import by.intexsoft.service.IOrderService;
+import by.intexsoft.service.impl.OrderService;
 
 /**
  * A controller that processes requests for information about orders The
@@ -39,13 +39,12 @@ public class OrderRestController {
 	private static final String CONTENT_TYPE = "Content-Type";
 	private static final String FIND_ORDER = "Find order by id.";
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrderRestController.class);
-	private static final String ORDERS_NOT_FOUND = "Orders not found.";
 	private static final String MESSAGE = "Message";
-	private OrderService orderService;
-	private MarketService marketService;
+	private IOrderService orderService;
+	private IMarketService marketService;
 
 	@Autowired
-	public OrderRestController(OrderService orderService, MarketService marketService) {
+	public OrderRestController(IOrderService orderService, IMarketService marketService) {
 		this.orderService = orderService;
 		this.marketService = marketService;
 	}

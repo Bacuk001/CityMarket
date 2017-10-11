@@ -20,11 +20,16 @@ import by.intexsoft.entity.Product;
 import by.intexsoft.entity.Stock;
 import by.intexsoft.repository.PriceRepository;
 import by.intexsoft.repository.ProductRepository;
-import by.intexsoft.service.CategoryService;
-import by.intexsoft.service.MarketService;
-import by.intexsoft.service.PriceServicse;
-import by.intexsoft.service.ProductService;
-import by.intexsoft.service.StockService;
+import by.intexsoft.service.ICategoryService;
+import by.intexsoft.service.IMarketService;
+import by.intexsoft.service.IPriceService;
+import by.intexsoft.service.IProductService;
+import by.intexsoft.service.IStockService;
+import by.intexsoft.service.impl.CategoryService;
+import by.intexsoft.service.impl.MarketService;
+import by.intexsoft.service.impl.PriceServicse;
+import by.intexsoft.service.impl.ProductService;
+import by.intexsoft.service.impl.StockService;
 
 /**
  * A controller that processes requests for information about products with
@@ -45,17 +50,15 @@ public class ProductMarketContoller {
 	private static final String CONTENT_TYPE = "Content-Type";
 	private static final String FIND_PRODUCT_BY_MARKET_AND_CATEGORY = "Find product by market and category.";
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductRestController.class);
-	private static final String PRODUCTS_NOT_FOUND = "Products not found.";
-	private static final String MESSAGE = "Message";
-	private MarketService marketService;
-	private CategoryService categoryService;
-	private ProductService productService;
-	private StockService stockService;
-	private PriceServicse priceServicse;
+	private IMarketService marketService;
+	private ICategoryService categoryService;
+	private IProductService productService;
+	private IStockService stockService;
+	private IPriceService priceServicse;
 
 	@Autowired
-	public ProductMarketContoller(MarketService marketService, CategoryService categoryService,
-			ProductService productService, StockService stockService, PriceServicse priceServicse) {
+	public ProductMarketContoller(IMarketService marketService, ICategoryService categoryService,
+			IProductService productService, IStockService stockService, IPriceService priceServicse) {
 		this.marketService = marketService;
 		this.priceServicse = priceServicse;
 		this.categoryService = categoryService;

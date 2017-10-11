@@ -19,8 +19,8 @@ import by.intexsoft.repository.MarketRepository;
 import by.intexsoft.repository.OrderRepository;
 import by.intexsoft.repository.ProductRepository;
 import by.intexsoft.rest.OrderRestController;
-import by.intexsoft.service.MarketService;
-import by.intexsoft.service.OrderService;
+import by.intexsoft.service.impl.MarketService;
+import by.intexsoft.service.impl.OrderService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OrderRestControllerTest {

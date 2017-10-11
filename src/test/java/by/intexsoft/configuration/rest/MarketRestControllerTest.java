@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 
 import by.intexsoft.entity.Market;
 import by.intexsoft.rest.MarketRestController;
-import by.intexsoft.service.MarketService;
+import by.intexsoft.service.impl.MarketService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MarketRestControllerTest {

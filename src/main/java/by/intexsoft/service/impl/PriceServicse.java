@@ -1,4 +1,4 @@
-package by.intexsoft.service;
+package by.intexsoft.service.impl;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import by.intexsoft.entity.Price;
 import by.intexsoft.entity.Product;
 import by.intexsoft.entity.Stock;
 import by.intexsoft.repository.PriceRepository;
+import by.intexsoft.service.IPriceService;
 
 /**
  * Service that processes information about prices. Contacting the repository
@@ -17,7 +18,7 @@ import by.intexsoft.repository.PriceRepository;
  * @see {@link PriceRepository}, {@link Price}
  */
 @Service
-public class PriceServicse {
+public class PriceServicse implements IPriceService {
 	private PriceRepository priceRepository;
 
 	@Autowired

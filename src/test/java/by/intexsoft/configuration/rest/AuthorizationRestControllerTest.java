@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import by.intexsoft.entity.User;
 import by.intexsoft.rest.AuthorizationRestController;
 import by.intexsoft.security.TokenAuthenticationService;
-import by.intexsoft.service.UserService;
+import by.intexsoft.service.impl.UserService;
 
 
 @RunWith(MockitoJUnitRunner.class)

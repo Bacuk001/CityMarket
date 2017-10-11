@@ -1,4 +1,4 @@
-package by.intexsoft.service;
+package by.intexsoft.service.impl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import by.intexsoft.entity.Market;
 import by.intexsoft.repository.MarketRepository;
+import by.intexsoft.service.IMarketService;
 
 /**
  * Service to serve the market. the service adds the market, deletes, returns
@@ -14,7 +15,7 @@ import by.intexsoft.repository.MarketRepository;
  * {@link Market}, {@link MarketRepository}
  */
 @Service
-public class MarketService {
+public class MarketService implements IMarketService {
 	private MarketRepository marketRepository;
 
 	@Autowired
