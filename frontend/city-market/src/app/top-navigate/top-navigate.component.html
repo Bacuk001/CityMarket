@@ -6,8 +6,8 @@
     <ul class="nav navbar-nav">
       <li *ngIf="access.viewCategorySelect"><a (click)="navigate('category')">{{'category'|translate}}</a></li>
     </ul>
-    <div class="navbar-form navbar-right" role="search">
-      <a class="navbar-brand">магазин</a>
+    <div class="navbar-form" role="search">
+      <p class="navbar-shop">Выберите магазин</p>
       <select id="selectMarket" [(ngModel)]="market" (ngModelChange)="selectMarket()" class="form-control">
         <option id="optionMarket" *ngFor="let mark of marketService.getMarkets()" [ngValue]="mark" class="form-control">
           {{mark.name}}
