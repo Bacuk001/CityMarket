@@ -1,20 +1,24 @@
 <div class="navbar-top">
   <row>
-    <column md="2"><a class="navbar-brand" href="#">City Market</a></column>
-    <column md="2"><a (click)="navigate('category')">{{'category'|translate}}</a></column>
+    <column md="2">City Market</column>
+    <column md="2"><div (click)="navigate('category')">{{'category'|translate}}</div></column>
     <column md="2"></column>
-    <column><a>магазин</a></column>
-    <column>
-      <select id="selectMarket" [(ngModel)]="market" (ngModelChange)="selectMarket()" class="form-control">
+    <column md="1">{{'shop'|translate}}</column>
+    <column md="4">
+      <select id="selectMarket" [(ngModel)]="market" (ngModelChange)="selectMarket()">
         <option id="optionMarket" *ngFor="let mark of marketService.getMarkets()" [ngValue]="mark"
                 class="form-control">
           {{mark.name}}
         </option>
       </select>
-      <select *ngIf="false" name="select" #t (change)=" selectLanguage(t.value)" class="form-control">
-        <option value="ru">Русский</option>
-        <option value="en">English</option>
-      </select>
+    </column>
+    <column sm="1">
+      <row>
+        <div (click)="selectLanguage('ru')">RU</div>
+      </row>
+      <row>
+        <div (click)="selectLanguage('en')">EN</div>
+      </row>
     </column>
   </row>
   <row *ngIf="access.adminBar">

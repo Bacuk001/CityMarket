@@ -3,32 +3,32 @@
   <column sm="10">
     <row>
       <column sm="4"></column>
-      <column cm="3"><label>создать пользователя:</label></column>
+      <column cm="3"><label>{{'createUser'|translate}}</label></column>
     </row>
     <row>
       <column sm="3">
-        <label> пользователи в системе:</label>
+        <label> {{'usersNames'|translate}}</label>
       </column>
       <column sm="5">
         <select [(ngModel)]="user" (ngModelChange)="loadPassword(user)" class="form-control">
           <option *ngFor="let user of users" [ngValue]="user" class="form-control">{{user.name}}</option>
         </select>
       </column>
-      <div *ngIf="user.stock!=null"><label> склад:{{user.stock.name}}</label></div>
-      <div *ngIf="user.market!=null"><label> магазин:{{user.market.name}}</label></div>
+      <div *ngIf="user.stock!=null"><label>{{'stock'|translate}}{{user.stock.name}}</label></div>
+      <div *ngIf="user.market!=null"><label>{{'market'|translate}}{{user.market.name}}</label></div>
     </row>
     <row>
-      <column sm="3"><label>имя пользователя:</label></column>
-      <column sm="5"><input type="text" [(ngModel)]="user.name" placeholder="имя пользователя" class="form-control">
+      <column sm="3"><label>{{'userName'|translate}}</label></column>
+      <column sm="5"><input type="text" [(ngModel)]="user.name" class="form-control">
       </column>
     </row>
     <row>
-      <column sm="3"><label>пароль:</label></column>
-      <column sm="5"><input type="text" [(ngModel)]="user.password" placeholder="пароль" class="form-control"></column>
+      <column sm="3"><label>{{'password'|translate}}</label></column>
+      <column sm="5"><input type="text" [(ngModel)]="user.password" class="form-control"></column>
     </row>
     <row>
       <column sm="3">
-        <label>выберите магазин</label>
+        <label>{{'selectMarket'|translate}}</label>
       </column>
       <column sm="5">
         <select [(ngModel)]="user.market" class="form-control">
@@ -38,7 +38,7 @@
     </row>
     <row>
       <column sm="3">
-        <label>выберите склад</label>
+        <label>{{'selectStock'|translate}}</label>
       </column>
       <column sm="5">
         <select [(ngModel)]="user.stock" class="form-control">
@@ -53,13 +53,13 @@
     </row>
     <row>
       <column sm="2">
-        <button class="btn btn-primary btn-sm  selectButton" (click)="createUser()">отправить</button>
+        <button class="btn btn-primary btn-sm  selectButton" (click)="createUser()">{{'send'|translate}}</button>
       </column>
       <column sm="2">
-        <button class="btn btn-primary btn-sm  selectButton" (click)="clearFields()">очистить</button>
+        <button class="btn btn-primary btn-sm  selectButton" (click)="clearFields()">{{'clear'|translate}}</button>
       </column>
     </row>
-    {{message}}
+    {{message|translate}}
   </column>
 </row>
 

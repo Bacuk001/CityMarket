@@ -14,18 +14,6 @@
           {{'createProduct'|translate}}
         </button>
       </column>
-      <column sm="3" *ngIf="accessService.editPriceAndStock">
-        <button type="button" class="btn btn-primary btn-sm  selectCategory"
-                (click)="navigate('category/addPrice')">
-          {{'price'|translate}}
-        </button>
-      </column>
-      <column sm="3" *ngIf="accessService.editPriceAndStock">
-        <button type="button" class="btn btn-primary btn-sm  selectCategory"
-                (click)="navigate('category/addDescription')">
-          {{'addDescription'|translate}}
-        </button>
-      </column>
     </row>
     <row class="childRout">
       <column sm="10">

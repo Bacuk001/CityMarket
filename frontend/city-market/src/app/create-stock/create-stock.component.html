@@ -5,10 +5,10 @@
       <div class="spinner"></div>
     </row>
     <row>
-      {{message}}
+      {{message|translate}}
     </row>
     <row>
-      <column sm="3"><label>склад</label></column>
+      <column sm="3"><label>{{'stock'|translate}}</label></column>
       <column sm="5">
         <select [(ngModel)]="stock" class="form-control">
           <option *ngFor="let stock of stocks" [ngValue]="stock" class="form-control">{{stock.name}}</option>
@@ -16,25 +16,27 @@
       </column>
     </row>
     <row>
-      <column sm="3"><label>название склада</label></column>
-      <column sm="5"><input type="text" [(ngModel)]="stock.name" placeholder="Название склада" class="form-control">
+      <column sm="3"><label>{{'nameStock'|translate}}</label></column>
+      <column sm="5"><input type="text" [(ngModel)]="stock.name" class="form-control">
       </column>
     </row>
     <row>
-      <column sm="3"><label>адрес</label></column>
-      <column sm="5"><input type="text" [(ngModel)]="stock.address" placeholder="Адрес склада" class="form-control">
+      <column sm="3"><label>{{'address'|translate}}</label></column>
+      <column sm="5"><input type="text" [(ngModel)]="stock.address" class="form-control">
       </column>
     </row>
     <row>
-      <column sm="3"><label>о сладе</label></column>
+      <column sm="3"><label>{{'aboutStock'|translate}}</label></column>
       <column sm="5"><input type="text" [(ngModel)]="stock.about" class="form-control"></column>
     </row>
     <row>
       <column sm="2">
-        <button class="btn btn-primary btn-sm  selectButton" [disabled]="isDisableSaveButton" (click)="createStock()">Создать</button>
+        <button class="btn btn-primary btn-sm  selectButton" [disabled]="isDisableSaveButton" (click)="createStock()">
+          {{'save'|translate}}
+        </button>
       </column>
       <column sm="2">
-        <button class="btn btn-primary btn-sm  selectButton" (click)="clearFormInputs()">Очистить</button>
+        <button class="btn btn-primary btn-sm  selectButton" (click)="clearFormInputs()">{{'clear'|translate}}</button>
       </column>
     </row>
   </column>

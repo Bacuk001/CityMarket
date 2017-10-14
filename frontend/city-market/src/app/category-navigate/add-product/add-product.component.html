@@ -1,10 +1,13 @@
-{{message}}
 <row>
   <column sm="4"></column>
-  <column><label>добавить продукт</label></column>
+  <column><label>{{message|translate}}</label></column>
 </row>
 <row>
-  <column sm="3"><label>продукты </label></column>
+  <column sm="4"></column>
+  <column><label>{{'addProduct'|translate}}</label></column>
+</row>
+<row>
+  <column sm="3"><label>{{'products'|translate}}</label></column>
   <column sm="5">
     <select [(ngModel)]="product" class="form-control">
       <option *ngFor="let product of products" [ngValue]="product" class="form-control">{{product.name}}</option>
@@ -12,18 +15,18 @@
   </column>
 </row>
 <row>
-  <column sm="3"><label>изображение продукта</label></column>
+  <column sm="3"><label>{{'imageProduct'|translate}}</label></column>
   <column sm="5">
     <input type="text" [(ngModel)]="product.urlPhoto" class="form-control">
   </column>
   <column sm="2">
-    <span class="btn btn-default btn-file selectButton">Открыть файл
+    <span class="btn btn-default btn-file selectButton">{{'openFile'|translate}}
     <input type="file" (change)="selectImage($event)" #fileInput/>
     </span>
   </column>
 </row>
 <row>
-  <column sm="3"><label>название продукта</label></column>
+  <column sm="3"><label>{{'nameProduct'|translate}}</label></column>
   <column sm="5">
     <input type="text" [(ngModel)]="product.name" class="form-control"/>
   </column>

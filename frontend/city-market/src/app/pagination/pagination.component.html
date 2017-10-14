@@ -5,13 +5,13 @@
   </column>
   <column md="1" *ngIf="activPage>2">...</column>
   <column md="1" *ngIf="activPage>0">
-    <button (click)="selectPage(activPage-1)">{{activPage-1}}</button>
+    <button (click)="selectPage(activPage-1)">{{activPage}}</button>
   </column>
   <column md="1">
-    <button (click)="selectPage(activPage)" [disabled]="true">{{activPage}}</button>
+    <button (click)="selectPage(activPage)" [disabled]="true">{{activPage+1}}</button>
   </column>
   <column md="1" *ngIf="pages.length>1 && activPage!=pages.length-1">
-    <button (click)="selectPage(activPage+1)">{{activPage+1}}</button>
+    <button (click)="selectPage(activPage+1)">{{activPage+2}}</button>
   </column>
   <column md="1" *ngIf="pages.length-activPage>2">...</column>
   <column md="1" *ngIf="activPage<pages.length-1">

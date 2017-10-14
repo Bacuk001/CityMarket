@@ -59,8 +59,8 @@ export class CreateUserComponent implements OnInit {
     this.user = new User();
     this.loadMarkets();
     this.loadStock();
-    this.loadUser()
-    this.loadRole()
+    this.loadUser();
+    this.loadRole();
   }
 
   /**
@@ -133,7 +133,7 @@ export class CreateUserComponent implements OnInit {
   }
 
   /**
-   * clear fields for creating and editing a user.
+   * Clear fields for creating and editing a user.
    */
   clearFields() {
     this.user = new User();

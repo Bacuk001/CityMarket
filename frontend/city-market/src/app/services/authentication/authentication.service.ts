@@ -21,6 +21,7 @@ const EMPTY_STRING = '';
 const USER_NOT_SAVE = 'User do not save!';
 const TOKEN_NAME_FIELD_HEADERS = 'X-AUTH-TOKEN';
 
+
 /**
  * A class that defines the basic actions for authenticating a user in an application.
  */
@@ -54,7 +55,7 @@ export class AuthenticationService implements IAuthenticationService {
       this.http.post(url, body, {headers: headers})
         .subscribe((res) => {
           this.user = res.json();
-          return response(this.user);
+          return response('saved');
         }, (error) => reject(USER_NOT_SAVE)));
   }
 

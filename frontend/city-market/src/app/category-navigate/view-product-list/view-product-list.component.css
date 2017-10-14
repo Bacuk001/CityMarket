@@ -6,7 +6,6 @@
 .lineProduct {
   border-top: 1px solid gray;
   position: relative;
-  height: 65px;
 }
 .lineProduct column{
   margin: 0 auto;
@@ -16,13 +15,6 @@
   color: #d97a7b;
   background-color: rgba(1, 72, 184, 0.2);
   transition: font-size .5s ease,background-color .5s ease;
-}
-
-
-.pagination{
-  margin: auto;
-  width: 15px;
-  display: block;
 }
 .column-product{
   margin: 5px;
