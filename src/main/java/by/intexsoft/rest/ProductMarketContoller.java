@@ -27,7 +27,6 @@ import by.intexsoft.service.IProductService;
 import by.intexsoft.service.IStockService;
 import by.intexsoft.service.impl.CategoryService;
 import by.intexsoft.service.impl.MarketService;
-import by.intexsoft.service.impl.PriceServicse;
 import by.intexsoft.service.impl.ProductService;
 import by.intexsoft.service.impl.StockService;
 
@@ -104,7 +103,7 @@ public class ProductMarketContoller {
 	 * @see {@link Category}, {@link Market},
 	 */
 	@RequestMapping(value = "/products/market/{idMarket}/category/{idCategory}/all", method = RequestMethod.GET)
-	public ResponseEntity<List<Product>> getByMarketAndCategiry(@PathVariable("idMarket") int idMarket,
+	public ResponseEntity<List<Product>> getByMarketAndCategory(@PathVariable("idMarket") int idMarket,
 			@PathVariable("idCategory") int idCategory) {
 		LOGGER.info(FIND_PRODUCT_BY_MARKET_AND_CATEGORY);
 		HttpHeaders headers = new HttpHeaders();
