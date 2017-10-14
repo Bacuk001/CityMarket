@@ -20,14 +20,13 @@
   padding-left: 250px;
 }
 
-<<<<<<< HEAD
 .navbar-top{
   border: 1px solid blue;
   background-color: #1b6d85;
   border-radius: 6px;
   color: white;
 }
-=======
+
 .navbar-form{
   position: absolute;
   left: 335px;
@@ -70,5 +69,3 @@ div.collapse.navbar-collapse::after{
   left: 0;
 }
 
-
->>>>>>> 0db686b28f2deba21a372bb893877fd901f1ae2d
