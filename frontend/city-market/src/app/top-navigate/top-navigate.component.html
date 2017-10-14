@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="navbar-top">
   <row>
     <column md="2"><a class="navbar-brand" href="#">City Market</a></column>
@@ -5,6 +6,18 @@
     <column md="2"></column>
     <column><a>магазин</a></column>
     <column>
+=======
+<nav class="navbar navbar-inverse bg-inverse">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#">City Market</a>
+  </div>
+  <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+    <ul class="nav navbar-nav">
+      <li *ngIf="access.viewCategorySelect"><a (click)="navigate('category')">{{'category'|translate}}</a></li>
+    </ul>
+    <div class="navbar-form" role="search">
+      <p class="navbar-shop">Выберите магазин</p>
+>>>>>>> 0db686b28f2deba21a372bb893877fd901f1ae2d
       <select id="selectMarket" [(ngModel)]="market" (ngModelChange)="selectMarket()" class="form-control">
         <option id="optionMarket" *ngFor="let mark of marketService.getMarkets()" [ngValue]="mark"
                 class="form-control">

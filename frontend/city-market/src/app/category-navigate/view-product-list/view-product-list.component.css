@@ -5,11 +5,20 @@
 
 .lineProduct {
   border-top: 1px solid gray;
-  margin: 5px;
+  position: relative;
+  height: 65px;
+}
+.lineProduct column{
+  margin: 0 auto;
 }
 .lineProduct:hover{
   font-size: 15px;
+  color: #d97a7b;
+  background-color: rgba(1, 72, 184, 0.2);
+  transition: font-size .5s ease,background-color .5s ease;
 }
+
+
 .pagination{
   margin: auto;
   width: 15px;
@@ -29,17 +38,16 @@
 
 .selectCategory {
   margin-left: 5px;
-  padding-left: 5px;
-  font-size: 11px;
-  width: 90%;
-  background-color: black;
-  -webkit-transition: font-size 0.5s;
-  transition: font-size 0.5s ease;
+  padding-left: 9px;
+  font-size: 12px;
+  background-color: #2F5392;
+  transition: font-size 0.5s ease,  background-color 0.5s ease;
 }
 
 .selectCategory:hover {
-  background-color: gray;
+  background-color: rgba(47, 83, 146, .7);
   font-size: 15px;
+  transition: font-size 0.5s ease,  background-color 0.5s ease;
 }
 
 @keyframes spinner {
@@ -59,4 +67,7 @@
   border-right: 2px solid transparent;
   animation: spinner .6s linear infinite;
 }
+
+
+
 
