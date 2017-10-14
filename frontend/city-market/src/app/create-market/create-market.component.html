@@ -1,6 +1,11 @@
 <row>
   <column sm="2"></column>
   <column sm="10">
+    <row *ngIf="isDisableSaveButton">
+     <column md="5">
+      <div class="spinner"></div>
+     </column>
+    </row>
     <row>
       {{message}}
     </row>
@@ -26,10 +31,10 @@
     </row>
     <row>
       <column sm="2">
-        <button class="btn btn-primary btn-sm  selectButton" (click)="createMarket()">создать</button>
+        <button class="btn btn-primary btn-sm  selectButton" [disabled]="isDisableSaveButton" (click)="createMarket()">создать</button>
       </column>
       <column sm="2">
-        <button class="btn btn-primary btn-sm  selectButton" (click)="clearEditMarket()">очистить</button>
+        <button class="btn btn-primary btn-sm  selectButton" (click)="clearFormInput()">очистить</button>
       </column>
     </row>
   </column>

@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'app';
 
   constructor(private translate: TranslateService) {
-    translate.use('en');
+    translate.use('ru');
   }
 }

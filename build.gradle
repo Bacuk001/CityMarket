@@ -33,7 +33,7 @@ repositories {
 	 mavenCentral()
 }
 
-//compileJava{dependsOn 'frontend/city-market:buildCline'}
+compileJava{dependsOn 'frontend/city-market:buildCline'}
 
 dependencies {
  	testCompile "junit:junit:4.11"

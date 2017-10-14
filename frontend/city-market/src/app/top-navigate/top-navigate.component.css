@@ -12,3 +12,10 @@
 .selectMarketCont {
   padding-left: 250px;
 }
+
+.navbar-top{
+  border: 1px solid blue;
+  background-color: #1b6d85;
+  border-radius: 6px;
+  color: white;
+}

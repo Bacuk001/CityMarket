@@ -35,6 +35,7 @@ import {DescriptionProductComponent} from './category-navigate/description-produ
 import {DescriptionProductCreateComponent} from './category-navigate/description-product-create/description-product-create.component';
 import {DescriptionService} from './services/description/description.service';
 import {ImageUploadService} from './services/imageUpload/image-upload.service';
+import { PaginationComponent } from './pagination/pagination.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '/CityMarket/localisation/', '.json');
@@ -67,7 +68,8 @@ const translModel = {
     OrderUserComponent,
     ListOrderMarketComponent,
     DescriptionProductComponent,
-    DescriptionProductCreateComponent
+    DescriptionProductCreateComponent,
+    PaginationComponent
   ],
   imports: [
     FormsModule,

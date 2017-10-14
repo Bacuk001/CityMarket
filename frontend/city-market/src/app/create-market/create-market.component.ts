@@ -24,6 +24,10 @@ export class CreateMarketComponent implements OnInit {
    * Message that will be sent to the user during the use of the components.
    */
   public message: string;
+  /**
+   * Determines the button's click.
+   */
+  public isDisableSaveButton: boolean = false;
 
   constructor(@Inject('marketService') public marketService: IMarketService) {
   }
@@ -42,16 +46,26 @@ export class CreateMarketComponent implements OnInit {
    * The market is transferred to the service for storage.
    */
   createMarket() {
+    this.isDisableSaveButton = true;
     if (this.market.name !== '')
       this.marketService.saveMarket(this.market)
         .then(resp => {
+          this.isDisableSaveButton = false;
           this.message = resp;
           this.marketService.getMarkets();
           setTimeout(() => this.message = '', 1000);
-        })
+          this.clearFormInput();
+        }).catch(error => {
+        this.isDisableSaveButton = false;
+        this.message = error;
+        setTimeout(() => this.message = '', 1000);
+      });
   }
 
-  clearEditMarket() {
+  /**
+   * Clear form fields.
+   */
+  clearFormInput() {
     this.market = new Market();
   }
 }

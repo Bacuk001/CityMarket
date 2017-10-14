@@ -23,6 +23,10 @@ export class CreateStockComponent implements OnInit {
    * Messages that will be sent to the application user.
    */
   public message: string;
+  /**
+   * Determines the button's click.
+   */
+  public isDisableSaveButton: boolean = false;
 
   constructor(@Inject('stockService') public stockService: IStockService) {
     this.stock = new Stock();
@@ -38,17 +42,28 @@ export class CreateStockComponent implements OnInit {
    * The method transfers the warehouse to the service for registration, storing the stock.
    */
   createStock() {
+    this.isDisableSaveButton = true;
     if (this.stock.name !== '')
       this.stockService.saveStock(this.stock)
-        .then(resp => this.message = resp)
+        .then(resp => this.afterSuccessfullySaving(resp))
         .catch(error => this.message = error);
   }
 
   /**
    * Cancel editing and clearing fields.
    */
-  clearStock() {
+  clearFormInputs() {
     this.stock = new Stock();
   }
 
+  /**
+   * The method is executed when the warehouse is successfully saved.
+   */
+  private afterSuccessfullySaving(response) {
+    this.isDisableSaveButton = false;
+    this.message = response;
+    this.ngOnInit();
+    this.clearFormInputs();
+    setTimeout(() => this.message = '', 1000);
+  }
 }

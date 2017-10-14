@@ -75,16 +75,4 @@ export class SignStockMarketComponent implements OnInit {
       if (this.check[index]) this.stocksMarketSign.push(this.stocks[index]);
     }
   }
-
-  /**
-   *
-   * @param {Stock} stock
-   */
-  updateStockMarket(stock: Stock) {
-    for (let index = 0; index < this.stocksMarketSign.length; index++) {
-      if (this.stocksMarketSign[index].id = stock.id) return;
-    }
-    stock.id = null;
-    this.stocksMarketSign[this.stocksMarketSign.length] = stock;
-  }
 }

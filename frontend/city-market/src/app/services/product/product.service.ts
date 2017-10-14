@@ -53,6 +53,7 @@ export class ProductService implements IProductService {
    * @returns {Promise<any>}
    */
   getPromiseProducts(page: number) {
+    this.products=null;
     const user = this.authService.getUser();
     if (user.stock != null) {
       const category = this.serviceCategory.getSelectedCategory();
