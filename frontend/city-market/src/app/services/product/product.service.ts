@@ -24,6 +24,7 @@ export class ProductService implements IProductService {
   private products: Product[];
   private selectProduct: Product;
   private countPageProduct: number[];
+  private countLoadProductOnPage: number = 10;
 
   constructor(private http: Http,
               @Inject('categoryService') private serviceCategory: ICategoryService,
@@ -53,7 +54,7 @@ export class ProductService implements IProductService {
    * @returns {Promise<any>}
    */
   getPromiseProducts(page: number) {
-    this.products=null;
+    this.products = null;
     const user = this.authService.getUser();
     if (user.stock != null) {
       const category = this.serviceCategory.getSelectedCategory();
@@ -63,7 +64,9 @@ export class ProductService implements IProductService {
     if (this.serviceMarket != null) {
       const market = this.serviceMarket.getSelectMarket();
       const category = this.serviceCategory.getSelectedCategory();
-      const url = URL + 's/market/' + market.id + '/category/' + category.id + '/sizePage/10/page/' + page;
+      const url = URL + 's/market/' + market.id + '/category/' + category.id +
+        '/sizePage/' + this.countLoadProductOnPage +
+        '/page/' + page;
       return this.loadProduct(url);
     }
   }
@@ -100,8 +103,8 @@ export class ProductService implements IProductService {
    * @param {number} count
    */
   counterPage(count: number) {
-    let countPage = Math.trunc(count / 10);
-    if (count % 10 > 0) countPage++;
+    let countPage = Math.trunc(count / this.countLoadProductOnPage);
+    if (count % this.countLoadProductOnPage > 0) countPage++;
     this.countPageProduct = new Array(countPage);
   }
 
@@ -190,5 +193,14 @@ export class ProductService implements IProductService {
     const headers = new Headers({'Content-Type': CONTENT_TYPE_VALUE});
     this.http.get(url, {headers: headers})
       .subscribe(resp => this.counterPage(resp.json()));
+  }
+
+  /**
+   * The method sets the number of products that will be loaded to display on a single page.
+   *
+   * @param {number} countProduct
+   */
+  setCountProductOnPage(countProduct: number) {
+    this.countLoadProductOnPage = countProduct;
   }
 }

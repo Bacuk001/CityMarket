@@ -14,7 +14,10 @@
 <row>
   <column sm="2"></column>
   <column sm="5">{{'nameProduct'|translate}}</column>
-  <column sm="3"></column>
+  <column sm="3">
+    <button (click)="sortProductByPrice(true)">sortUP</button>
+    <button (click)="sortProductByPrice(false)">sortDown</button>
+  </column>
 </row>
 <row *ngFor="let product of productService.getProducts()" class="lineProduct">
   <column sm="12">
@@ -39,7 +42,7 @@
         </row>
       </column>
     </row>
-    <row  *ngIf="access.editPriceAndStock">
+    <row *ngIf="access.editPriceAndStock">
       <column sm="2">
         <button type="button" class="btn btn-primary btn-sm  selectCategory"
                 (click)="handlerProduct('category/addPrice',product)">
@@ -55,6 +58,6 @@
     </row>
   </column>
 </row>
-<row *ngIf="productService.loadCountProduct()!=null">
+<row *ngIf="productService.loadCountProduct()!= null">
   <app-pagination [countProduct]="productService.loadCountProduct().length"></app-pagination>
 </row>

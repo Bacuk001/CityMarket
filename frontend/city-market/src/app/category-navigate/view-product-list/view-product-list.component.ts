@@ -8,74 +8,99 @@ import {ICategoryService} from "../../services/category/icategory-service.servic
 import {Product} from "../../entities/product";
 
 @Component({
-    selector: 'app-view-product-list',
-    templateUrl: './view-product-list.component.html',
-    styleUrls: ['./view-product-list.component.css']
+  selector: 'app-view-product-list',
+  templateUrl: './view-product-list.component.html',
+  styleUrls: ['./view-product-list.component.css']
 })
 export class ViewProductListComponent {
-    /**
-     * Messages for the user during the application process.
-     */
-    public message: string;
+  /**
+   * Messages for the user during the application process.
+   */
+  public message: string;
 
-    constructor(@Inject('productService') public  productService: IProductService,
-                @Inject('priceService') public priceService: IPriceService,
-                @Inject('marketService') public marketService: IMarketService,
-                @Inject('categoryService') public categoryService: ICategoryService,
-                public access: AccessService,
-                private router: Router) {
-    }
+  constructor(@Inject('productService') public  productService: IProductService,
+              @Inject('priceService') public priceService: IPriceService,
+              @Inject('marketService') public marketService: IMarketService,
+              @Inject('categoryService') public categoryService: ICategoryService,
+              public access: AccessService,
+              private router: Router) {
+  }
 
-    /**
-     * Registers the selected product in the service.
-     *
-     * @param product
-     */
-    selectProduct(product) {
-        this.productService.setSelectProduct(product);
-    }
+  /**
+   * Registers the selected product in the service.
+   *
+   * @param product
+   */
+  selectProduct(product) {
+    this.productService.setSelectProduct(product);
+  }
 
-    /**
-     * The method initializes the selected product in the service and redirects it to the component
-     * of the order.
-     *
-     * @param product
-     */
-    checkout(product) {
-        this.productService.setSelectProduct(product);
-        this.router.navigateByUrl('order');
-    }
+  /**
+   * The method initializes the selected product in the service and redirects it to the component
+   * of the order.
+   *
+   * @param product
+   */
+  checkout(product) {
+    this.productService.setSelectProduct(product);
+    this.router.navigateByUrl('order');
+  }
 
-    /**
-     * The method initializes the selected product in the service and the component to view the
-     * product description.
-     *
-     * @param product
-     */
-    viewDescription(product) {
-        this.productService.setSelectProduct(product);
-        this.router.navigateByUrl('category/viewDescription').catch();
-    }
+  /**
+   * The method initializes the selected product in the service and the component to view the
+   * product description.
+   *
+   * @param product
+   */
+  viewDescription(product) {
+    this.productService.setSelectProduct(product);
+    this.router.navigateByUrl('category/viewDescription').catch();
+  }
 
-    /**
-     * The method takes the page number and loads the products from the page.
-     *
-     * @param {number} page
-     */
-    selectPage(page: number) {
-        this.productService.getPromiseProducts(page)
-            .then().catch(error => this.message = error);
-    }
+  /**
+   * The method takes the page number and loads the products from the page.
+   *
+   * @param {number} page
+   */
+  selectPage(page: number) {
+    this.productService.getPromiseProducts(page)
+      .then().catch(error => this.message = error);
+  }
 
-    /**
-     * The method registers the selected product in the service and redirects it to work with the
-     * product. Depending on the chosen route, the characteristics or changes in price and
-     * balance will be corrected.
-     * @param navigate
-     * @param product
-     */
-    handlerProduct(navigate: string, product: Product) {
-        this.productService.setSelectProduct(product);
-        this.router.navigateByUrl(navigate).then(() => this.message = 'Ошибка навигации.');
+  /**
+   * The method registers the selected product in the service and redirects it to work with the
+   * product. Depending on the chosen route, the characteristics or changes in price and
+   * balance will be corrected.
+   * @param navigate
+   * @param product
+   */
+  handlerProduct(navigate: string, product: Product) {
+    this.productService.setSelectProduct(product);
+    this.router.navigateByUrl(navigate).then(() => this.message = 'Ошибка навигации.');
+  }
+
+  sortProductByPrice(sortDown: boolean) {
+    if (sortDown) this.productService.getProducts().sort(this.sortDown);
+    if (!sortDown) this.productService.getProducts().sort(this.sortUp);
+  }
+
+  sortDown(product1: Product, product: Product) {
+    if (product1.priceView > product.priceView) {
+      return 1;
     }
+    if (product1.priceView < product.priceView) {
+      return -1;
+    }
+    return 0;
+  }
+
+  sortUp(product1: Product, product: Product) {
+    if (product1.priceView > product.priceView) {
+      return -1;
+    }
+    if (product1.priceView < product.priceView) {
+      return 1;
+    }
+    return 0;
+  }
 }
