@@ -183,4 +183,29 @@ public class ProductMarketContoller {
 		Integer products = productService.countProductByCategoryAndStocks(category, stocks);
 		return new ResponseEntity<Integer>(products, headers, HttpStatus.OK);
 	}
+
+	/**
+	 * The controller's method handles requests for products that contain a string
+	 * transmitted in the evocative. products are retrieved, provided that they are
+	 * in the category in which the id is equal to the passed parameter in the
+	 * query. Also in all warehouses to which a store is attached, the id of which
+	 * is front in the line of the yoke. The method accesses the service and
+	 * receives data. Forms and sends a reply.
+	 * 
+	 * @see {@link ProductService}, {@link MarketService}, {@link CategoryService}.
+	 */
+	@RequestMapping(value = "/products/market/{idMarket}/category/{idCategory}/product/{partNameProduct}", method = RequestMethod.GET)
+	public ResponseEntity<List<Product>> getProductByNameAndMarketAndCategory(@PathVariable("idMarket") int idMarket,
+			@PathVariable("idCategory") int idCategory, @PathVariable("partNameProduct") String partNameProduct) {
+		LOGGER.info(FIND_PRODUCT_BY_STOCK_AND_CATEGORY);
+		Category category = categoryService.findOne(idCategory);
+		Market market = marketService.findOne(idMarket);
+		List<Stock> stocks = stockService.finfByMasrket(market);
+		List<Product> products = productService.findByCetegoryAndProductNameAndStocks(category, partNameProduct,
+				stocks);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add(CONTENT_TYPE, APPLICATION_JSON);
+		return new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
+
+	}
 }

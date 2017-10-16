@@ -124,4 +124,14 @@ public interface IProductService {
 	 * @see {@link ProductRepository}, {@link Category}, {@link Stock}
 	 */
 	public Integer countProductByCategoryAndStocks(Category category, List<Stock> stocks);
+
+	/**
+	 * The service method requests a list of products in the repository in which
+	 * there are symbols from the transmitted parameter, in the category and in the
+	 * warehouses transmitted in the parameters.
+	 * 
+	 * @see {@link ProductRepository},{@link Product}
+	 */
+	public List<Product> findByCetegoryAndProductNameAndStocks(Category category, String productName,
+			List<Stock> stocks);
 }

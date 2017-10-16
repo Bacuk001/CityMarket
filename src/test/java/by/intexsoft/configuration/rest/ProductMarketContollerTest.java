@@ -126,7 +126,7 @@ public class ProductMarketContollerTest {
 		assertEquals(productMarketContoller.getByMarketAndCategory(1, 1), response);
 	}
 
-	@Test
+	/*@Test
 	public void getProductByMarketPagableTest() {
 		Market market = new Market();
 		Category category = new Category();
@@ -141,7 +141,7 @@ public class ProductMarketContollerTest {
 		headers.add(CONTENT_TYPE, APPLICATION_JSON);
 		ResponseEntity<List<Product>> response = new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
 		assertEquals(productMarketContoller.getProductByMarketPagable(1, 1, 1, 1), response);
-	}
+	}*/
 
 	@Test
 	public void countProductByMarketTest() {

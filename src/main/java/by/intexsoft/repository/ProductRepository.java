@@ -94,6 +94,21 @@ public interface ProductRepository extends AbstractEntityRepository<Product> {
 	List<Product> findProductDistinctByCategoryAndStocksIn(Category category, List<Stock> stocks, Pageable pageable);
 
 	/**
+	 * The method generates a request to receive products contained in the category
+	 * and in warehouses that are transmitted as input parameters. Provided that the
+	 * product name will contain the characters passed in the string parameter.
+	 * 
+	 * @param category
+	 *            - the category in which the goods are located.
+	 * @param name
+	 *            - part of the characters that are contained in the product name.
+	 * @param stocks
+	 *            -list of warehouses in which to search for products.
+	 */
+	List<Product> findProductDistinctByCategoryAndNameContainingAndStockIn(Category category, String name,
+			List<Stock> stocks);
+
+	/**
 	 * A repository that manages the essence of products in a data buffer. Forms a
 	 * query into the database to retrieve the number of products that correspond to
 	 * the category and are stored in warehouses.

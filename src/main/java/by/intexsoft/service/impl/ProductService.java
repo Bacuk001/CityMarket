@@ -173,6 +173,20 @@ public class ProductService implements IProductService {
 	}
 
 	/**
+	 * The service method requests a list of products in the repository in which
+	 * there are symbols from the transmitted parameter, in the category and in the
+	 * warehouses transmitted in the parameters.
+	 * 
+	 * @see {@link ProductRepository},{@link Product}
+	 */
+	public List<Product> findByCetegoryAndProductNameAndStocks(Category category, String productName,
+			List<Stock> stocks) {
+		return productRepository.findProductDistinctByCategoryAndNameContainingAndStockIn(category, productName,
+				stocks);
+
+	}
+
+	/**
 	 * The service method asks the repository for the number of products in the
 	 * category in the stock.
 	 * 
