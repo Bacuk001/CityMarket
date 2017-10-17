@@ -27,5 +27,7 @@
 	"nameDescription":"name description",
 	"vaue":"value",
 	"exit":"exit",
-	"save":"save"
+	"save":"save",
+"find":"find by name"
+
 }

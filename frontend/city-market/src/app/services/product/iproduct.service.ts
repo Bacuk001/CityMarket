@@ -47,5 +47,14 @@ export interface IProductService {
    * The method sets the number of products that will be loaded to display on a single page.
    * @param {number} countProduct
    */
-  setCountProductOnPage(countProduct:number);
+  setCountProductOnPage(countProduct: number);
+
+  /**
+   * The method sends a request to receive products from the store in a certain category. Products
+   * must have a fragment passed to the parameter in the product name.
+   *
+   * @param {string} partName
+   * @returns {Promise<any>}
+   */
+  loadProductsByPartName(partName: string);
 }

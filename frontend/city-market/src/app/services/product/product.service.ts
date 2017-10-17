@@ -59,7 +59,7 @@ export class ProductService implements IProductService {
     if (user.stock != null) {
       const category = this.serviceCategory.getSelectedCategory();
       const url = URL + 's/stock/' + user.stock.id + '/category/' + category.id;
-      return this.loadProduct(url);
+      return this.loadProducts(url);
     }
     if (this.serviceMarket != null) {
       const market = this.serviceMarket.getSelectMarket();
@@ -67,7 +67,7 @@ export class ProductService implements IProductService {
       const url = URL + 's/market/' + market.id + '/category/' + category.id +
         '/sizePage/' + this.countLoadProductOnPage +
         '/page/' + page;
-      return this.loadProduct(url);
+      return this.loadProducts(url);
     }
   }
 
@@ -76,13 +76,35 @@ export class ProductService implements IProductService {
    * @param {string} url
    * @returns {Promise<any>}
    */
-  private loadProduct(url: string) {
+  private loadProducts(url: string) {
     return new Promise((resolve, reject) => {
       this.http.get(url)
         .subscribe(resp => {
           this.products = resp.json();
           this.loadPrice(this.products);
           this.downloadCountProduct();
+          return resolve(this.products);
+        }, error => reject(ERROR_LOAD));
+    });
+  }
+
+  /**
+   * The method sends a request to receive products from the store in a certain category. Products
+   * must have a fragment passed to the parameter in the product name.
+   *
+   * @param {string} partName
+   * @returns {Promise<any>}
+   */
+  loadProductsByPartName(partName: string) {
+    let url = URL + 's/market/' + this.serviceMarket.getSelectMarket().id + '/category/'
+      + this.serviceCategory.getSelectedCategory().id + '/product/' + partName;
+    const headers = new Headers({'Content-Type': CONTENT_TYPE_VALUE});
+    return new Promise((resolve, reject) => {
+      this.http.get(url, {headers: headers})
+        .subscribe(resp => {
+          this.products = resp.json();
+          this.loadPrice(this.products);
+          this.countPageProduct = new Array();
           return resolve(this.products);
         }, error => reject(ERROR_LOAD));
     });

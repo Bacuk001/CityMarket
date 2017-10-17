@@ -17,6 +17,7 @@ export class ViewProductListComponent {
    * Messages for the user during the application process.
    */
   public message: string;
+  public partName: string;
 
   constructor(@Inject('productService') public  productService: IProductService,
               @Inject('priceService') public priceService: IPriceService,
@@ -58,16 +59,6 @@ export class ViewProductListComponent {
   }
 
   /**
-   * The method takes the page number and loads the products from the page.
-   *
-   * @param {number} page
-   */
-  selectPage(page: number) {
-    this.productService.getPromiseProducts(page)
-      .then().catch(error => this.message = error);
-  }
-
-  /**
    * The method registers the selected product in the service and redirects it to work with the
    * product. Depending on the chosen route, the characteristics or changes in price and
    * balance will be corrected.
@@ -102,5 +93,16 @@ export class ViewProductListComponent {
       return 1;
     }
     return 0;
+  }
+
+  /**
+   * The method is called when the input field of the product name is changed. The method passes a
+   * string to the service that should be contained in the product name. And instructs the service
+   * about the need to download products in the name of which this line is contained. In the case
+   * of an empty string, the method indicates the download service for all products.
+   */
+  changeListProductByPartName() {
+    if (this.partName != "") this.productService.loadProductsByPartName(this.partName);
+    if (this.partName == "") this.productService.getPromiseProducts(0);
   }
 }

@@ -1,64 +1,72 @@
 <row id="productList">
-    {{message}}
+  {{message}}
 </row>
 <row>
-    <column sm="4"></column>
-    <column sm="5" class="product-category"><label><h3>{{categoryService.getSelectedCategory().name}}</h3></label>
-    </column>
+  <column sm="4"></column>
+  <column sm="5" class="product-category"><label><h3>{{categoryService.getSelectedCategory().name}}</h3></label>
+  </column>
+</row>
+<row>
+  <column md="3">
+    <label>{{'find'|translate}}</label>
+  </column>
+  <column md="2">
+    <input type="text" [(ngModel)]="partName" (ngModelChange)="changeListProductByPartName()">
+  </column>
 </row>
 <row *ngIf="productService.getProducts()==null">
-    <column sm="4"></column>
-    <column sm="5">
-        <div class="spinner"></div>
-    </column>
+  <column sm="4"></column>
+  <column sm="5">
+    <div class="spinner"></div>
+  </column>
 </row>
 <row>
-    <column sm="2"></column>
-    <column sm="5" class="product-name"><p>{{'nameProduct'|translate}}</p></column>
-    <column sm="3">
-        <button (click)="sortProductByPrice(true)">sortUP</button>
-        <button (click)="sortProductByPrice(false)">sortDown</button>
-    </column>
+  <column sm="2"></column>
+  <column sm="5" class="product-name"><p>{{'nameProduct'|translate}}</p></column>
+  <column sm="3">
+    <button (click)="sortProductByPrice(true)">sortUP</button>
+    <button (click)="sortProductByPrice(false)">sortDown</button>
+  </column>
 </row>
 <row *ngFor="let product of productService.getProducts()" class="lineProduct">
-    <column sm="12">
+  <column sm="12">
+    <row>
+      <column sm="2">
+        <img *ngIf="product.urlPhoto!=null" [src]="product.urlPhoto" class="sizeImg">
+      </column>
+      <column sm="6">
+        <div (click)="selectProduct(product)"><label>{{product.name}}</label></div>
+      </column>
+      <column sm="3">
+        <div>{{'price'|translate}}:</div>
+        <label>{{product.priceView}} руб</label>
+      </column>
+      <column sm="1">
         <row>
-            <column sm="2">
-                <img *ngIf="product.urlPhoto!=null" [src]="product.urlPhoto" class="sizeImg">
-            </column>
-            <column sm="6">
-                <div (click)="selectProduct(product)"><label>{{product.name}}</label></div>
-            </column>
-            <column sm="3">
-                <div>{{'price'|translate}}:</div>
-                <label>{{product.priceView}} руб</label>
-            </column>
-            <column sm="1">
-                <row>
-                    <label id="inOrder" class="orderMove" (click)="checkout(product)">{{'inOrder'|translate}}</label>
-                </row>
-                <row>
-                    <label id="inDescription" class="orderMove"
-                           (click)="viewDescription(product)">{{'description'|translate}}</label>
-                </row>
-            </column>
+          <label id="inOrder" class="orderMove" (click)="checkout(product)">{{'inOrder'|translate}}</label>
         </row>
-        <row *ngIf="access.editPriceAndStock">
-            <column sm="2">
-                <button type="button" class="btn btn-primary btn-sm  selectCategory"
-                        (click)="handlerProduct('category/addPrice',product)">
-                    {{'price'|translate}}
-                </button>
-            </column>
-            <column sm="2" *ngIf="access.editPriceAndStock">
-                <button type="button" class="btn btn-primary btn-sm  selectCategory"
-                        (click)="handlerProduct('category/addDescription',product)">
-                    {{'addDescription'|translate}}
-                </button>
-            </column>
+        <row>
+          <label id="inDescription" class="orderMove"
+                 (click)="viewDescription(product)">{{'description'|translate}}</label>
         </row>
-    </column>
+      </column>
+    </row>
+    <row *ngIf="access.editPriceAndStock">
+      <column sm="2">
+        <button type="button" class="btn btn-primary btn-sm  selectCategory"
+                (click)="handlerProduct('category/addPrice',product)">
+          {{'price'|translate}}
+        </button>
+      </column>
+      <column sm="2" *ngIf="access.editPriceAndStock">
+        <button type="button" class="btn btn-primary btn-sm  selectCategory"
+                (click)="handlerProduct('category/addDescription',product)">
+          {{'addDescription'|translate}}
+        </button>
+      </column>
+    </row>
+  </column>
 </row>
 <row *ngIf="productService.loadCountProduct()!= null">
-    <app-pagination [countProduct]="productService.loadCountProduct().length"></app-pagination>
+  <app-pagination [countProduct]="productService.loadCountProduct().length"></app-pagination>
 </row>
