@@ -3,7 +3,7 @@
 </row>
 <row>
   <column sm="4"></column>
-  <column sm="5"><label><h3>{{categoryService.getSelectedCategory().name}}</h3></label></column>
+  <column sm="5" class="product-category"><label><h3>{{categoryService.getSelectedCategory().name}}</h3></label></column>
 </row>
 <row *ngIf="productService.getProducts()==null">
   <column sm="4"></column>
@@ -13,7 +13,7 @@
 </row>
 <row>
   <column sm="2"></column>
-  <column sm="5">{{'nameProduct'|translate}}</column>
+  <column sm="5" class="product-name"><p>{{'nameProduct'|translate}}</p></column>
   <column sm="3"></column>
 </row>
 <row *ngFor="let product of productService.getProducts()" class="lineProduct">

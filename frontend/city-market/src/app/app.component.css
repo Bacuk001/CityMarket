@@ -19,4 +19,11 @@
 .centerComponent{
   padding-left: 10px;
 }
+.body{
+  width: 100%;
+}
+
+.footer{
+  /*background-color: #2F5392;*/
+}
 

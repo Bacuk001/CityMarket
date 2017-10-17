@@ -2,7 +2,7 @@
 </column>
 <column md="10" class="main-content">
   <row>
-    <column md="3" *ngFor="let category of categoryService.getCategories()">
+    <column md="3" sm="5" *ngFor="let category of categoryService.getCategories()">
       <row class="sizeRow">
         <img *ngIf="category.urlPhoto!=null" [src]="category.urlPhoto" class="sizeImg">
       </row>

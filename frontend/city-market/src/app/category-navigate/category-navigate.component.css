@@ -1,3 +1,7 @@
+.category-nav{
+  margin-top: 35px;
+  margin-bottom: 6%;
+}
 
 .selectCategory {
   display: inline-block;
@@ -12,6 +16,7 @@
   font-family: SansSerif, serif;
   font-weight: 100;
   text-transform: uppercase;
+  white-space: unset;
   letter-spacing: 3px;
   border-radius: 2px;
   text-align: center;
@@ -56,4 +61,25 @@
   margin-right: -17%;
 }
 
+
+@media only screen and (max-width: 1200px) {
+
+  .selectCategory{
+    font-size: 9.5px;
+  }
+}
+
+@media only screen and (max-width: 992px){
+
+}
+@media only screen and (max-width: 768px){
+
+
+}
+
+@media only screen and (max-width: 480px){
+
+
+
+}
 

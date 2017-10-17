@@ -1,38 +1,41 @@
-<div class="navbar-top">
-  <row>
-    <column md="2">City Market</column>
-    <column md="2"><div (click)="navigate('category')">{{'category'|translate}}</div></column>
-    <column md="2"></column>
-    <column md="1">{{'shop'|translate}}</column>
-    <column md="4">
-      <select id="selectMarket" [(ngModel)]="market" (ngModelChange)="selectMarket()">
-        <option id="optionMarket" *ngFor="let mark of marketService.getMarkets()" [ngValue]="mark"
-                class="form-control">
-          {{mark.name}}
-        </option>
-      </select>
-    </column>
-    <column sm="1">
-      <row>
-        <div (click)="selectLanguage('ru')">RU</div>
-      </row>
-      <row>
-        <div (click)="selectLanguage('en')">EN</div>
-      </row>
-    </column>
-  </row>
-  <row *ngIf="access.adminBar">
-    <column><a (click)="navigate('createMarket')"> {{'createMarket'|translate}}</a></column>
-    <column><a (click)="navigate('addUser')"> {{'createUser'|translate}}</a></column>
-    <column><a (click)="navigate('createStock')"> {{'crateStock'|translate}}</a></column>
-  </row>
-  <row *ngIf="access.managerShopBar">
-    <column><a (click)="navigate('signStock')"> {{'signStock'|translate}}</a></column>
-    <column><a (click)="navigate('orderListMarket')"> {{'listOrder'|translate}}</a></column>
-  </row>
-  <row *ngIf="access.managerStockBar">
-    <column><a (click)="navigate('addCategory')"> {{'addCategory'|translate}}</a></column>
-  </row>
-</div>
-
+<row class="navbar-top">
+  <column md="12">
+    <row>
+      <column md="2" sm="3" class="logo-navigate"><p>City Market</p></column>
+      <column md="2" class="groups-navigate">
+        <div (click)="navigate('category')">{{'category'|translate}}</div>
+      </column>
+      <column md="2" sm="1"></column>
+      <column md="2" sm="3" class="shop-navigate"><p>{{'shop'|translate}}</p></column>
+      <column md="2" sm="3" >
+        <select id="selectMarket" [(ngModel)]="market" (ngModelChange)="selectMarket()">
+          <option id="optionMarket" *ngFor="let mark of marketService.getMarkets()" [ngValue]="mark"
+                  class="form-control">
+            {{mark.name}}
+          </option>
+        </select>
+      </column>
+      <column sm="1" class="lang-navigate">
+        <row>
+          <div (click)="selectLanguage('ru')"><p>RU</p></div>
+        </row>
+        <row>
+          <div (click)="selectLanguage('en')"><p>EN</p></div>
+        </row>
+      </column>
+    </row>
+    <row *ngIf="access.adminBar">
+      <column md="4" class="navigate-admin"><a (click)="navigate('createMarket')"> {{'createMarket'|translate}}</a></column>
+      <column md="4" class="navigate-admin"><a (click)="navigate('addUser')"> {{'createUser'|translate}}</a></column>
+      <column md="4" class="navigate-admin"><a (click)="navigate('createStock')"> {{'crateStock'|translate}}</a></column>
+    </row>
+    <row *ngIf="access.managerShopBar">
+      <column md="6" class="navigate-manager"><a (click)="navigate('signStock')"> {{'signStock'|translate}}</a></column>
+      <column md="6" class="navigate-manager"><a (click)="navigate('orderListMarket')"> {{'listOrder'|translate}}</a></column>
+    </row>
+    <row *ngIf="access.managerStockBar">
+      <column md="12" class="navigate-stock"><a (click)="navigate('addCategory')"> {{'addCategory'|translate}}</a></column>
+    </row>
+  </column>
+</row>
 

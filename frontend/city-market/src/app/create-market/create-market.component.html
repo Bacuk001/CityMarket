@@ -1,6 +1,6 @@
 <row>
   <column sm="2"></column>
-  <column sm="10">
+  <column sm="10" md="10" class="create-market">
     <row *ngIf="isDisableSaveButton">
       <column md="5">
         <div class="spinner"></div>
@@ -10,8 +10,8 @@
       {{message|translate}}
     </row>
     <row>
-      <column sm="3"><label>{{'listMarket'|translate}}</label></column>
-      <column sm="5">
+      <column sm="3" class="list-market"><label>{{'listMarket'|translate}}</label></column>
+      <column sm="5" class="form-list-market">
         <select [(ngModel)]="market" class="form-control">
           <option *ngFor="let mark of markets" [ngValue]="mark" class="form-control">{{mark.name}}</option>
         </select>

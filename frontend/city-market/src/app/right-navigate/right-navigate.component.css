@@ -9,6 +9,7 @@
   border: 1px solid black;
   border-radius: 7px;
   margin-right: 10px;
+  margin-top: 62px;
 }
 
 .input {
@@ -77,4 +78,22 @@ label.text{
   opacity: .32;
 }
 
+
+
+
+@media only screen and (max-width: 1200px) {
+
+}
+
+@media only screen and (max-width: 992px){
+
+}
+@media only screen and (max-width: 768px){
+
+
+}
+
+@media only screen and (max-width: 480px){
+
+}
 

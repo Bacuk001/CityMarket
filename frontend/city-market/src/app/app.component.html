@@ -1,20 +1,24 @@
-﻿<bootstrap-grid id="top">
-  <row>
+﻿<bootstrap-grid>
+  <row class="body">
     <column sm="12">
-      <app-top-navigate></app-top-navigate>
-    </column>
-  </row>
-  <row>
-    <column sm="10">
-      <router-outlet></router-outlet>
-    </column>
-    <column sm="2">
-      <app-right-navigate></app-right-navigate>
-    </column>
-  </row>
-  <row>
-    <column sm="12">
-      <app-footer></app-footer>
+      <row>
+        <column sm="12">
+          <app-top-navigate></app-top-navigate>
+        </column>
+      </row>
+      <row>
+        <column sm="7" md="10" >
+          <router-outlet></router-outlet>
+        </column>
+        <column sm="2">
+          <app-right-navigate></app-right-navigate>
+        </column>
+      </row>
+      <row>
+        <column md="12" sm="12" class="footer">
+          <app-footer></app-footer>
+        </column>
+      </row>
     </column>
   </row>
 </bootstrap-grid>
