@@ -12,8 +12,8 @@
 	"createMarket":"содать магазин",
 	"createUser":"создать пользователя",
 	"crateStock":"создать склад",
-    	"signStock":"связатка со складом",
-	"listOrder":"спсиок заказов",
+    	"signStock":"связать со складом",
+	"listOrder":"список заказов",
 	"addCategory":"создать категорию",
 	"createProduct":"создать продукт",
 	"price":"цена товара",
@@ -59,7 +59,9 @@
 "products":"существующие продукты",
 "imageProduct":"изображение продукта",
 "openFile":"открыть файл",
-"nameProduct":"название продукта"
-
+"nameProduct":"название продукта",
+"countProduct":"количество товара на складе",
+"priceProduct":"цена продукта",
+"newPrice":"новая цена"
 
 }

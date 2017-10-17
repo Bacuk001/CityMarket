@@ -43,4 +43,9 @@ export interface IProductService {
    */
   getAllProducts();
 
+  /**
+   * The method sets the number of products that will be loaded to display on a single page.
+   * @param {number} countProduct
+   */
+  setCountProductOnPage(countProduct:number);
 }

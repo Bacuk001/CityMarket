@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {IMarketService} from "../services/market/imarket.service";
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject('marketService') public marketService: IMarketService) {
+  }
 
   ngOnInit() {
   }
-
 }

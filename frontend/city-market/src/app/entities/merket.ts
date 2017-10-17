@@ -13,7 +13,7 @@ export class Market {
   /**
    * Market address.
    */
-  public address: string;
+  public addres: string;
   /**
    * Market description.
    */
