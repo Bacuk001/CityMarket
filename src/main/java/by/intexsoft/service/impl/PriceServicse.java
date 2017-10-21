@@ -3,12 +3,20 @@ package by.intexsoft.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+
+import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Price;
 import by.intexsoft.entity.Product;
 import by.intexsoft.entity.Stock;
+import by.intexsoft.repository.CategoryRepository;
+import by.intexsoft.repository.MarketRepository;
 import by.intexsoft.repository.PriceRepository;
+import by.intexsoft.repository.ProductRepository;
+import by.intexsoft.repository.StockRepository;
 import by.intexsoft.service.IPriceService;
 
 /**
@@ -19,38 +27,57 @@ import by.intexsoft.service.IPriceService;
  */
 @Service
 public class PriceServicse implements IPriceService {
+	private static final String NAME_FIELD_SORTING = "price";
 	private PriceRepository priceRepository;
+	private MarketRepository marketRepository;
+	private ProductRepository productRepository;
+	private StockRepository stockRepository;
+	private CategoryRepository categoryRepository;
 
 	@Autowired
-	public PriceServicse(PriceRepository priceRepository) {
+	public PriceServicse(PriceRepository priceRepository, MarketRepository marketRepository,
+			ProductRepository productRepository, StockRepository stockRepository,
+			CategoryRepository categoryRepository) {
 		this.priceRepository = priceRepository;
+		this.marketRepository = marketRepository;
+		this.productRepository = productRepository;
+		this.stockRepository = stockRepository;
+		this.categoryRepository = categoryRepository;
 	}
 
-	/**
-	 * The service method returns the products available in the store based on the
-	 * warehouses to which the store is subscribed.
-	 * 
-	 * @see {@link Product}, {@link Market}, {@link Stock}, {@link PriceRepository}
-	 */
+	@Override
 	public List<Price> findByProductAndStocks(Product product, List<Stock> stocks) {
 		return priceRepository.findPriceDistinctByProductAndStockIn(product, stocks);
 	}
 
-	/**
-	 * The service method takes an instance of the product class and an instance of
-	 * the warehouse class, and accesses the store to retrieve the prices.
-	 * 
-	 * @see {@link Product} , {@link PriceRepository}, {@link Stock}
-	 */
+	@Override
 	public List<Price> findByProductAndStock(Product product, Stock stock) {
 		return priceRepository.findByProductAndStock(product, stock);
 	}
 
-	/**
-	 * The service method processes requests to save the price.
-	 * 
-	 */
+	@Override
 	public Price save(Price price) {
 		return priceRepository.save(price);
+	}
+
+	@Override
+	public List<Price> findPriceByMarketAndCategory(int idCategory, int idMarket, String direction, int pageSize,
+			int namberPage) {
+		Market market = marketRepository.findOne(idMarket);
+		Category category = categoryRepository.findOne(idCategory);
+		List<Stock> stocks = stockRepository.findByMarkets(market);
+		List<Product> products = productRepository.findProductDistinctByCategoryAndStocksIn(category, stocks);
+		List<Price> prices = priceRepository.findPriceDistinctByProductInAndStockInAndInStockNotLike(products, stocks,
+				0, new PageRequest(namberPage, pageSize, Direction.fromString(direction), NAME_FIELD_SORTING));
+		return prices;
+	}
+
+	@Override
+	public int countPricesOfProductsMyMarketAndCategory(int idCategory, int idMarket) {
+		Market market = marketRepository.findOne(idMarket);
+		Category category = categoryRepository.findOne(idCategory);
+		List<Stock> stocks = stockRepository.findByMarkets(market);
+		List<Product> products = productRepository.findProductDistinctByCategoryAndStocksIn(category, stocks);
+		return priceRepository.countPriceDistinctByProductInAndStockInAndInStockNotLike(products, stocks, 0);
 	}
 }

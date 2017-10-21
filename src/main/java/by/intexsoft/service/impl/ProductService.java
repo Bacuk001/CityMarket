@@ -4,6 +4,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import by.intexsoft.entity.Category;
@@ -182,7 +183,7 @@ public class ProductService implements IProductService {
 	public List<Product> findByCetegoryAndProductNameAndStocks(Category category, String productName,
 			List<Stock> stocks) {
 		return productRepository.findProductDistinctByCategoryAndNameContainingAndStocksIn(category, productName,
-				stocks);
+				stocks, new Sort("name"));
 
 	}
 

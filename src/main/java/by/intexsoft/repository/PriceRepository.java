@@ -1,9 +1,8 @@
 package by.intexsoft.repository;
 
 import java.util.List;
-
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import by.intexsoft.entity.Price;
 import by.intexsoft.entity.Product;
 import by.intexsoft.entity.Stock;
@@ -31,4 +30,23 @@ public interface PriceRepository extends AbstractEntityRepository<Price> {
 	 * @see {@link Product}, {@link Stock}
 	 */
 	List<Price> findByProductAndStock(Product product, Stock stock);
+
+	/**
+	 * The method takes a list of list {@link Product} and a list {@link Stock} and
+	 * forms a request for prices to all transferred products located in warehouses.
+	 * Gets the data from the repository and sends it to the user.
+	 * 
+	 * @see {@link Pageable}
+	 */
+	List<Price> findPriceDistinctByProductInAndStockInAndInStockNotLike(List<Product> products, List<Stock> stocks,
+			Integer inStock, Pageable pageable);
+
+	/**
+	 * The method generates a request for the number of price records for the list
+	 * of {@link Product} in the {@link Stock} that are transferred in the
+	 * parameters. Products that are not in stock are excluded.
+	 * 
+	 */
+	int countPriceDistinctByProductInAndStockInAndInStockNotLike(List<Product> products, List<Stock> stocks,
+			Integer inStock);
 }

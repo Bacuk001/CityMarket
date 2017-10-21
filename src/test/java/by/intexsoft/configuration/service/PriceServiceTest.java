@@ -11,17 +11,30 @@ import org.mockito.runners.MockitoJUnitRunner;
 import by.intexsoft.entity.Price;
 import by.intexsoft.entity.Product;
 import by.intexsoft.entity.Stock;
+import by.intexsoft.repository.CategoryRepository;
+import by.intexsoft.repository.MarketRepository;
 import by.intexsoft.repository.PriceRepository;
+import by.intexsoft.repository.ProductRepository;
+import by.intexsoft.repository.StockRepository;
 import by.intexsoft.service.impl.PriceServicse;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PriceServiceTest {
 
 	@Mock
-	PriceRepository priceRepository;
+	private PriceRepository priceRepository;
+	@Mock
+	private MarketRepository marketRepository;
+	@Mock
+	private ProductRepository productRepository;
+	@Mock
+	private StockRepository stockRepository;
+	@Mock
+	private CategoryRepository categoryRepository;
 
 	@InjectMocks
-	PriceServicse priceServicse = new PriceServicse(priceRepository);
+	PriceServicse priceServicse = new PriceServicse(priceRepository, marketRepository, productRepository,
+			stockRepository, categoryRepository);
 
 	@Test
 	public void testUserService() {

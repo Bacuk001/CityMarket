@@ -2,6 +2,7 @@ package by.intexsoft.repository;
 
 import java.util.List;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Market;
@@ -106,7 +107,7 @@ public interface ProductRepository extends AbstractEntityRepository<Product> {
 	 *            -list of warehouses in which to search for products.
 	 */
 	List<Product> findProductDistinctByCategoryAndNameContainingAndStocksIn(Category category, String name,
-			List<Stock> stocks);
+			List<Stock> stocks, Sort sort);
 
 	/**
 	 * A repository that manages the essence of products in a data buffer. Forms a

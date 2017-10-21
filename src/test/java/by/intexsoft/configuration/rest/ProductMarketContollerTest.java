@@ -63,7 +63,8 @@ public class ProductMarketContollerTest {
 	@InjectMocks
 	private StockService stockService = new StockService(marketRepository, stockRepository);
 	@InjectMocks
-	private PriceServicse priceServicse = new PriceServicse(priceRepository);
+	private PriceServicse priceServicse = new PriceServicse(priceRepository, marketRepository, productRepository,
+			stockRepository, categoryRepository);
 	@InjectMocks
 	private ProductService productService = new ProductService(categoryRepository, stockRepository, productRepository);
 	@InjectMocks
@@ -126,22 +127,21 @@ public class ProductMarketContollerTest {
 		assertEquals(productMarketContoller.getByMarketAndCategory(1, 1), response);
 	}
 
-	/*@Test
-	public void getProductByMarketPagableTest() {
-		Market market = new Market();
-		Category category = new Category();
-		List<Stock> stocks = new ArrayList<>();
-		List<Product> products = new ArrayList<>();
-		when(marketRepository.findOne(1)).thenReturn(market);
-		when(stockRepository.findByMarkets(market)).thenReturn(stocks);
-		when(categoryRepository.findOne(1)).thenReturn(category);
-		when(productRepository.findProductDistinctByCategoryAndStocksIn(category, stocks, new PageRequest(1, 1)))
-				.thenReturn(products);
-		HttpHeaders headers = new HttpHeaders();
-		headers.add(CONTENT_TYPE, APPLICATION_JSON);
-		ResponseEntity<List<Product>> response = new ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
-		assertEquals(productMarketContoller.getProductByMarketPagable(1, 1, 1, 1), response);
-	}*/
+	/*
+	 * @Test public void getProductByMarketPagableTest() { Market market = new
+	 * Market(); Category category = new Category(); List<Stock> stocks = new
+	 * ArrayList<>(); List<Product> products = new ArrayList<>();
+	 * when(marketRepository.findOne(1)).thenReturn(market);
+	 * when(stockRepository.findByMarkets(market)).thenReturn(stocks);
+	 * when(categoryRepository.findOne(1)).thenReturn(category);
+	 * when(productRepository.findProductDistinctByCategoryAndStocksIn(category,
+	 * stocks, new PageRequest(1, 1))) .thenReturn(products); HttpHeaders headers =
+	 * new HttpHeaders(); headers.add(CONTENT_TYPE, APPLICATION_JSON);
+	 * ResponseEntity<List<Product>> response = new
+	 * ResponseEntity<List<Product>>(products, headers, HttpStatus.OK);
+	 * assertEquals(productMarketContoller.getProductByMarketPagable(1, 1, 1, 1),
+	 * response); }
+	 */
 
 	@Test
 	public void countProductByMarketTest() {

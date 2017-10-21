@@ -2,11 +2,15 @@ package by.intexsoft.service;
 
 import java.util.List;
 
+import by.intexsoft.entity.Category;
 import by.intexsoft.entity.Market;
 import by.intexsoft.entity.Price;
 import by.intexsoft.entity.Product;
 import by.intexsoft.entity.Stock;
+import by.intexsoft.repository.CategoryRepository;
+import by.intexsoft.repository.MarketRepository;
 import by.intexsoft.repository.PriceRepository;
+import by.intexsoft.repository.StockRepository;
 
 /**
  * Service that processes information about prices. Contacting the repository
@@ -35,5 +39,26 @@ public interface IPriceService {
 	 * The service method processes requests to save the price.
 	 */
 	public Price save(Price price);
+
+	/**
+	 * The service method takes store id and category id to get prices for products
+	 * that are available from the store. The method accesses the repository to
+	 * retrieve data. Having received the response.
+	 * 
+	 * @see {@link MarketRepository}, {@link CategoryRepository},
+	 *      {@link StockRepository}
+	 */
+	public List<Price> findPriceByMarketAndCategory(int idCategory, int idMarket, String direction, int pageSize,
+			int namberPage);
+
+	/**
+	 * The service method accesses the repository to obtain the number of price
+	 * records for the list of products in the warehouses that are transferred in
+	 * the parameters. Products that are not in stock are excluded.
+	 * 
+	 * @see {@link PriceRepository}, {@link Market}, {@link Category},
+	 *      {@link Product}
+	 */
+	public int countPricesOfProductsMyMarketAndCategory(int idCategory, int idMarket);
 
 }

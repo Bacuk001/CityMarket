@@ -31,19 +31,19 @@ public class Price extends AbstractPersistable<Integer> {
 	 * The price of the product.
 	 */
 	@Column
-	public int price;
+	public Integer price;
 
 	/**
 	 * Quantity in stock.
 	 */
 	@Column
-	public int inStock;
+	public Integer inStock;
 
 	/**
 	 * The product is in reserve.
 	 */
 	@Column
-	public int inReserv;
+	public Integer inReserv;
 
 	/**
 	 * Product information. {@link Product}
