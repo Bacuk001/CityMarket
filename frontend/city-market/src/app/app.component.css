@@ -1,29 +1,32 @@
 .bk {
-    background-color: lightblue;
+  background-color: lightblue;
 }
 
 .bk2 {
-    background-color: blue;
+  background-color: blue;
 }
 
 .bk3 {
-    background-color: red;
+  background-color: red;
 }
 
 .bk4 {
-    background-color: green;
+  background-color: green;
 }
-.topComponent{
+
+.topComponent {
   padding: 10px;
 }
-.centerComponent{
-  padding-left: 10px;
+
+.centerComponent {
+  display: flex;
 }
-.body{
+
+.body {
   width: 100%;
 }
 
-.footer{
+.footer {
   /*background-color: #2F5392;*/
 }
 

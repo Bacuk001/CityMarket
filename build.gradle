@@ -33,7 +33,7 @@ repositories {
 	 mavenCentral()
 }
 
-//compileJava{dependsOn 'frontend/city-market:buildCline'}
+compileJava{dependsOn 'frontend/city-market:buildCline'}
 
 dependencies {
  	testCompile "junit:junit:4.11"
@@ -57,5 +57,5 @@ dependencies {
            		"org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
 }
 war {
-	from 'rootResources','frontend/city-market/dist'
+	from 'localisation','frontend/city-market/dist'
 }

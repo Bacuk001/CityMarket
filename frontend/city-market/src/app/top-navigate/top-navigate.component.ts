@@ -52,8 +52,8 @@ export class TopNavigateComponent implements OnInit {
    *
    * @param event
    */
-  navigate(event) {
-    this.router.navigateByUrl(event).then();
+  navigate(rout) {
+    this.router.navigateByUrl(rout).then();
   }
 
   /**
@@ -62,5 +62,12 @@ export class TopNavigateComponent implements OnInit {
    */
   selectLanguage(selected) {
     this.translate.use(selected);
+  }
+
+  /**
+   * Hides or displays the login form.
+   */
+  setVisibleFormLogin() {
+    this.access.logInSystem = !this.access.logInSystem;
   }
 }

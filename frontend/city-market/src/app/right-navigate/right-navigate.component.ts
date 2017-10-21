@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {IAuthenticationService} from '../services/authentication/iauthentication.service';
 import {User} from '../entities/user';
 
@@ -10,7 +10,7 @@ import {User} from '../entities/user';
   templateUrl: './right-navigate.component.html',
   styleUrls: ['./right-navigate.component.css']
 })
-export class RightNavigateComponent {
+export class RightNavigateComponent implements OnInit{
   /**
    * User registered in the system.
    */
@@ -22,6 +22,10 @@ export class RightNavigateComponent {
 
 
   constructor(@Inject('authenticationService') public authService: IAuthenticationService) {
+  }
+  ngOnInit(){
+    if(this.authService.getUser()!=null)
+      this.user=this.authService.getUser();
   }
 
   /**

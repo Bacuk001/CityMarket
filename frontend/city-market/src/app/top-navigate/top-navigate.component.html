@@ -2,12 +2,13 @@
   <column md="12">
     <row>
       <column md="2" sm="3" class="logo-navigate"><p>City Market</p></column>
-      <column md="2" class="groups-navigate">
-        <div (click)="navigate('category')">{{'category'|translate}}</div>
+      <column md="2" class="navigate-admin">
+        <label (click)="navigate('category')" class="navigate-label">{{'category'|translate}}</label>
       </column>
+
       <column md="2" sm="1"></column>
       <column md="2" sm="3" class="shop-navigate"><p>{{'shop'|translate}}</p></column>
-      <column md="2" sm="3" >
+      <column md="2" sm="3">
         <select id="selectMarket" [(ngModel)]="market" (ngModelChange)="selectMarket()">
           <option id="optionMarket" *ngFor="let mark of marketService.getMarkets()" [ngValue]="mark"
                   class="form-control">
@@ -17,24 +18,39 @@
       </column>
       <column sm="1" class="lang-navigate">
         <row>
-          <div (click)="selectLanguage('ru')"><p>RU</p></div>
+          <column md="12" class="navigate-admin">
+            <label (click)="selectLanguage('ru')"><p>RU</p></label>
+          </column>
         </row>
         <row>
-          <div (click)="selectLanguage('en')"><p>EN</p></div>
+          <column md="12" class="navigate-admin">
+            <label (click)="selectLanguage('en')"><p>EN</p></label>
+          </column>
+        </row>
+        <row>
+          <column md="12" class="navigate-admin">
+            <label (click)="setVisibleFormLogin()"><p>{{'logIn'|translate}}</p></label>
+          </column>
         </row>
       </column>
     </row>
     <row *ngIf="access.adminBar">
-      <column md="4" class="navigate-admin"><a (click)="navigate('createMarket')"> {{'createMarket'|translate}}</a></column>
-      <column md="4" class="navigate-admin"><a (click)="navigate('addUser')"> {{'createUser'|translate}}</a></column>
-      <column md="4" class="navigate-admin"><a (click)="navigate('createStock')"> {{'crateStock'|translate}}</a></column>
+      <column md="4" class="navigate-admin"><label (click)="navigate('createMarket')">
+        {{'createMarket'|translate}}</label></column>
+      <column md="4" class="navigate-admin"><label (click)="navigate('addUser')"> {{'createUser'|translate}}</label>
+      </column>
+      <column md="4" class="navigate-admin"><label (click)="navigate('createStock')"> {{'crateStock'|translate}}</label>
+      </column>
     </row>
     <row *ngIf="access.managerShopBar">
-      <column md="6" class="navigate-manager"><a (click)="navigate('signStock')"> {{'signStock'|translate}}</a></column>
-      <column md="6" class="navigate-manager"><a (click)="navigate('orderListMarket')"> {{'listOrder'|translate}}</a></column>
+      <column md="6" class="navigate-manager"><label (click)="navigate('signStock')"> {{'signStock'|translate}}</label>
+      </column>
+      <column md="6" class="navigate-manager"><label (click)="navigate('orderListMarket')">
+        {{'listOrder'|translate}}</label></column>
     </row>
     <row *ngIf="access.managerStockBar">
-      <column md="12" class="navigate-stock"><a (click)="navigate('addCategory')"> {{'addCategory'|translate}}</a></column>
+      <column md="12" class="navigate-stock"><label (click)="navigate('addCategory')">
+        {{'addCategory'|translate}}</label></column>
     </row>
   </column>
 </row>

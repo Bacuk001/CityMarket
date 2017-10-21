@@ -1,14 +1,13 @@
-.product-pagination button {
+.product-pagination button{
+  width: 30px;
+  height: 30px;
   display: inline-block;
-  margin-left: 220px;
-  margin-top: 30px;
+  margin: 15px;
   border: none;
   color: #fff;
   text-decoration: none;
   background-color: #2F5392;
-  padding: 6px 11px;
-  width: 98%;
-  font-size: 12.5px;
+  font-size: 13px;
   font-family: SansSerif, serif;
   font-weight: 200;
   letter-spacing: 3px;
@@ -24,7 +23,6 @@
   content: '';
   height: 4px;
   bottom: 0;
-  width: 100%;
   background-color: rgba(1, 0, 255, 1);
   opacity: .18;
   border-bottom-left-radius: 2px;
@@ -48,4 +46,31 @@
 }
 .product-pagination button:active::after {
   opacity: .32;
+}
+.active-page button{
+  color: sandybrown;
+  font-size: 16px;
+}
+.pagination-button{
+display: flex;
+  align-content: center;
+}
+.product-pagination select{
+  width: 40px;
+  height: 30px;
+  display: inline-block;
+  margin: 15px;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  background-color: #2F5392;
+  font-size: 13px;
+  font-family: SansSerif, serif;
+  font-weight: 200;
+  letter-spacing: 3px;
+  border-radius: 2px;
+  text-align: center;
+  position: relative;
+  outline: none;
+  transition: background-color .1s ease, font-size 0.5s ease;
 }

@@ -1,34 +1,37 @@
 <row>
-    <div *ngIf="productService.loadCountProduct().length>1">
-        <column md="3"></column>
-        <column md="1" class="product-pagination" *ngIf="activPage>0 && pages.length>3">
-            <button (click)="selectPage(0)"> <<</button>
-        </column>
-        <column md="1" class="product-pagination" *ngIf="pages.length-1==activPage && pages.length>2">
-            <button (click)="selectPage(activPage-2)">{{activPage-1}}</button>
-        </column>
-        <column md="1" class="product-pagination" *ngIf="activPage>0">
-            <button (click)="selectPage(activPage-1)">{{activPage}}</button>
-        </column>
-        <column md="1" class="product-pagination">
-            <button (click)="selectPage(activPage)" [disabled]="true">{{activPage+1}}</button>
-        </column>
-        <column md="1" class="product-pagination" *ngIf="pages.length>1 && activPage!=pages.length-1">
-            <button (click)="selectPage(activPage+1)">{{activPage+2}}</button>
-        </column>
-        <column md="1" class="product-pagination" *ngIf="pages.length>2 && activPage == 0">
-            <button (click)="selectPage(activPage+2)">{{activPage+3}}</button>
-        </column>
-        <column md="1" class="product-pagination" *ngIf="activPage<pages.length-1 && pages.length>3">
-            <button (click)="selectPage(pages.length-1)"> >></button>
-        </column>
+  <column md="12" class="pagination-button">
+    <div class="pagination-button" *ngIf="productService.loadCountProduct().length>1">
+      <div class="product-pagination" *ngIf="activPage>0 && pages.length>3">
+        <button (click)="selectPage(0)"><<</button>
+      </div>
+      <div md="2" class="product-pagination" *ngIf="pages.length-1==activPage && pages.length>2">
+        <button (click)="selectPage(activPage-2)">{{activPage-1}}</button>
+      </div>
+      <div md="2" class="product-pagination" *ngIf="activPage>0">
+        <button (click)="selectPage(activPage-1)">{{activPage}}</button>
+      </div>
+      <div md="2" class="product-pagination active-page">
+        <button (click)="selectPage(activPage)" [disabled]="true">{{activPage+1}}</button>
+      </div>
+      <div md="2" class="product-pagination" *ngIf="pages.length>1 && activPage!=pages.length-1">
+        <button (click)="selectPage(activPage+1)">{{activPage+2}}</button>
+      </div>
+      <div md="2" class="product-pagination" *ngIf="pages.length>2 && activPage == 0">
+        <button (click)="selectPage(activPage+2)">{{activPage+3}}</button>
+      </div>
+      <div md="2" class="product-pagination" *ngIf="activPage<pages.length-1 && pages.length>3">
+        <button (click)="selectPage(pages.length-1)">>></button>
+      </div>
     </div>
-    <column md="2">
-        <select id="selectMarket" [(ngModel)]="visibleProductsOnPage" (ngModelChange)="changeCountProductOnPage()">
-            <option id="optionMarket" *ngFor="let visibleProducts of countProductOnPage" [ngValue]="visibleProducts"
-                    class="form-control">
-                {{visibleProducts}}
-            </option>
+    <div>
+      <div class="product-pagination">
+        <select id="selectMarket"  [(ngModel)]="visibleProductsOnPage" (ngModelChange)="changeCountProductOnPage()">
+          <option id="optionMarket" *ngFor="let visibleProducts of countProductOnPage" [ngValue]="visibleProducts"
+                  class="form-control">
+            {{visibleProducts}}
+          </option>
         </select>
-    </column>
+      </div>
+    </div>
+  </column>
 </row>

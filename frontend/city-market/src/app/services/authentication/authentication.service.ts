@@ -6,6 +6,7 @@ import {Role} from '../../entities/role';
 import {AccessService} from '../access/access.service';
 import {IMarketService} from '../market/imarket.service';
 import {Router} from "@angular/router";
+import {IProductService} from "../product/iproduct.service";
 
 const ROLE_ADMIN = 'ROLE_ADMIN';
 const ROLE_MANAGER_SHOP = 'ROLE_MANAGER_SHOP';
@@ -148,7 +149,7 @@ export class AuthenticationService implements IAuthenticationService {
    * @returns {Promise<any>}
    */
   public getUserPassword(idUser: number) {
-    const url = URL_USER + '/' + idUser + '/password'
+    const url = URL_USER + '/' + idUser + '/password';
     const headers = new Headers({'Content-Type': CONTENT_TYPE_VALUE});
     headers.append(TOKEN_NAME_FIELD_HEADERS, this.token);
     return new Promise((response, reject) =>

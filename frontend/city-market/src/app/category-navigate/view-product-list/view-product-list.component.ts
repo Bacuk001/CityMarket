@@ -75,31 +75,6 @@ export class ViewProductListComponent {
         this.productService.getPromiseProducts(0);
     }
 
-    sortProductByPrice(sortDown: boolean) {
-        if (sortDown) this.productService.getProducts().sort(this.sortDown);
-        if (!sortDown) this.productService.getProducts().sort(this.sortUp);
-    }
-
-    sortDown(product1: Product, product: Product) {
-        if (product1.priceView > product.priceView) {
-            return 1;
-        }
-        if (product1.priceView < product.priceView) {
-            return -1;
-        }
-        return 0;
-    }
-
-    sortUp(product1: Product, product: Product) {
-        if (product1.priceView > product.priceView) {
-            return -1;
-        }
-        if (product1.priceView < product.priceView) {
-            return 1;
-        }
-        return 0;
-    }
-
     /**
      * The method is called when the input field of the product name is changed. The method passes a
      * string to the service that should be contained in the product name. And instructs the service

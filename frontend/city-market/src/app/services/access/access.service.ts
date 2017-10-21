@@ -60,6 +60,11 @@ export class AccessService {
    * Navigation menu for the manager stock.
    */
   public managerStockBar: boolean;
+  /**
+   * If the value is set to true, the form will be displayed on the screen, if the lie, the form
+   * will be hidden.
+   */
+  public logInSystem :boolean;
 
   /**
    * The designer determines which components are available when entering the application, which
@@ -78,6 +83,7 @@ export class AccessService {
     this.adminBar = false;
     this.managerShopBar = false;
     this.managerStockBar = false;
+    this.logInSystem =false;
   }
 
   /**

@@ -1,5 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {IMarketService} from "../services/market/imarket.service";
+import {IPriceService} from "../services/price/iprice.service";
 
 @Component({
   selector: 'app-footer',

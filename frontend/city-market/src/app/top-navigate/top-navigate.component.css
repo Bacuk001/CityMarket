@@ -11,7 +11,6 @@
   color: white;
   margin-left: 3px;
   margin-right: -30px;
-  /*padding: 2.5px 30px;*/
 }
 .navbar-top::after {
   transition: background-color .2s ease;
@@ -79,7 +78,7 @@ input, textarea, select {
 .navigate-admin{
   text-align: center;
 }
-.navigate-admin a{
+.navigate-admin label{
   font-family: SansSerif, serif;
   font-size: 20px;
   font-weight: 600;
@@ -89,7 +88,7 @@ input, textarea, select {
 .navigate-manager{
   text-align: center;
 }
-.navigate-manager a{
+.navigate-manager label{
   font-family: SansSerif, serif;
   font-size: 20px;
   font-weight: 600;
@@ -99,13 +98,15 @@ input, textarea, select {
 .navigate-stock{
   text-align: center;
 }
-.navigate-stock a{
-  font-family: SansSerif, serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: #fff;
+.navigate-stock label{
+   font-family: SansSerif, serif;
+   font-size: 20px;
+   font-weight: 600;
+   color: #fff;
+ }
+.navigate-admin:hover{
+  color: #000000;
 }
-
 
 @media only screen and (max-width: 1200px) {
 

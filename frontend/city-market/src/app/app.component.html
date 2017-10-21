@@ -7,10 +7,10 @@
         </column>
       </row>
       <row>
-        <column sm="7" md="10" >
+        <column md="10">
           <router-outlet></router-outlet>
         </column>
-        <column sm="2">
+        <column *ngIf="access.logInSystem" md="2">
           <app-right-navigate></app-right-navigate>
         </column>
       </row>

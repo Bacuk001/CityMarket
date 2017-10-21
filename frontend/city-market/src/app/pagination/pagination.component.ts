@@ -11,13 +11,14 @@ export class PaginationComponent implements OnChanges {
     public pages: Page[];
     public activPage: number;
     public countProductOnPage: number[] = [2, 5, 10, 20];
-    public visibleProductsOnPage;
+    public visibleProductsOnPage=10;
     @Input() public countProduct;
 
     constructor(@Inject('productService') public  productService: IProductService) {
     }
 
     ngOnChanges() {
+
         this.pages = new Array();
         this.activPage = 0;
         for (let index = 0; index < this.countProduct; index++) {

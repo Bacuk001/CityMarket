@@ -73,7 +73,9 @@
   border-right: 2px solid transparent;
   animation: spinner .6s linear infinite;
 }
-
+.block-list-product{
+  min-height: 90%;
+}
 
 
 
