@@ -57,7 +57,6 @@ export class ProductService implements IProductService {
   getPromiseProducts(page: number) {
     this.products = null;
     if (this.sortingProduct != null) {
-      alert("get");
       return this.loadProductSortPrice(page);
     }
     const user = this.authService.getUser();

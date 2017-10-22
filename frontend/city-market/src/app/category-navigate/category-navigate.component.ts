@@ -43,6 +43,7 @@ export class CategoryNavigateComponent implements OnInit {
    * @param {Category} category
    */
   selectCategory(category: Category) {
+    this.productService.setSortingProduct(null);
     this.categoryService.setCategory(category);
     this.productService.getPromiseProducts(0)
       .catch(error => this.message = error);

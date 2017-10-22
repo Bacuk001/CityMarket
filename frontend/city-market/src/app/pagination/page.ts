@@ -1,6 +1,10 @@
 export class Page {
-  public previousPage: number;
-  public numberPage: number;
-  public nextPage: number;
-  public numberOfPage: number;
+    /**
+     * The object property stores the number of the selected page.
+     */
+    public numberPage: number;
+    /**
+     * The object property stores the number of pages.
+     */
+    public numberOfPage: number;
 }
