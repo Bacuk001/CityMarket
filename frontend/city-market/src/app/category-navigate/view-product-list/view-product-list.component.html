@@ -7,10 +7,10 @@
   </column>
 </row>
 <row>
-  <column md="3">
+  <column md="3" sm="2" class="textSearch">
     <label>{{'find'|translate}}</label>
   </column>
-  <column md="2">
+  <column md="2" sm="3" class="searchName">
     <input type="text" [(ngModel)]="partName" (ngModelChange)="changeListProductByPartName()">
   </column>
 </row>
@@ -23,13 +23,13 @@
 <row>
   <column sm="2"></column>
   <column sm="5" class="product-name"><p>{{'nameProduct'|translate}}</p></column>
-  <column sm="3">
+  <column sm="3" md="3">
     <row>
-      <column sm="6">
+      <column sm="6" class="upSort">
         <button class="btn btn-primary btn-sm selectCategory" (click)="sortProduct('DESC')">{{'upSort'|translate}}
         </button>
       </column>
-      <column sm="6">
+      <column sm="6" class="downSort">
         <button class="btn btn-primary btn-sm selectCategory" (click)="sortProduct('ASC')">{{'downSort'|translate}}
         </button>
       </column>

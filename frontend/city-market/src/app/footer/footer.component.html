@@ -1,20 +1,22 @@
 <row id="my-footer">
-    <column class="main-footer" sm="12" md="12">
-        <row>
-            <column lg="6" sm="6" md="6">
-                <column class="footer-column" *ngIf="marketService.getSelectMarket() != null">
-                    <p><span class="logo-footer">CityMarket</span> <br>{{marketService.getSelectMarket().about}}</p>
-                </column>
-            </column>
-            <column lg="6" sm="6" xs="6">
-                <column class="footer-column">
-                    <p *ngIf="marketService.getSelectMarket() != null" class="footer-addr">
-                        {{marketService.getSelectMarket().addres}}</p>
-                    <p class="footer-addr">Прием заказов: ежедневно. <br>9:00-19:00</p>
-                    <p class="footer-addr"><span class="footer-phone">+ 375 (29) 583-47-19</span></p>
-                </column>
-            </column>
-        </row>
-    </column>
+  <column class="main-footer" sm="12" md="12">
+    <row>
+      <column lg="6" sm="6" md="6">
+        <column class="footer-column">
+          <p>
+            <span class="logo-footer">CityMarket</span>
+          <div class="footer-shop" *ngIf="marketService.getSelectMarket() != null"><br>{{marketService.getSelectMarket().about}}</div>
+        </column>
+      </column>
+      <column lg="6" sm="6" xs="6">
+        <column class="footer-column">
+          <p *ngIf="marketService.getSelectMarket() != null" class="footer-addr">
+            {{marketService.getSelectMarket().addres}}</p>
+          <p class="footer-addr">Прием заказов: ежедневно. <br>9:00-19:00</p>
+          <p class="footer-addr"><span class="footer-phone">+ 375 (29) 583-47-19</span></p>
+        </column>
+      </column>
+    </row>
+  </column>
 </row>
 

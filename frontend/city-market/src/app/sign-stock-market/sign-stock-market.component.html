@@ -1,10 +1,10 @@
-<row>
+<row class="manager-create-sign">
   <column sm="3"></column>
-  <column sm="9">
+  <column sm="9" class="create-sign">
     <row *ngFor="let stock of stocks; let index=index">
       <input type="checkbox" [(ngModel)]="check[index]">{{stock.name}}
     </row>
-    <row>
+    <row class="create-sign-button">
       <column sm="3">
         <button class="btn btn-primary btn-sm  selectButton" (click)="sendSign()">обновить</button>
       </column>

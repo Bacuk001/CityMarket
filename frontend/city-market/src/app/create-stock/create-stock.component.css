@@ -1,24 +1,88 @@
-.selectButton {
-  margin-left: 15px;
-  margin-top: 5px;
-  padding-left: 5px;
-  font-size: 11px;
-  width: 90%;
-  background-color: black;
-  -webkit-transition: font-size 0.5s;
-  transition: font-size 0.5s;
+.admin-create-stock{
+  margin-bottom: 20%;
 }
 
+.selectButton {
+  display: inline-block;
+  margin: 15px;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  background-color: #2F5392;
+  padding: 6px 5px;
+  width: 98%;
+  font-size: 12.5px;
+  font-family: SansSerif, serif;
+  font-weight: 200;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border-radius: 2px;
+  text-align: center;
+  position: relative;
+  outline: none;
+  transition: background-color .1s ease, font-size 0.5s ease;
+}
+.selectButton::after {
+  transition: background-color .2s ease;
+  position: absolute;
+  content: '';
+  height: 4px;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(1, 0, 255, 1);
+  opacity: .18;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  left: 0;
+}
+.selectButton:focus, .button:hover {
+  text-decoration: none;
+  color: #fff;
+}
 .selectButton:hover {
-  background-color: gray;
+  white-space: normal;
+  background-color: rgba(47, 83, 146, .7);
   font-size: 15px;
 }
-input{
-  margin: 2px;
+.selectButton:hover::after {
+  opacity: .22;
 }
-select{
-  margin: 2px;
+.selectButton:active {
+  background-color: rgba(1, 0, 255, 1);
 }
+.selectButton:active::after {
+  opacity: .32;
+}
+
+.create-stock{
+  margin-top: 14%;
+  margin-bottom: -6%;
+  margin-left: 30%;
+}
+
+.form-list-stock{
+  margin-bottom: 10px;
+}
+.form-list-stock select{
+  height: 42px;
+}
+
+.form-control{
+  margin-bottom: 10px;
+}
+
+.data-stock{
+  font-size: 16px;
+  font-family: SansSerif,serif;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.create-stock-button{
+  margin-left: 16%;
+  margin-top: 3%;
+}
+
 @keyframes spinner {
   to {transform: rotate(360deg);}
 }

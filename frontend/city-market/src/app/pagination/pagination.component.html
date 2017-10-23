@@ -23,15 +23,13 @@
         <button (click)="selectPage(pages.length-1)">>></button>
       </div>
     </div>
-    <div>
-      <div class="product-pagination">
-        <select id="selectMarket"  [(ngModel)]="visibleProductsOnPage" (ngModelChange)="changeCountProductOnPage()">
-          <option id="optionMarket" *ngFor="let visibleProducts of countProductOnPage" [ngValue]="visibleProducts"
-                  class="form-control">
-            {{visibleProducts}}
-          </option>
-        </select>
-      </div>
+    <div class="product-select">
+      <select id="selectMarket" [(ngModel)]="visibleProductsOnPage" (ngModelChange)="changeCountProductOnPage()">
+        <option id="optionMarket" *ngFor="let visibleProducts of countProductOnPage" [ngValue]="visibleProducts"
+                class="form-control">
+          {{visibleProducts}}
+        </option>
+      </select>
     </div>
   </column>
 </row>
