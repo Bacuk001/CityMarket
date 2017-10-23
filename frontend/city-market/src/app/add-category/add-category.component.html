@@ -1,9 +1,9 @@
-<row>
+<row class="manager-create-category">
   <column sm="2"></column>
-  <column sm="10">
+  <column sm="10" class="create-category">
     <row>
-      <column sm="3"><label>{{'categoriesProducts'|translate}}</label></column>
-      <column sm="5">
+      <column sm="3" class="data-category"><label>{{'categoriesProducts'|translate}}</label></column>
+      <column sm="5" class="form-list-category">
         <select [(ngModel)]="category" class="form-control">
           <option *ngFor="let category of categories" [ngValue]="category" class="form-control">{{category.name}}
           </option>
@@ -12,12 +12,12 @@
     </row>
     <row>
       <column sm="2"></column>
-      <column sm="3">
+      <column sm="3" class="data-category">
         <label>{{'createCategory'|translate}}</label>
       </column>
     </row>
     <row>
-      <column sm="3">
+      <column sm="3" class="data-category">
         <label>{{'nameCategory'|translate}}</label>
       </column>
       <column sm="5">
@@ -25,14 +25,14 @@
       </column>
     </row>
     <row>
-      <column sm="3">
+      <column sm="3" class="data-category">
         <label>{{'image'|translate}}</label>
       </column>
       <column sm="5">
         <input *ngIf="!inSystem" type="text" [(ngModel)]="category.urlPhoto" class="form-control"/>
       </column>
     </row>
-    <row>
+    <row  class="create-category-button">
       <column sm="3">
       </column>
       <column sm="2">

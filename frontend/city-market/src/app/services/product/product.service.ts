@@ -56,10 +56,7 @@ export class ProductService implements IProductService {
    */
   getPromiseProducts(page: number) {
     this.products = null;
-    if (this.sortingProduct != null) {
-      alert("get");
-      return this.loadProductSortPrice(page);
-    }
+    if (this.sortingProduct != null) return this.loadProductSortPrice(page);
     const user = this.authService.getUser();
     if (user.stock != null) {
       const category = this.serviceCategory.getSelectedCategory();

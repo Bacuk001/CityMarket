@@ -1,6 +1,6 @@
-<row>
+<row class="admin-create-stock">
   <column sm="2"></column>
-  <column sm="10">
+  <column sm="10" class="create-stock">
     <row *ngIf="isDisableSaveButton">
       <div class="spinner"></div>
     </row>
@@ -8,28 +8,28 @@
       {{message|translate}}
     </row>
     <row>
-      <column sm="3"><label>{{'stock'|translate}}</label></column>
-      <column sm="5">
+      <column sm="3" class="data-stock"><label>{{'stock'|translate}}</label></column>
+      <column sm="5" class="form-list-stock">
         <select [(ngModel)]="stock" class="form-control">
           <option *ngFor="let stock of stocks" [ngValue]="stock" class="form-control">{{stock.name}}</option>
         </select>
       </column>
     </row>
     <row>
-      <column sm="3"><label>{{'nameStock'|translate}}</label></column>
+      <column sm="3" class="data-stock"><label>{{'nameStock'|translate}}</label></column>
       <column sm="5"><input type="text" [(ngModel)]="stock.name" class="form-control">
       </column>
     </row>
     <row>
-      <column sm="3"><label>{{'address'|translate}}</label></column>
+      <column sm="3" class="data-stock"><label>{{'address'|translate}}</label></column>
       <column sm="5"><input type="text" [(ngModel)]="stock.address" class="form-control">
       </column>
     </row>
     <row>
-      <column sm="3"><label>{{'aboutStock'|translate}}</label></column>
+      <column sm="3" class="data-stock"><label>{{'aboutStock'|translate}}</label></column>
       <column sm="5"><input type="text" [(ngModel)]="stock.about" class="form-control"></column>
     </row>
-    <row>
+    <row class="create-stock-button">
       <column sm="2">
         <button class="btn btn-primary btn-sm  selectButton" [disabled]="isDisableSaveButton" (click)="createStock()">
           {{'save'|translate}}

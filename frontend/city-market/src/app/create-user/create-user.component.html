@@ -1,57 +1,57 @@
-<row>
+<row class="admin-create-user">
   <column sm="2"></column>
-  <column sm="10">
+  <column sm="10" md="10" class="create-user">
     <row>
       <column sm="4"></column>
-      <column cm="3"><label>{{'createUser'|translate}}</label></column>
+      <column cm="3" class="data-user"><label>{{'createUser'|translate}}</label></column>
     </row>
     <row>
-      <column sm="3">
+      <column sm="3" class="data-user">
         <label> {{'usersNames'|translate}}</label>
       </column>
-      <column sm="5">
+      <column sm="5" class="form-list-user">
         <select [(ngModel)]="user" (ngModelChange)="loadPassword(user)" class="form-control">
           <option *ngFor="let user of users" [ngValue]="user" class="form-control">{{user.name}}</option>
         </select>
       </column>
-      <div *ngIf="user.stock!=null"><label>{{'stock'|translate}}{{user.stock.name}}</label></div>
-      <div *ngIf="user.market!=null"><label>{{'market'|translate}}{{user.market.name}}</label></div>
+      <div *ngIf="user.stock!=null" class="data-user"><label>{{'stock'|translate}}{{user.stock.name}}</label></div>
+      <div *ngIf="user.market!=null" class="data-user"><label>{{'market'|translate}}{{user.market.name}}</label></div>
     </row>
     <row>
-      <column sm="3"><label>{{'userName'|translate}}</label></column>
+      <column sm="3" class="data-user"><label>{{'userName'|translate}}</label></column>
       <column sm="5"><input type="text" [(ngModel)]="user.name" class="form-control">
       </column>
     </row>
     <row>
-      <column sm="3"><label>{{'password'|translate}}</label></column>
+      <column sm="3" class="data-user"><label>{{'password'|translate}}</label></column>
       <column sm="5"><input type="text" [(ngModel)]="user.password" class="form-control"></column>
     </row>
     <row>
-      <column sm="3">
+      <column sm="3" class="data-user">
         <label>{{'selectMarket'|translate}}</label>
       </column>
-      <column sm="5">
+      <column sm="5" class="form-list-user">
         <select [(ngModel)]="user.market" class="form-control">
           <option *ngFor="let market of markets" [ngValue]="market">{{market.name}}</option>
         </select>
       </column>
     </row>
     <row>
-      <column sm="3">
+      <column sm="3" class="data-user">
         <label>{{'selectStock'|translate}}</label>
       </column>
-      <column sm="5">
+      <column sm="5" class="form-list-user">
         <select [(ngModel)]="user.stock" class="form-control">
           <option *ngFor="let stock of stocks" [ngValue]="stock">{{stock.name}}</option>
         </select>
       </column>
     </row>
     <row>
-      <column sm="3" *ngFor="let role of roles; let index = index">
+      <column sm="3" class="data-user" *ngFor="let role of roles; let index = index">
         <input type="checkbox" [(ngModel)]="checkedRole[index]"><label>{{role.name|translate}}</label>
       </column>
     </row>
-    <row>
+    <row class="create-user-button">
       <column sm="2">
         <button class="btn btn-primary btn-sm  selectButton" (click)="createUser()">{{'send'|translate}}</button>
       </column>

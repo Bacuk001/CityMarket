@@ -27,6 +27,9 @@
 }
 
 .footer {
-  /*background-color: #2F5392;*/
+  position: absolute;
+  width: 100%;
+  height: auto;
+
 }
 
