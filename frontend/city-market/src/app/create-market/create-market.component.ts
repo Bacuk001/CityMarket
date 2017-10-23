@@ -1,6 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {IMarketService} from '../services/market/imarket.service';
-import {Router} from '@angular/router';
 import {Market} from '../entities/merket';
 
 /**
@@ -52,7 +51,7 @@ export class CreateMarketComponent implements OnInit {
         .then(resp => {
           this.isDisableSaveButton = false;
           this.message = resp;
-          this.marketService.getMarkets();
+          this.ngOnInit();
           setTimeout(() => this.message = '', 1000);
           this.clearFormInput();
         }).catch(error => {
